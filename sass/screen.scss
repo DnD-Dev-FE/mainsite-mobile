@@ -645,7 +645,7 @@ body {
         top: 0;
         right: 0;
 
-        @include bp(desktop) {
+        @include bp(widescreen) {
             right: calc( (100% - #{$desktop-max-width})/2 );
         }
 
