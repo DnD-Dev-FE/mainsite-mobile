@@ -5,8 +5,9 @@
 /*@import 'debug';*/
 @import 'neat/neat';
 @import 'font-awesome/font-awesome';
-@import '../widgets/swiper/css/idangerous.swiper.css';
+/*@import '../widgets/swiper/css/idangerous.swiper.css';*/
 @import url(http://fonts.googleapis.com/css?family=Roboto);
+
 @import 'sprites/*.png';
 
 body {
@@ -26,6 +27,7 @@ body {
         max-width: $desktop-max-width;
         margin: 0 auto;
     }
+    
     @include bp(smartphone) {
         overflow: hidden;
     }
@@ -34,6 +36,7 @@ body {
     #main-nav {
         position: fixed;
         top: 0;
+        
 
         @include bp(hybrid) {
             z-index: 1;
@@ -252,6 +255,7 @@ body {
     #drawer-toggle {
         display: none;
     }
+
     @include bp(hybrid) {
         #drawer-toggle-label {
             cursor: pointer;
@@ -295,6 +299,7 @@ body {
             @include off-canvas-sliding($offset-canvas);
         }
     }
+
     @include bp(widescreen) {
         #drawer-toggle-label {
             display: none;
@@ -511,7 +516,6 @@ body {
                         height: 268px;
                         float: left;
                         margin: 0;
-
                         > img,
                         > video {
                             display: block;
@@ -524,57 +528,270 @@ body {
             }
 
             /* section #hot-events */
-            #hot-events {
 
-                .slider__list {
+            #hot-event {                
+                overflow: hidden ;
+                background: #fafafa;
+                padding-bottom:35px;
+                border-bottom: 1px solid #eaeaea;
 
-                    > li {
-
-                        > img {}
-
-                        > h3 {}
-
-                        > time {}
-                    }
+                h2 {
+                    @include section-title();
                 }
 
-                .slider__indicators {
+                >.swiper-container { 
+                    @include bp(desktop) {
+                        @include outer-container(); 
+                    }                       
+                    position: relative;
+                    overflow: initial;
+                    
+                    @include bp(smartphone) {
+                        overflow: hidden;
+                    }
 
-                    > li {}
+                    >ul {
+                        height: 373px;
+                        display: block;
+
+                        @include bp(desktop) {     
+                            &:after {
+                                display: block;
+                                content: "";
+                                position: absolute;
+                                border: $border-color-1px;
+                                @include shift(7) ;
+                                @include span-columns(5);
+                                height: 100%;                            
+                                top: 0;
+                                z-index: -1;
+                            }
+                        }
+
+                        li.swiper-slide {
+                            float: none;
+
+                            @include bp(smartphone) {                              
+                                
+                                width: 250px;                               
+                                height: 300px;
+                                float: left;
+                                padding-right: 10px;                                
+                                box-sizing:border-box;
+
+                            } 
+
+                            img {
+
+                                @include common-img();
+                                @include span-columns(7);
+                                @include bp(desktop) {
+                                    
+                                }                                   
+                                                       
+                                position: absolute;                                
+                                height: 100%;                             
+                                z-index: 100;
+                                opacity: 1;
+
+                                @include bp(smartphone) {
+                                     @include span-columns(12);
+                                     position: relative;
+                                     height: 195px;
+                                     opacity: 1;
+                                }                            
+                                
+                            }
+
+                            a:hover img {
+                                z-index: 200;
+                                opacity: 1;
+                                @include transition(opacity 1.0s ease-in 0s, width 2.0s ease-in 2s);
+                            }
+
+                            div {
+
+                                
+                                @include bp(desktop) {
+                                    @include span-columns(5);
+                                    @include shift(7) ;                                
+                                    padding: 15px;
+                                    border-bottom: $border-color-1px;   
+                                    color: #4d4d4d; 
+                                    position: relative;
+                                }
+                                @include bp(smartphone) {
+                                    @include shift(0) ;
+                                    @include span-columns(12);
+                                    border: $border-color-1px ;
+                                } 
+
+                                @include bp(desktop) {   
+
+                                    &:hover {
+                                        background: #e3e3e3;
+                                        &:after {
+                                            left: -30px;
+                                            top: 50%;
+                                            border: solid transparent;
+                                            content: " ";
+                                            height: 0;
+                                            width: 0;
+                                            position: absolute;               
+                                            border-color: #fafafa;
+                                            border-right-color: #e3e3e3;
+                                            border-width: 15px;
+                                            margin-top: -15px;   
+                                            background: none;                                                                  
+                                        } 
+
+                                    }
+                                }
+
+                                > h3 {
+                                    @include post-title();
+                                    @include bp(smartphone) {
+                                        font-size: 20px;
+                                    }
+                                }
+
+                                > time {
+                                    color: $time-color;
+                                }
+
+                            }
+                            
+                            @include bp(desktop) {
+                                &:last-child {
+                                    div {
+                                        border: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
 
-            /* section .posts */
-            .posts {
+            .posts-extra-content {
+                @include outer-container();
+            }
 
-                .posts__tabs {
+            /* section .posts */
+            .posts {               
+                
+                @include span-columns(7);
+                @include bp(smartphone) {
+                    @include span-columns(12);
+                }
+
+                h2 {
+                    @include section-title();
+                }
+
+                .posts__tabs{             
+                    display:block;
+                    clear:both;
+                    border: $border-color-1px;
+                    border-radius: 3px;                    
+                    @include span-columns(8 of 8);
+
+                    @include bp(smartphone) {
+                         @include span-columns(10 of 10);
+                    }                    
 
                     > li {
+                        width: 100 / 3 * 1%;
+                        display: inline-block;
+                        float: left;
+                        border-right: $border-color-1px;
+                        text-align: center;
+                        font-weight: bold;
 
-                        > a {}
+                        &.active {
+                            background: #2a2a2a;
+                            >a {
+                                color: #fff;
+                            }
+                        }
+                        &:hover {
+                            background: #2a2a2a;
+                            >a {
+                                color: #fff;
+                            }
+                        }                        
+                        
+                        &:last-child {
+                            border: none;
+                        }
+                            
+                        a {
+                            padding: 20px;
+                            display:inline-block;
+                            text-decoration: none;
+                            font-size: 15px;
+
+                        }
                         > a:hover {}
                     }
                 }
 
                 .posts__list {
 
+                    clear: both;
+
+    
                     > li {
 
-                        > p {
+                        padding: 15px 0;
+                        border-bottom: $border-color-1px;
 
-                            .posts__cate {}
+                        p {
 
-                            .posts__time {}
+                            .posts__cate {
+                                color: #0293d0;
+                                font-size: 14px;
+                                text-transform: uppercase;
+                                font-weight: bold;
+
+                            }
+
+                            .posts__time {
+                                color: $time-color;
+                            }
                         }
+                        a  {
 
-                        > h3 {}
+                            text-decoration: none;
+                                h3 {
+                                    @include post-title();
+                                    padding: 10px 0;
+                                }
 
-                        > img {}
+                                img {
+                                    @include common-img();
+                                    height: 305px;
+                                }
+                        }    
                     }
                 }
 
-                .posts__view-all {}
-                .posts__view-all:hover {}
+                .posts__view-all {
+                    display: block;
+                    padding: 15px 50px;
+                    border: 1px solid;
+                    @include span-columns(3 of 7);
+                    @include shift(2);
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                    border-radius: 3px;
+                    text-align: center;
+
+                    &:hover {
+                        background: #ccc;
+                    }
+                }
+                
             }
 
             /* section .socials */
@@ -645,7 +862,7 @@ body {
         top: 0;
         right: 0;
 
-        @include bp(widescreen) {
+        @include bp(desktop) {
             right: calc( (100% - #{$desktop-max-width})/2 );
         }
 
