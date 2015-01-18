@@ -33,6 +33,7 @@
     @include border-left-radius($radius);
     @include border-right-radius($radius);
 }
+
 @mixin common-button() {
     display: inline-block;
     padding: 0 25px;
@@ -53,6 +54,7 @@
         @include opacity(0.8);
     }
 }
+
 @mixin image-link($width, $height) {
     width: $width;
     height: 0;
@@ -60,4 +62,30 @@
     text-indent: -1000em;
     overflow: hidden;
     display: block;
+}
+
+@mixin section-title() {
+    color: $title-section-color;
+    font-size: 23px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 35px 0;
+    font-weight: bold;
+}
+
+@mixin post-title() {    
+    font-size: 24px;
+    font-weight: bold;
+    color: #434343;
+    &:hover {
+        color: $hover-color;
+    }
+}
+
+@mixin common-img() {
+    display: block;
+    width:100%;    
+    border: 1px solid #border-color;
+    background: #ccc;  
+    margin: 0 auto;  
 }
