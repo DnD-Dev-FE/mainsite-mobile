@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @mixin bp($point) { /* breakpoint: smartphone | desktop; */
     @if $point == smartphone {
         @media (max-width: 666px) { @content; }
@@ -89,3 +90,96 @@
     background: #ccc;  
     margin: 0 auto;  
 }
+=======
+@mixin bp($point) { /* breakpoint: smartphone | desktop; */
+    @if $point == smartphone {
+        @media (max-width: 666px) { @content; }
+    }
+    @else if $point == desktop {
+        @media (min-width: 667px) { @content; }
+    }
+    @else if $point == widescreen {
+        @media (min-width: 1024px) { @content; }
+    }
+    @else if $point == hybrid { /* between desktop ~ smartphone */
+        @media (max-width: 666px), (min-width: 667px) and (max-width: 1023px) { @content; }
+    }
+}
+
+@mixin opacity($alpha) {
+    opacity: $alpha;
+    -moz-opacity: $alpha;
+    filter: alpha(opacity=$alpha*100);
+}
+
+@mixin off-canvas-translate3d() {
+    @include transition(transform 0.25s ease-out);
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+}
+@mixin off-canvas-sliding($offset) {
+    @include transform( translate3d($offset, 0, 0) );
+}
+@mixin border-radius($radius) {
+    @include border-top-radius($radius);
+    @include border-bottom-radius($radius);
+    @include border-left-radius($radius);
+    @include border-right-radius($radius);
+}
+
+@mixin common-button() {
+    display: inline-block;
+    padding: 0 25px;
+    @include bp(smartphone) {
+        padding: 0 15px;
+    }
+    height: 50px;
+    line-height: 50px;
+    @include border-radius(3px);
+    background: $theme-color;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+
+    &:hover {
+        @include opacity(0.8);
+    }
+}
+
+@mixin image-link($width, $height) {
+    width: $width;
+    height: 0;
+    padding: $height 0 0;
+    text-indent: -1000em;
+    overflow: hidden;
+    display: block;
+}
+
+@mixin section-title() {
+    color: $title-section-color;
+    font-size: 23px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 35px 0;
+    font-weight: bold;
+}
+
+@mixin post-title() {    
+    font-size: 24px;
+    font-weight: bold;
+    color: #434343;
+    &:hover {
+        color: $hover-color;
+    }
+}
+
+@mixin common-img() {
+    display: block;
+    width:100%;    
+    border: 1px solid #border-color;
+    background: #ccc;  
+    margin: 0 auto;  
+}
+>>>>>>> 6aa44178a07020bef14f3d8dd1aa8669af957b11

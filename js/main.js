@@ -13,10 +13,17 @@ jQuery(document).ready(function(e) {
         $(window).resize(function(event) {
 
             if(Modernizr.mq('only screen and (max-width: 666px)')){
+<<<<<<< HEAD
                 console.log('a');
                 if (typeof hotEvent == 'undefined') {
                     hotEvent = DnDMoM.initHotEvent('#hot-events-list');
                     console.log('11');
+=======
+                
+                if (typeof hotEvent == 'undefined') {
+                    hotEvent = DnDMoM.initHotEvent('#hot-events-list');
+                   
+>>>>>>> 6aa44178a07020bef14f3d8dd1aa8669af957b11
                 }    
             }else {                
                 if (typeof hotEvent != 'undefined') {                   
