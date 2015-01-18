@@ -1,39 +1,29 @@
 'use strict';
 
 var DnDMoM = {};
-var hotEvent =undefined;
 
 jQuery(document).ready(function(e) {
-
     (function($) {
+        var $window = $(window);
+
         //init
         DnDMoM.initMainNav();
         DnDMoM.initImageSlider('#key-features');     
         
-        $(window).resize(function(event) {
-
-            if(Modernizr.mq('only screen and (max-width: 666px)')){
-<<<<<<< HEAD
-                console.log('a');
-                if (typeof hotEvent == 'undefined') {
-                    hotEvent = DnDMoM.initHotEvent('#hot-events-list');
-                    console.log('11');
-=======
-                
-                if (typeof hotEvent == 'undefined') {
-                    hotEvent = DnDMoM.initHotEvent('#hot-events-list');
-                   
->>>>>>> 6aa44178a07020bef14f3d8dd1aa8669af957b11
-                }    
-            }else {                
-                if (typeof hotEvent != 'undefined') {                   
-                    hotEvent = DnDMoM.destroySlider(hotEvent);
-                }    
-            }
-        });
-        
-        $(window).trigger("resize");
-
+        $window
+            .resize(function(e) {
+                if ( Modernizr.mq('only screen and (max-width: 666px)' ) ) {
+                    if ( DnDMoM.hotEvent === undefined ) {
+                        DnDMoM.hotEvent = DnDMoM.initHotEvent('#hot-events-list');
+                    }    
+                }
+                else {                
+                    if ( DnDMoM.hotEvent !== undefined ) {                   
+                        DnDMoM.hotEvent = DnDMoM.destroySlider(hotEvent);
+                    }    
+                }
+            })
+            .trigger('resize');
     })(jQuery);
 
    
@@ -41,9 +31,7 @@ jQuery(document).ready(function(e) {
 
 //functions
 DnDMoM = (function($) {
-
     return {
-
         initMainNav: function() {
             //main navigation
             $('#main-nav__list')
@@ -70,21 +58,16 @@ DnDMoM = (function($) {
             });
         },
 
-
         initHotEvent: function($selector) {
-            
-                return $( $selector ).swiper({                    
-                    paginationClickable: true,
-                    slidesPerView: 'auto',                   
-                    slideElement:'li',                   
-                    calculateHeight:true
-
-                });          
-
+            return $( $selector ).swiper({
+                paginationClickable: true,
+                slidesPerView: 'auto',                   
+                slideElement:'li',                   
+                calculateHeight:true
+            });
         },
 
         destroySlider:  function(object) {
-
             if (typeof object != 'undefined') {                
                 // destroy and delete swiper object
                 var container = jQuery(object.container);
@@ -93,6 +76,5 @@ DnDMoM = (function($) {
                 return undefined;
             }
         }
-
     }
 })(jQuery);
