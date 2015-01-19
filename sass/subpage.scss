@@ -1,0 +1,42 @@
+@import 'screen';
+@import 'debug';
+
+.subpage {
+    #outer {
+        main {
+
+            .app-info {
+                border-bottom: 2px solid $primary-border-color;
+                background: $placeholder-color;
+            }
+
+            #main-content {
+
+                .posts {
+                    @include span-columns(8);
+                    @include bp(hybrid) {
+                        @include shift(0.25);
+                        @include span-columns(7.75);
+                    }
+                    @include bp(smartphone) {
+                        @include shift(0);
+                        @include span-columns(12);
+                        padding: 15px;
+                    }
+                }
+            }
+
+            #extra-content {
+
+                @include span-columns(4);
+                @include bp(hybrid) {
+                    @include span-columns(3.75);
+                }
+
+                @include bp(smartphone) {
+                    display: none;
+                }
+            }
+        }
+    }
+}
