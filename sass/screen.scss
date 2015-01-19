@@ -2,7 +2,7 @@
 @import '_mixins';
 @import 'compass/reset';
 @import 'bourbon/bourbon';
-/*@import 'debug';*/
+@import 'debug';
 @import 'neat/neat';
 @import 'font-awesome/font-awesome';
 @import '../widgets/swiper/css/idangerous.swiper.css';
@@ -32,7 +32,7 @@ a:visited {
 #outer {
     width: 100%;
 
-    @include outer-container;
+    @include outer-container();
 
     @include bp(desktop) {
         max-width: $desktop-max-width;
@@ -85,6 +85,9 @@ a:visited {
                 width: 400px;
                 float: right;
                 margin: 0 130px 0 0;
+                @-moz-document url-prefix() {
+                    margin-right: 140px;
+                }
                 border: 1px solid $primary-border-color;
                 border-top: none;
                 border-bottom: none;
@@ -267,6 +270,7 @@ a:visited {
         display: none;
     }
 
+    /* app drawer */
     @include bp(hybrid) {
         #drawer-toggle-label {
             cursor: pointer;
@@ -318,6 +322,7 @@ a:visited {
     }
     /* end of app drawer */
 
+    /* hotline */
     .hotline {
         width: 100%;
         max-width: $desktop-max-width;
@@ -365,6 +370,7 @@ a:visited {
             @include off-canvas-sliding($offset-canvas);
         }
     }
+    /* end of hotline */
 
     /* main */
     main {
@@ -395,9 +401,11 @@ a:visited {
         }
 
         .app-info {
-            width: 100%;
             height: 167px;
-            position: relative;
+
+            > .wrapper {
+                position: relative;
+            }
 
             .app-info__icon {
                 width: 110px;
@@ -405,10 +413,12 @@ a:visited {
                 float: left;
                 border: 1px solid $primary-border-color;
                 @include border-radius(3px);
-                margin: 22px 19px 0 29px;
+                margin: 22px 19px 0 0;
 
                 @include bp(smartphone) {
-                    margin: 22px 12px 0 15px;
+                    margin: 22px 10px 0 15px;
+                    width: 100px;
+                    height: 100px;
                 }
 
                 > img {
@@ -428,7 +438,7 @@ a:visited {
 
             .app-info__install {
                 float: left;
-                padding: 18px 0 0;
+                padding: 22px 0 0;
 
                 > .app-info__install--mobile {
                     float: left;
@@ -486,7 +496,7 @@ a:visited {
                     height: 110px;
                     position: absolute;
                     top: 22px;
-                    right: 29px;
+                    right: 0;
                     border: 1px solid $primary-border-color;
                     @include border-radius(3px);
                 }
@@ -497,10 +507,12 @@ a:visited {
                 width: 120px;
                 height: 50px;
                 border: 2px solid #4561aa;
-                margin: 18px 0 0;
+                margin: 22px 0 0;
                 text-align: center;
+                background: #fff;
                 @include bp(smartphone) {
-                    width: 110px;
+                    width: 100px;
+                    height: 40px;
                 }
 
                 @include border-radius(3px);
@@ -508,11 +520,16 @@ a:visited {
                 > .fb-like {
                     display: inline-block;
                     margin: 12px 0 0;
+
+                    @include bp(smartphone) {
+                        margin: 8px 0 0;
+                    }
                 }
             }
         }
 
         #main-content {
+
             /* section #key-features */
             #key-features {
                 width: 100%;
@@ -560,10 +577,16 @@ a:visited {
                     @include bp(desktop) {
                         @include outer-container();
                     }
+                    @include bp(hybrid) {
+                        @include shift(0.25);
+                        @include span-columns(11.5);
+                    }
                     position: relative;
                     overflow: initial;
 
                     @include bp(smartphone) {
+                        @include shift(0);
+                        @include span-columns(12);
                         overflow: hidden;
                         height: 315px;
                     }
@@ -710,10 +733,14 @@ a:visited {
             /* section .posts */
             .posts {
                 @include span-columns(7);
+                @include bp(hybrid) {
+                    @include shift(0.25);
+                    @include span-columns(6.75);
+                }
                 @include bp(smartphone) {
+                    @include shift(0);
                     @include span-columns(12);
-                    width: 100%;
-                    padding: 15px 20px;
+                    padding: 15px;
                 }
 
                 h2 {
@@ -774,16 +801,18 @@ a:visited {
                         padding: 15px 0;
 
                         @include bp(smartphone) {
-                            width: calc( 100% + 40px );
-                            margin-left: -20px;
-                            padding: 15px 20px;
+                            width: calc( 100% + 30px );
+                            margin-left: -15px;
+                            padding: 15px;
                         }
 
                         border-bottom: 1px solid $primary-border-color;
 
                         p {
+                            color: $secondary-text-color;
+
                             .posts__cate {
-                                color: #0293d0;
+                                color: $category-color;
                                 font-size: 12px;
                                 text-transform: uppercase;
                                 font-weight: bold;
@@ -806,7 +835,7 @@ a:visited {
                             img {
                                 @include common-img();
                                 height: 305px;
-                                margin: 5px 0;
+                                margin: 12px 0 8px;
                             }
                         }
                     }
@@ -874,6 +903,138 @@ a:visited {
         /* only available on desktop */
 
         #extra-content {
+            @include span-columns(5);
+            @include bp(hybrid) {
+                @include span-columns(4.75);
+            }
+
+            float: right;
+            padding-top: 82px;
+
+            .rating-box {
+                padding: 10px 20px;
+                border: 1px solid $primary-border-color;
+
+                > h3 {
+                    @include post-title();
+                    text-align: center;
+                    margin-top: 10px;
+                }
+
+                .rating-box__stars {
+                    width: 100%;
+                    padding: 20px 0;
+                    @include align-items(space-between);
+                    @include display(flex);
+                    @include flex-direction(row);
+                    @include justify-content(space-between);
+
+                    > li {
+                        font-size: 18px;
+                        color: $secondary-text-color;
+
+                        > a {
+                            display: block;
+                            width: 100%;
+                            text-align: center;
+                            font-size: 28px;
+                            color: $secondary-text-color;
+
+                            &:hover {
+                                color: $primary-text-color;
+                            }
+                        }
+
+                        span {
+                            display: none;
+                        }
+                    }
+                }
+                .rating-box__stars--average {
+                    padding-bottom: 5px;
+                    @include align-items(center);
+                    @include justify-content(center);
+
+                    > li {
+                        margin: 0 5px;
+                    }
+                }
+
+                > hr {
+                    @include hr();
+                }
+
+                > .rating-box__average-points {
+                    text-align: center;
+                    font-size: 96px;
+                    font-weight: normal;
+                    display: block;
+                    padding: 44px 0 0;
+                    line-height: 60px;
+                    color: $primary-text-color;
+                }
+
+                > .rating-box__total-rating {
+                    text-align: center;
+                    color: $primary-text-color;
+                    font-size: 16px;
+                    padding-bottom: 20px;
+                }
+
+                > .rating-box__statistic {
+                    padding-bottom: 13px;
+
+                    > li {
+                        width: 100%;
+                        overflow: hidden;
+                        padding-bottom: 1px;
+
+                        > label {
+                            float: left;
+                            width: 40px;
+                            color: $primary-text-color;
+                            padding-top: 4px;
+
+                            > .fa {
+                                margin: 0 5px;
+                            }
+                        }
+
+                        > .rating-box__statistic-bar {
+                            float: left;
+                            width: calc( 100% - 40px );
+                            height: 25px;
+                            background: #dfdfdf;
+
+                            > span {
+                                display: block;
+                                height: 25px;
+                                text-indent: 20px;
+                                color: $primary-text-color;
+                                font-size: 14px;
+                                padding-top: 5px;
+                                @include box-sizing(border-box);
+                            }
+                        }
+                        &:nth-child(1) > .rating-box__statistic-bar > span {
+                            background: #a0c05b;
+                        }
+                        &:nth-child(2) > .rating-box__statistic-bar > span {
+                            background: #add632;
+                        }
+                        &:nth-child(3) > .rating-box__statistic-bar > span {
+                            background: #ffd833;
+                        }
+                        &:nth-child(4) > .rating-box__statistic-bar > span {
+                            background: #ffb234;
+                        }
+                        &:nth-child(5) > .rating-box__statistic-bar > span {
+                            background: #ff8b5a;
+                        }
+                    }
+                }
+            }
+
             @include bp(smartphone) {
                 display: none;
             }

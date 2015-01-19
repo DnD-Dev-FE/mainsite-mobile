@@ -62,21 +62,23 @@
                 <!-- end of primary banner -->
 
                 <div class="app-info">
-                    <a href="" title="" class="app-info__icon"><img src="" title="App icon" alt="App icon" /></a>
-                    <p class="app-info__brief"><strong>How to train your dragon</strong><br />Nhà phát hành VNG</p>
+                    <div class="wrapper">
+                        <a href="" title="" class="app-info__icon"><img src="" title="App icon" alt="App icon" /></a>
+                        <p class="app-info__brief"><strong>How to train your dragon</strong><br />Nhà phát hành VNG</p>
 
-                    <ul class="app-info__install">
-                        <li class="app-info__install--mobile"><a href="#" title="Cài đặt">Cài đặt</a></li>
-                        <li class="app-info__install--desktop app-info__install--app-store"><a href="#" title="Tải game trên App Store">Tải game trên App Store</a></li>
-                        <li class="app-info__install--desktop app-info__install--google-play"><a href="#" title="Tải game trên Google Play">Tải game trên Google Play</a></li>
-                    </ul>
+                        <ul class="app-info__install">
+                            <li class="app-info__install--mobile"><a href="#" title="Cài đặt">Cài đặt</a></li>
+                            <li class="app-info__install--desktop app-info__install--app-store"><a href="#" title="Tải game trên App Store">Tải game trên App Store</a></li>
+                            <li class="app-info__install--desktop app-info__install--google-play"><a href="#" title="Tải game trên Google Play">Tải game trên Google Play</a></li>
+                        </ul>
 
-                    <div class="fb-like-placeholder">
-                        <!-- embeded content -->
-                        <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="100" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+                        <div class="fb-like-placeholder">
+                            <!-- embeded content -->
+                            <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="100" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+                        </div>
+
+                        <img src="images/qr-code.png" alt="QR code" class="app-info__qr" />
                     </div>
-
-                    <img src="images/qr-code.png" alt="QR code" class="app-info__qr" />
                 </div>
 
                 <section id="main-content">
@@ -110,7 +112,7 @@
                     </section>
 
                     <section id="hot-event" class="slider slider--full">
-                        <h2>Hot events</h2>
+                        <h2>Sự kiện hot</h2>
                         <div id="hot-events__list" class="swiper-container">
                             <ul class="swiper-wrapper">
                                 <li class="swiper-slide swiper-slide--active">
@@ -155,7 +157,7 @@
 
                     <div class="wrapper">
                         <section class="posts" >
-                            <h2>News/Events</h2>
+                            <h2>Tin tức/Sự kiện</h2>
 
                             <ul class="posts__tabs">
                                 <li class="active"><a href="#" title="">Tất cả</a></li>
@@ -192,45 +194,47 @@
                         <!-- only available for desktop/tablet -->
                         <aside id="extra-content">
                             <section class="rating-box">
-                                <p>Đánh giá game này</p>
-                                <ul class="rating-box__stars">
-                                    <li><a href="#1" title=""><i class="fa fa-star"></i>&nbsp;1 star</a></li>
-                                    <li><a href="#1" title=""><i class="fa fa-star"></i>&nbsp;2 star</a></li>
-                                    <li><a href="#1" title=""><i class="fa fa-star"></i>&nbsp;3 star</a></li>
-                                    <li><a href="#1" title=""><i class="fa fa-star"></i>&nbsp;4 star</a></li>
-                                    <li><a href="#1" title=""><i class="fa fa-star"></i>&nbsp;5 star</a></li>
+                                <h3>Đánh giá game này</h3>
+                                <ul id="rating-box--choices" class="rating-box__stars">
+                                    <li><a href="1" title="Đánh giá 1 sao"><i class="fa fa-star-o"></i><span>&nbsp;1 star</span></a></li>
+                                    <li><a href="2" title="Đánh giá 2 sao"><i class="fa fa-star-o"></i><span>&nbsp;2 star</span></a></li>
+                                    <li><a href="3" title="Đánh giá 3 sao"><i class="fa fa-star-o"></i><span>&nbsp;3 star</span></a></li>
+                                    <li><a href="4" title="Đánh giá 4 sao"><i class="fa fa-star-o"></i><span>&nbsp;4 star</span></a></li>
+                                    <li><a href="5" title="Đánh giá 5 sao"><i class="fa fa-star-o"></i><span>&nbsp;5 star</span></a></li>
                                 </ul>
-                                <hr />
-                                <p class="rating-box__average-points">4.5</p>
-                                <ul class="rating-box__average-stars">
-                                    <li><a href="#1" title=""><i class="fa fa-star"></i>&nbsp;1 star</a></li>
-                                    <li><a href="#1" title=""><i class="fa fa-star"></i>&nbsp;2 star</a></li>
-                                    <li><a href="#1" title=""><i class="fa fa-star"></i>&nbsp;3 star</a></li>
-                                    <li><a href="#1" title=""><i class="fa fa-star-half-o"></i>&nbsp;4 star</a></li>
-                                    <li><a href="#1" title=""><i class="fa fa-star-o"></i>&nbsp;5 star</a></li>
-                                </ul>
-                                <p class="rating-box__total-rating"><i class="fa fa-user"></i>&nbsp;3,068</p>
 
-                                <ul class="rating-box__statistic">
+                                <hr />
+
+                                <p id="rating-box__average-points" class="rating-box__average-points">4.5</p>
+                                <ul class="rating-box__stars rating-box__stars--average">
+                                    <li><i class="fa fa-star"></i><span>&nbsp;1 star</span></li>
+                                    <li><i class="fa fa-star"></i><span>&nbsp;2 star</span></li>
+                                    <li><i class="fa fa-star"></i><span>&nbsp;3 star</span></li>
+                                    <li><i class="fa fa-star-half-o"></i><span>&nbsp;4 star</span></li>
+                                    <li><i class="fa fa-star-o"></i><span>&nbsp;5 star</span></li>
+                                </ul>
+                                <p class="rating-box__total-rating"><i class="fa fa-user"></i>&nbsp;<span id="rating-box__total-rating-number">3,068</span></p>
+
+                                <ul id="rating-box__statistic-list" class="rating-box__statistic" data-total-vote="3046" data-max-vote="1000" data-min-vote="320">
                                     <li>
                                         <label>5 <i class="fa fa-star"></i></label>
-                                        <div class="rating-box__statistic-bar" data-value="1000">1000</div>
+                                        <div class="rating-box__statistic-bar"><span data-value="1000">1000<span></div>
                                     </li>
                                     <li>
                                         <label>4 <i class="fa fa-star"></i></label>
-                                        <div class="rating-box__statistic-bar" data-value="502">502</div>
+                                        <div class="rating-box__statistic-bar"><span data-value="502">502<span></div>
                                     </li>
                                     <li>
                                         <label>3 <i class="fa fa-star"></i></label>
-                                        <div class="rating-box__statistic-bar" data-value="456">456</div>
+                                        <div class="rating-box__statistic-bar"><span data-value="456">456<span></div>
                                     </li>
                                     <li>
                                         <label>2 <i class="fa fa-star"></i></label>
-                                        <div class="rating-box__statistic-bar" data-value="320">320</div>
+                                        <div class="rating-box__statistic-bar"><span data-value="320">320<span></div>
                                     </li>
                                     <li>
                                         <label>1 <i class="fa fa-star"></i></label>
-                                        <div class="rating-box__statistic-bar" data-value="768">768</div>
+                                        <div class="rating-box__statistic-bar"><span data-value="768">768<span></div>
                                     </li>
                                 </ul>
                             </section>

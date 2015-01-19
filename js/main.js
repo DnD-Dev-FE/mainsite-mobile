@@ -12,11 +12,10 @@ jQuery(document).ready(function(e) {
         DnDMoM.initImageSlider('#key-features');
         DnDMoM.initHotEventSlider();
         DnDMoM.initTopButton();
-
-
+        if ( Modernizr.mq('only screen and (min-width: 667px)' ) && $body.hasClass('homepage') ) {
+            DnDMoM.initRatingBox();
+        }
     })(jQuery);
-
-
 });
 
 //functions
@@ -30,7 +29,6 @@ DnDMoM = (function($) {
         }
     }
     var $window = $(window);
-    var $body = $('body');
 
     return {
         initMainNav: function() {
@@ -108,11 +106,51 @@ DnDMoM = (function($) {
             _fn_();
 
             topButton.on('click', function(e) {
-                $body.animate({
+                $('body, html').stop(true, true).animate({
                     scrollTop: 0
                 });
                 return false;
             });
+        },
+
+        initRatingBox: function() {
+            //rating
+            $('#rating-box--choices').on('click', ' > li > a', function(e) {
+                var value = $(this).attr('href');
+                $.ajax({
+                    type: 'post',
+                    url: 'php/fake-response.php',
+                    content: 'json', //sending
+                    dataType: 'json', //return back
+                    data: JSON.stringify({
+                        rating: value
+                    }),
+                    success: function(data, status, jqXHR) {
+                        //TODO...
+                        //expected response: data: { totalRating, average, statistic[i]}
+                        $('#rating-box__average-points').text( data.average );
+                        $('#rating-box__total-rating-number').text( data.totalRating );
+                        ratingStatisticList.find('> li:eq(' + (5 - value) + ') > div > span')
+                            .text( data.statistic[value] )
+                            .attr( 'data-value', data.statistic[value] )
+                    },
+                    error: function() {
+                    },
+                    completed: function() {
+                    }
+                });
+
+                return false;
+            });
+
+            //statistic
+            var ratingStatisticList = $('#rating-box__statistic-list');
+            var ratingStatisticListData = ratingStatisticList.data();
+            var maxVote = ratingStatisticListData.maxVote;
+            $('#rating-box__statistic-list > li > .rating-box__statistic-bar > span').each(function(e) {
+                var $this = $(this);
+                $this.width( ( $this.data('value')*100/maxVote - 5 ) + '%' );
+            })
         },
 
         distributeHeight: function(wrapperSelector, itemSelector) {
