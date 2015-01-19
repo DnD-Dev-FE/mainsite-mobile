@@ -24,9 +24,11 @@
     -webkit-backface-visibility: hidden;
     -webkit-perspective: 1000;
 }
+
 @mixin off-canvas-sliding($offset) {
     @include transform( translate3d($offset, 0, 0) );
 }
+
 @mixin border-radius($radius) {
     @include border-top-radius($radius);
     @include border-bottom-radius($radius);
@@ -69,23 +71,22 @@
     font-size: 23px;
     text-transform: uppercase;
     text-align: center;
-    padding: 35px 0;
+    padding: 35px 0 20px;
     font-weight: bold;
 }
 
-@mixin post-title() {    
-    font-size: 24px;
+@mixin post-title() {
+    font-size: 22px;
     font-weight: bold;
-    color: #434343;
+    color: $post-title-color;
     &:hover {
-        color: $hover-color;
     }
 }
 
 @mixin common-img() {
     display: block;
-    width:100%;    
+    width:100%;
     border: 1px solid #border-color;
-    background: #ccc;  
-    margin: 0 auto;  
+    background: #ccc;
+    margin: 0 auto;
 }

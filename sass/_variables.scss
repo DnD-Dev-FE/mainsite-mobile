@@ -1,14 +1,25 @@
+/* misc styles */
 $font-face: 'Roboto', Arial, Tahoma, sans-serif;
-$theme-color: #7aaa32;
-$primary-text-color: #666;
-$secondary-text-color: #999;
-$primary-border-color: #ccc;
 $sub-section-background: #efefef;
 $top-bar-height: 47px;
 $offset-canvas: 250px;
 $desktop-max-width: 1024px;
-$hover-color: #c6b963;
+/* =========== */
+
+/* border styles */
+$primary-border-color: #ccc;
+/* =========== */
+
+/* color style */
+$theme-color: #7aaa32;
+$primary-text-color: #666;
+$secondary-text-color: #999;
+$hover-color: #efefef;
+$active-color: #dfdfdf;
+$active-dark-color: #2a2a2a;
 $disabled-color: #999;
 $placeholder-color: #dfdfdf;
 $title-section-color: #c7b961;
+$post-title-color: #434343;
 $time-color: #868686;
+/* =========== */
