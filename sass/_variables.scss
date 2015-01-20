@@ -1,5 +1,6 @@
 /* misc styles */
 $font-face: 'Roboto', Arial, Tahoma, sans-serif;
+$font-size-base: 14px;
 $sub-section-background: #efefef;
 $top-bar-height: 47px;
 $offset-canvas: 250px;
@@ -25,3 +26,24 @@ $post-title-color: #434343;
 $time-color: #868686;
 $category-color: #0293d0;
 /* =========== */
+
+/*== Forms==*/
+
+$input-bg: #fff;
+$input-bg-disabled: #d1d1d1;
+$input-color: #555;
+$input-border: #ccc;
+$input-border-radius:  4px;
+$input-border-focus: #66afe9;
+$input-height-base: 34px;
+$input-padding-vertical: 6px; 
+$input-padding-horizontal: 12px;
+
+$button-bg: #fff;
+$button-bg-hover: #e6e6e6;
+$button-color: #000;
+$button-color-hover: #fff;
+
+$info-success: #3c763d ;
+$info-warn: #f0ad4e;
+$info-error: #a94442 ;

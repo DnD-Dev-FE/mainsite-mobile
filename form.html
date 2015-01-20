@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Mainsite mobile template</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="css/screen.css" media="screen" />
+    </head>
+
+    <body>
+        <div id="outer">
+            <nav id="main-nav">
+                <div class="site-search">
+                    <form method="post" action="#" role="search">
+                        <fieldset>
+                            <legend>Tìm kiếm</legend>
+                            <input class="site-search__field" type="search" placeholder="Tìm kiếm" />
+                            <button type="submit" class="site-search__button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </fieldset>
+                    </form>
+                </div>
+
+                <ul id="main-nav__list">
+                    <li><a href="#" title="Trang chủ">Trang chủ</a></li>
+                    <li><a href="#" title="Tin tức">Tin tức</a></li>
+                    <li><a href="#" title="Sự kiện">Sự kiện</a></li>
+                    <li><a href="#" title="Thư viện" class="main-nav__has-sub active">Thư viện&nbsp;<i class="fa fa-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="#" title="Hình nền" class="active">Hình nền</a></li>
+                            <li><a href="#" title="Video">Video</a></li>    
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" title="Cộng đồng" class="main-nav__has-sub">Cộng đồng&nbsp;<i class="fa fa-chevron-down"></i></a>
+
+                        <ul>
+                            <li><a href="#" title="Fanpage">Fanpage</a></li>
+                            <li><a href="#" title="Diễn đàn">Diễn đàn</a></li>    
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <input type="checkbox" id="drawer-toggle" name="drawer-toggle" />
+            <label for="drawer-toggle" id="drawer-toggle-label"></label>
+
+            <p class="hotline"><strong><a href="tel:1900 576 885">1900 576 885</a><br />( 500đ/phút )</strong><i class="fa fa-mobile"></i></p>
+
+            <main>
+                <!-- primary banner can contains: image, video -->
+                <div id="primary-banner">
+                    <!-- <img src="" title="Primary banner" alt="Primary banner" width="100%" height="100%" /> -->
+                    <video width="100%">
+                        <source src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                        <source src="http://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+                        Your browser does not support HTML5 video.
+                    </video>
+                </div>
+                <!-- end of primary banner -->
+
+                <div class="app-info">
+                    <a href="" title="" class="app-info__icon"><img src="" title="App icon" alt="App icon" /></a>
+                    <p class="app-info__brief"><strong>How to train your dragon</strong><br />Nhà phát hành VNG</p>
+                    
+                    <ul class="app-info__install">
+                        <li class="app-info__install--mobile"><a href="#" title="Cài đặt">Cài đặt</a></li>
+                        <li class="app-info__install--desktop app-info__install--app-store"><a href="#" title="Tải game trên App Store">Tải game trên App Store</a></li>
+                        <li class="app-info__install--desktop app-info__install--google-play"><a href="#" title="Tải game trên Google Play">Tải game trên Google Play</a></li>
+                    </ul>
+                    
+                    <div class="fb-like-placeholder">
+                        <!-- embeded content -->
+                        <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="100" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+                    </div>
+
+                    <img src="images/qr-code.png" alt="QR code" class="app-info__qr" />
+                </div>
+
+                <section id="main-content">
+                
+                    <section id="key-features" class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"> 
+                                <img src="" title="Key features" alt="Key features" />
+                            </div>
+                            <div class="swiper-slide"> 
+                                <img src="" title="Screenshot" alt="Screenshot" />
+                            </div>
+                            <div class="swiper-slide"> 
+                                <img src="" title="Video" alt="Video" />
+                            </div>
+                            <div class="swiper-slide"> 
+                                <img src="" title="Key features" alt="Key features" />
+                            </div>
+                            <div class="swiper-slide"> 
+                                <img src="" title="Key features" alt="Key features" />
+                            </div>
+                            <div class="swiper-slide"> 
+                                <img src="" title="Video" alt="Video" />
+                            </div>
+                            <div class="swiper-slide"> 
+                                <img src="" title="Video" alt="Video" />
+                            </div>
+                            <div class="swiper-slide"> 
+                                <img src="" title="Video" alt="Video" />
+                            </div>
+                        </div>
+                    </section>
+
+                    <section >
+                        <form action="">
+                            <div class="form-group">
+                                <label >Email address</label>
+                                <input type="email" class="form-input-success" placeholder="Enter email"  >
+                                <span class="form-control-success">Input with success</span>
+                            </div>
+                            <div class="form-group">
+                                <label >Password</label>
+                                <input type="email" class="form-input-error" placeholder="Enter password"  >
+                                <span class="form-control-error">Input with error</span>
+                            </div>                            
+                            <div class="form-group">                                
+                                <label >Email address</label>
+                                <textarea rows="3"></textarea>
+                            </div> 
+                            <div class="form-group"> 
+                                <label for="selects">Selects</label>
+                                    <select class="form-control">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                            </div>        
+                              
+                            <div class="form-checkbox">
+                                <label>
+                                  <input type="checkbox"> Check me out
+                                </label>
+
+                            </div>   
+                            <div class="form-radio">
+                                <label>
+                                  <input type="radio" checked="" value="option1"  name="optionsRadios">
+                                  Option one 
+                                </label>
+                            </div>
+                            <div class="form-radio">    
+                                <label>
+                                  <input type="radio" value="option2"  name="optionsRadios">
+                                  Option two 
+                                </label>
+                            </div>   
+                            
+                            <button type="button">Reset</button>
+
+                            <button type="submit">Submit</button>                         
+                        </form>
+
+                    </section>
+
+
+
+                    <!-- end of aside -->
+
+                    <section class="socials">
+                        <ul class="socials__list">
+                            <li><a href="#" title=""><i class="fa fa-wechat"></i><br />Forum</a></li>
+                            <li><a href="#" title=""><i class="fa fa-facebook"></i><br />Fanpage</a></li>
+                            <li><a href="#" title=""><i class="fa fa-youtube"></i><br />Mobile TV</a></li>
+                        </ul>
+                    </section>
+                </section>
+
+                <footer>
+                    <p class="copyright"><i class="fa fa-copyright"></i>&nbsp;bản quyền thuộc về VNG 2015.</p>
+                </footer>
+            </main>
+
+            <aside class="flyout-content">
+                <a href="#" title="Trở về đầu trang" class="flyout-content__top-button"><i class="fa fa-chevron-up"></i><br />Top</a>
+            </aside>
+        </div>
+
+        <script type="text/javascript" src="js/jquery2.min.js"></script>
+        <script type="text/javascript" src="widgets/swiper/js/idangerous.swiper.min.js"></script>
+        <script type="text/javascript" src="js/modernizr.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+
+        <!-- Facebook integrated -->
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=584394941662737&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <!-- end of Facebook integrated -->
+    </body>
+</html>

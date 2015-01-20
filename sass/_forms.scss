@@ -1,0 +1,93 @@
+//
+// Forms
+// --------------------------------------------------
+form {
+    padding: 5%;
+
+    input, button, select, textarea {                        
+        font-size: $font-size-base;
+        color: $input-color;
+        background-color: $input-bg;
+        border: 1px solid $input-border;
+        border-radius: $input-border-radius;
+        padding: $input-padding-vertical $input-padding-horizontal;
+
+        &:focus {
+            border-color: #66afe9;
+            outline: 0;
+            box-shadow: 0 0 5px rgba(81, 203, 238, 1);           
+        }    
+    }    
+
+    .form-group {
+        margin-bottom: 15px;
+
+        label {
+            display: inline-block;
+            max-width: 100%;            
+            margin-bottom:5px;
+            font-weight: bold;
+            width: 100%;
+        }
+        input, button, select, textarea {
+            display: block;
+            width: 100%;
+            height: $input-height-base;
+            
+        }
+        input[type="search"] {
+            
+        }
+
+        select {
+            
+        }
+        textarea {
+            height: inherit;
+        }
+
+    }
+
+   
+    
+    .form-radio, .form-checkbox{
+        position: relative;
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        label {
+            margin-bottom: 0;            
+            cursor: pointer;
+        }
+    }      
+
+    button {
+
+        background: $button-bg;
+        color: $button-color;
+        &:hover {
+            background: $button-bg-hover;
+            color: $button-color-hover;
+        }
+    }
+
+    .form-input-error {
+        border: 1px solid $info-error;
+    }
+    .form-input-success {
+        border: 1px solid $info-success;
+    }
+
+
+    .form-control-success{
+
+        color: $info-success;
+    }
+    .form-control-warn{
+        color: $info-warn;
+    }
+    .form-control-error{
+        color: $info-error;
+    }  
+}
