@@ -335,6 +335,7 @@ DnDMoM = (function($) {
         },
 
         initRouter: function() {
+            //router for 'posts'
             crossroads.addRoute('/posts.html:?query:', function(query) {
                 if ( query !== undefined ) {
                     var queryLocation = window.location.href.indexOf('?');
@@ -352,6 +353,7 @@ DnDMoM = (function($) {
                     _hasherListener.blogroll( cate, parseInt(query.p) );
                 }
             });
+            //=================
         },
 
         distributeHeight: function(wrapperSelector, itemSelector) {
