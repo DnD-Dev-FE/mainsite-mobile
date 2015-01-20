@@ -24,21 +24,21 @@
                 </div>
 
                 <ul id="main-nav__list">
-                    <li><a href="#" title="Trang chủ">Trang chủ</a></li>
-                    <li><a href="#" title="Tin tức">Tin tức</a></li>
-                    <li><a href="#" title="Sự kiện">Sự kiện</a></li>
+                    <li><a href="index.html" title="Trang chủ">Trang chủ</a></li>
+                    <li><a href="posts.html#!news" title="Tin tức">Tin tức</a></li>
+                    <li><a href="posts.html#!events" title="Sự kiện">Sự kiện</a></li>
                     <li><a href="#" title="Thư viện" class="main-nav__has-sub active">Thư viện&nbsp;<i class="fa fa-chevron-down"></i></a>
                         <ul>
-                            <li><a href="#" title="Hình nền" class="active">Hình nền</a></li>
-                            <li><a href="#" title="Video">Video</a></li>
+                            <li><a href="subpage.html#!media" title="Hình nền" class="active">Hình nền</a></li>
+                            <li><a href="subpage.html#!media" title="Video">Video</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#" title="Cộng đồng" class="main-nav__has-sub">Cộng đồng&nbsp;<i class="fa fa-chevron-down"></i></a>
 
                         <ul>
-                            <li><a href="#" title="Fanpage">Fanpage</a></li>
-                            <li><a href="#" title="Diễn đàn">Diễn đàn</a></li>
+                            <li><a href="http://facebook.com" title="Fanpage">Fanpage</a></li>
+                            <li><a href="http://diendan.zing.vn" title="Diễn đàn">Diễn đàn</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -160,45 +160,13 @@
                             <h2>Tin tức/Sự kiện</h2>
 
                             <ul class="posts__tabs" id="posts__tabs">
-                                <li class="active"><a href="all" title="Tất cả">Tất cả</a></li>
-                                <li><a href="news" title="Tin tức">Tin tức</a></li>
-                                <li><a href="events" title="Sự kiện">Sự kiện</a></li>
+                                <li><a href="php/fake-all-posts.php" title="Tất cả">Tất cả</a></li>
+                                <li><a href="php/fake-news.php" title="Tin tức">Tin tức</a></li>
+                                <li><a href="php/fake-events.php" title="Sự kiện">Sự kiện</a></li>
                             </ul>
 
                             <ul class="posts__list" id="posts__list">
-                                <li>
-                                    <p><strong class="posts__cate">Sự kiện</strong>&nbsp;|&nbsp;<time class="posts__time">34 phút trước</time></p>
-                                    <a href="#" title="">
-                                        <h3>Cập nhật phiên bản mới</h3>
-                                        <img src="" title="Cập nhật phiên bản mới" alt="Cập nhật phiên bản mới" />
-                                    </a>
-                                </li>
-                                <li>
-                                    <p><strong class="posts__cate">Tin tức</strong>&nbsp;|&nbsp;<time class="posts__time">34 phút trước</time></p>
-                                    <a href="#" title="">
-                                        <h3>Lưu ý về vấn đề nạp Xu vào 08:00 sáng 08.01.2015</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <p><strong class="posts__cate">Sự kiện</strong>&nbsp;|&nbsp;<time class="posts__time">34 phút trước</time></p>
-                                    <a href="#" title="">
-                                        <h3>Quà tặng phiên bản mới</h3>
-
-                                    </a>
-                                </li>
-                               <li>
-                                    <p><strong class="posts__cate">Tin tức</strong>&nbsp;|&nbsp;<time class="posts__time">34 phút trước</time></p>
-                                    <a href="#" title="">
-                                        <h3>Lưu ý về vấn đề nạp Xu vào 08:00 sáng 08.01.2015</h3>
-                                    </a>
-                                </li>
-                                <li>
-                                    <p><strong class="posts__cate">Sự kiện</strong>&nbsp;|&nbsp;<time class="posts__time">34 phút trước</time></p>
-                                    <a href="#" title="">
-                                        <h3>Quà tặng phiên bản mới</h3>
-
-                                    </a>
-                                </li>
+                                <!-- Dynamic loading content via ajax -->
                             </ul>
 
                             <a href="" title="Xem thêm" class="posts__view-all">Xem thêm&nbsp;<i class="fa fa-long-arrow-right"></i></a>

@@ -800,6 +800,7 @@ a:visited {
 
                 .posts__list {
                     clear: both;
+                    min-height: 300px;
 
                     > li {
                         padding: 15px 0;
@@ -873,6 +874,27 @@ a:visited {
                     }
 
                     > .fa {
+                    }
+                }
+            }
+
+            .pagination {
+
+                > .pagination__list {
+
+                    > li {
+
+                        > .pagination__index {
+
+                            &.pagination__index--active {
+                                color: $theme-color;
+                            }
+                        }
+
+                        > .pagination__nav--disabled {
+                            color: $disabled-color;
+                            display: none;
+                        }
                     }
                 }
             }
