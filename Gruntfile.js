@@ -4,7 +4,7 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         clean: ['dist/config', 'dist/fonts','dist/images', 'dist/php'],
         copy: {
-            main: {
+            build: {
                 files: [
                     {expand: true, src: ['config/**'], dest: 'dist'},
 
@@ -28,7 +28,27 @@ module.exports = function(grunt) {
                     return src + '\n';
                 }
             },
-            css: {
+            homepage_css: {
+                // the files to concatenate
+                src: [
+                    'css/font-awesome/font-awesome.css',
+                    'css/screen.css'
+                ],
+                // the location of the resulting JS file
+                dest: 'dist/css/<%= pkg.name %>.homepage.css'
+            },
+            homepage_js: {
+                // the files to concatenate
+                src: [
+                    'js/jquery2.min.js',
+                    'widgets/swiper/js/idangerous.swiper.min.js',
+                    'js/modernizr.js',
+                    'js/main.js'
+                ],
+                // the location of the resulting JS file
+                dest: 'dist/js/<%= pkg.name %>.homepage.js'
+            },
+            subpage_css: {
                 // the files to concatenate
                 src: [
                     'css/font-awesome/font-awesome.css',
@@ -36,9 +56,9 @@ module.exports = function(grunt) {
                     'css/subpage.css'
                 ],
                 // the location of the resulting JS file
-                dest: 'dist/css/<%= pkg.name %>.css'
+                dest: 'dist/css/<%= pkg.name %>.subpage.css'
             },
-            js: {
+            subpage_js: {
                 // the files to concatenate
                 src: [
                     'js/jquery2.min.js',
@@ -50,7 +70,7 @@ module.exports = function(grunt) {
                     'js/main.js'
                 ],
                 // the location of the resulting JS file
-                dest: 'dist/js/<%= pkg.name %>.js'
+                dest: 'dist/js/<%= pkg.name %>.subpage.js'
             }
         },
         cssmin: {
@@ -58,18 +78,27 @@ module.exports = function(grunt) {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
                 keepSpecialComments: 0
             },
-            css: {
-                src: '<%= concat.css.dest %>',
-                dest: 'dist/css/<%= pkg.name %>.min.css'
+            homepage_css: {
+                src: '<%= concat.homepage_css.dest %>',
+                dest: 'dist/css/<%= pkg.name %>.homepage.min.css'
+            },
+            subpage_css: {
+                src: '<%= concat.subpage_css.dest %>',
+                dest: 'dist/css/<%= pkg.name %>.subpage.min.css'
             }
         },
         uglify: {
             options: {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
-            js: {
+            homepage_js: {
                 files: {
-                    'dist/js/<%= pkg.name %>.min.js': ['<%= concat.js.dest %>']
+                    'dist/js/<%= pkg.name %>.homepage.min.js': ['<%= concat.homepage_js.dest %>']
+                }
+            },
+            subpage_js: {
+                files: {
+                    'dist/js/<%= pkg.name %>.subpage.min.js': ['<%= concat.subpage_js.dest %>']
                 }
             }
         }
@@ -82,6 +111,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
-    // Default task(s).
-    grunt.registerTask('default', ['clean', 'copy', 'concat', 'cssmin', 'uglify']);
+    // set of task(s).
+    grunt.registerTask('build', ['clean', 'copy', 'concat', 'cssmin', 'uglify']);
+    grunt.registerTask('build-homepage', ['concat:homepage_css', 'concat:homepage_js', 'cssmin:homepage_css', 'uglify:homepage_js']);
+    grunt.registerTask('build-subpage', ['concat:subpage_css', 'concat:subpage_js', 'cssmin:subpage_css', 'uglify:subpage_js']);
 };

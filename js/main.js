@@ -302,10 +302,16 @@ DnDMoM = (function($) {
                 if ( filterPostsAjax !== undefined ) {
                     filterPostsAjax.abort();
                 }
+
+                //active tab
                 var url = $this.attr('href');
                 control
                     .find('> li.active').removeClass('active').end()
                     .find('a[href="' + url + '"]').parent().addClass('active');
+
+                //update view more posts href
+                var viewMorePostsBtn = $('#posts__view-all');
+                viewMorePostsBtn.attr( 'href', _parseVar_( viewMorePostsBtn.data('href'), { cate: $this.data('cate') } ) );
 
                 filterPostsAjax = _doFilterPosts_(
                     url,

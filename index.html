@@ -160,16 +160,16 @@
                             <h2>Tin tức/Sự kiện</h2>
 
                             <ul class="posts__tabs" id="posts__tabs">
-                                <li><a href="php/all-posts/danh-sach.1.php" title="Tất cả">Tất cả</a></li>
-                                <li><a href="php/tin-tuc/danh-sach.1.php" title="Tin tức">Tin tức</a></li>
-                                <li><a href="php/su-kien/danh-sach.1.php" title="Sự kiện">Sự kiện</a></li>
+                                <li><a href="php/all-posts/danh-sach.1.php" data-cate="all" title="Tất cả">Tất cả</a></li>
+                                <li><a href="php/tin-tuc/danh-sach.1.php" data-cate="news" title="Tin tức">Tin tức</a></li>
+                                <li><a href="php/su-kien/danh-sach.1.php" data-cate="events" title="Sự kiện">Sự kiện</a></li>
                             </ul>
 
                             <ul class="posts__list" id="posts__list">
                                 <!-- Dynamic loading content via ajax -->
                             </ul>
 
-                            <a href="" title="Xem thêm" class="posts__view-all">Xem thêm&nbsp;<i class="fa fa-long-arrow-right"></i></a>
+                            <a href="posts.html#!all?p=1" data-href="posts.html#!{{ cate }}?p=1" title="Xem thêm" class="posts__view-all" id="posts__view-all">Xem thêm&nbsp;<i class="fa fa-long-arrow-right"></i></a>
                         </section>
 
                         <!-- only available for desktop/tablet -->
