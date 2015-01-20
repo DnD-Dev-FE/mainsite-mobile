@@ -31,9 +31,9 @@ module.exports = function(grunt) {
             css: {
                 // the files to concatenate
                 src: [
-                    'css/*',
-                    '!css/debug.css',
-                    '!css/print.css'
+                    'css/font-awesome/font-awesome.css',
+                    'css/screen.css',
+                    'css/subpage.css'
                 ],
                 // the location of the resulting JS file
                 dest: 'dist/css/<%= pkg.name %>.css'
