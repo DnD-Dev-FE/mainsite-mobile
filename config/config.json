@@ -1,0 +1,4 @@
+{
+    "ratingService": "php/fake-response.php",
+    "filterPostsService": "php/fake-filter-posts.php"
+}
