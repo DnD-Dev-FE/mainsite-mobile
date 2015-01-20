@@ -7,14 +7,38 @@ jQuery(document).ready(function(e) {
         var $window = $(window);
         var $body = $('body');
 
-        //init
-        DnDMoM.initMainNav();
-        DnDMoM.initImageSlider('#key-features');
-        DnDMoM.initHotEventSlider();
-        DnDMoM.initTopButton();
-        if ( Modernizr.mq('only screen and (min-width: 667px)' ) && $body.hasClass('homepage') ) {
-            DnDMoM.initRatingBox();
-        }
+        //load config
+        $.get('config/config.json', {/* post data */}, function(data) {
+            DnDMoM.config = data;
+
+            //init main navigation sub-menu behavior
+            DnDMoM.initMainNav();
+
+            //init key feature + hot events slider on homepage
+            if ( $body.hasClass('homepage') ) {
+                DnDMoM.initImageSlider('#key-features');
+                DnDMoM.initHotEventSlider();
+            }
+
+            //init to top button behavior
+            DnDMoM.initTopButton();
+
+            //init rating box only on bp(desktop) on homepage
+            if ( $body.hasClass('homepage') ) {
+                var _fn_ = function() {
+                    if ( Modernizr.mq('only screen and (min-width: 667px)' ) ) {
+                        DnDMoM.initRatingBox();
+                    }
+                }
+                $window.on('resize', function(e) {
+                    _fn_();
+                });
+                _fn_();
+            }
+
+            //init filter posts by category
+            DnDMoM.initFilterPosts('#posts__tabs', '#posts__list');
+        }, 'json'/* receiving data type */);
     })(jQuery);
 });
 
@@ -119,8 +143,8 @@ DnDMoM = (function($) {
                 var value = $(this).attr('href');
                 $.ajax({
                     type: 'post',
-                    url: 'php/fake-response.php',
-                    content: 'json', //sending
+                    url: DnDMoM.config.ratingService,
+                    contentType: 'json', //sending
                     dataType: 'json', //return back
                     data: JSON.stringify({
                         rating: value
@@ -151,6 +175,40 @@ DnDMoM = (function($) {
                 var $this = $(this);
                 $this.width( ( $this.data('value')*100/maxVote - 5 ) + '%' );
             })
+        },
+
+        initFilterPosts: function(controlSelector, listContentSelector) {
+            var control = $( controlSelector );
+            var listContent = $( listContentSelector );
+            var filterPostsAjax;
+
+            if ( control.length == 0 || listContent.length == 0 ) { return false; }
+            control.on('click', 'a', function(e) {
+                var $this = $(this);
+                control.find('> li.active').removeClass('active');
+                $this.parent().addClass('active');
+
+                listContent
+                    .find('> li').addClass('inactive').end()
+                    .prepend('<li class="posts__loading">Đang tải dữ liệu...</li>');
+                if ( filterPostsAjax !== undefined ) { filterPostsAjax.abort(); }
+                filterPostsAjax = $.ajax({
+                    type: 'POST',
+                    url: DnDMoM.config.filterPostsService,
+                    dataType: 'html', //receive
+                    contentType: 'json', //send
+                    data: JSON.stringify({
+                        cate: $this.attr('href')
+                    }),
+                    success: function(data, status, jqXHR) {
+                        listContent.html(data);
+                    },
+                    error: function() {},
+                    completed: function() {}
+                });
+
+                return false;
+            });
         },
 
         distributeHeight: function(wrapperSelector, itemSelector) {
