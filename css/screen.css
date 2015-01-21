@@ -4616,7 +4616,7 @@ a:visited {
 }
 /* line 1170, ../sass/screen.scss */
 #outer .flyout-content {
-  width: 30px;
+  width: 0;
   height: 100%;
   position: fixed;
   z-index: 3;

@@ -183,7 +183,14 @@ DnDMoM = (function($) {
     return {
         initMainNav: function() {
             //main navigation
-            $('#main-nav__list')
+            var mainNavList = $('#main-nav__list');
+            mainNavList
+                .on('click touchstart', ' > li > a:not(.main-nav__has-sub)', function(e) {
+                    if ( Modernizr.mq('only screen and (max-width: 666px)') ) {
+                        $('#drawer-toggle').removeAttr('checked');
+                    }
+                    return true;
+                })
                 .on('click touchstart', ' > li > ul a', function(e) {
                     e.stopPropagation();
                 })
@@ -195,6 +202,14 @@ DnDMoM = (function($) {
             $(document).on('click', function(e) {
                 $('#main-nav__list > li > a.main-nav__has-sub.focus').removeClass('focus');
             });
+
+            //listen main nav change
+            DnDMoM.sub('mainNav:changed', function(nav) {
+                mainNavList.find('a.active').removeClass('active');
+                mainNavList.find('a[href="posts.html#!' + nav + '"]').addClass('active');
+            });
+
+            return mainNavList;
         },
 
         initImageSlider: function(selector) {
@@ -375,6 +390,7 @@ DnDMoM = (function($) {
                 else {
                     if ( blogrollAjax !== undefined ) { blogrollAjax.abort(); }
                     blogrollAjax = _hasherListener.blogroll( cate, parseInt(query.p) );
+                    DnDMoM.pub('mainNav:changed', [cate]);
                 }
             });
             //=================
@@ -394,3 +410,5 @@ DnDMoM = (function($) {
         }
     }
 })(jQuery);
+//pattern
+Pattern.Mediator.installTo(DnDMoM);

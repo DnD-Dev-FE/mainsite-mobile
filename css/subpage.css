@@ -4616,7 +4616,7 @@ a:visited {
 }
 /* line 1170, ../sass/screen.scss */
 #outer .flyout-content {
-  width: 30px;
+  width: 0;
   height: 100%;
   position: fixed;
   z-index: 3;
@@ -4769,13 +4769,24 @@ a:visited {
   font-weight: bold;
   text-align: left;
 }
-/* line 45, ../sass/subpage.scss */
+/* line 44, ../sass/subpage.scss */
+.subpage #outer main #extra-content .hotevent__list {
+  display: none;
+  /* breakpoint: smartphone | desktop; */
+}
+@media (min-width: 667px) {
+  /* line 44, ../sass/subpage.scss */
+  .subpage #outer main #extra-content .hotevent__list {
+    display: block;
+  }
+}
+/* line 49, ../sass/subpage.scss */
 .subpage #outer main #extra-content .hotevent__list a {
   display: block;
   overflow: hidden;
   border: 1px solid #ccc;
 }
-/* line 49, ../sass/subpage.scss */
+/* line 53, ../sass/subpage.scss */
 .subpage #outer main #extra-content .hotevent__list a img {
   display: inline-block;
   height: 200px;
@@ -4783,7 +4794,7 @@ a:visited {
   border: none;
   float: left;
 }
-/* line 56, ../sass/subpage.scss */
+/* line 60, ../sass/subpage.scss */
 .subpage #outer main #extra-content .hotevent__list a > div {
   float: left;
   width: 100%;
@@ -4791,7 +4802,7 @@ a:visited {
   padding: 15px 5%;
   text-align: left;
 }
-/* line 62, ../sass/subpage.scss */
+/* line 66, ../sass/subpage.scss */
 .subpage #outer main #extra-content .hotevent__list a > div h3 {
   font-size: 16px;
   color: #4d4d4d;
@@ -4799,7 +4810,7 @@ a:visited {
   text-align: left;
   line-height: 2;
 }
-/* line 69, ../sass/subpage.scss */
+/* line 73, ../sass/subpage.scss */
 .subpage #outer main #extra-content .hotevent__list a > div time {
   color: #000;
 }

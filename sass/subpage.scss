@@ -42,6 +42,10 @@
                     text-align: left;
                 }
                 .hotevent__list {
+                    display: none;
+                    @include bp(desktop) {
+                        display: block;
+                    }
                     a {
                         display: block;
                         overflow: hidden;
