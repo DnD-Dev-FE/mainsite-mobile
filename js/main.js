@@ -71,13 +71,25 @@ DnDMoM = (function($) {
 
     //get 5 newest posts by cate: all | news | events
     var _doFilterPosts_ = function(url, success, error, completed) {
-        var loading = '<li class="posts__loading">Đang tải dữ liệu...</li>';
+        var loading = $('<li class="posts__loading">Đang tải dữ liệu...</li>');
+        var loadingHeight;
         var listContent = $('#posts__list');
+        if ( listContent.find('.posts__loading').length == 0 ) {
+            listContent.prepend( loading.addClass('posts__loading--hidden') );
+            loadingHeight = loading.outerHeight(true);
+            listContent.css({
+                top: -loadingHeight
+            });
+        }
 
-        listContent.find('.posts__loading').remove();
+        //listContent.find('.posts__loading').remove();
         listContent
-            .find('> li').addClass('inactive').end()
-            .prepend(loading);
+            .find('> li:not(.posts__loading)').addClass('inactive').end()
+            .animate({
+                top: 0
+            }, 'fast', function() {
+                loading.removeClass('posts__loading--hidden');
+            });
 
         return $.ajax({
             type: 'POST',
@@ -86,7 +98,12 @@ DnDMoM = (function($) {
             contentType: 'json', //send
             data: JSON.stringify({}),
             success: function(data, status, jqXHR) {
-                listContent.html(data);
+                listContent
+                    .css({ top: loadingHeight })
+                    .html(data)
+                    .animate({
+                        top: 0
+                    }, 'fast');
                 if ( success !== undefined ) { success(data, status, jqXHR); }
             },
             error: function() {

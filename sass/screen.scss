@@ -548,6 +548,11 @@ a:visited {
                         height: 268px;
                         float: left;
                         margin: 0;
+
+                        &:last-child {
+                            padding-right: 0;
+                        }
+
                         > img,
                         > video {
                             display: block;
@@ -754,10 +759,13 @@ a:visited {
                 .posts__tabs {
                     display: block;
                     margin-bottom: 10px;
+                    background: #fff;
                     @include span-columns(8 of 8);
                     @include align-items(center);
                     @include display(flex);
                     @include flex-direction(row);
+                    position: relative;
+                    z-index: 2;
 
                     > li {
                         @include flex-grow(1);
@@ -801,6 +809,8 @@ a:visited {
                 .posts__list {
                     clear: both;
                     min-height: 300px;
+                    position: relative;
+                    z-index: 1;
 
                     > li {
                         padding: 15px 0;
@@ -851,8 +861,14 @@ a:visited {
                         padding: 15px 0;
                         color: $primary-text-color;
                         width: 50%;
-                        margin: 0 auto 20px;
+                        margin: 0 auto;
                         @include border-radius(3px);
+                        @include opacity(1);
+                        @include transition(opacity 0.1s ease-in-out);
+
+                        &.posts__loading--hidden {
+                            @include opacity(0);
+                        }
                     }
                 }
 
