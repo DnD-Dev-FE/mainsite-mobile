@@ -73,20 +73,19 @@ DnDMoM = (function($) {
     var _doFilterPosts_ = function(url, success, error, completed) {
         var loading = $('<li class="posts__loading">Đang tải dữ liệu...</li>');
         var loadingHeight;
-        var listContent = $('#posts__list');
-        if ( listContent.find('.posts__loading').length == 0 ) {
-            listContent.prepend( loading.addClass('posts__loading--hidden') );
-            loadingHeight = loading.outerHeight(true);
-            listContent.css({
-                top: -loadingHeight
-            });
-        }
+        var listContent = $('#posts__list').stop(true, true);
+        listContent.find('.posts__loading').remove();
+        listContent.prepend( loading.addClass('posts__loading--hidden') );
+        loadingHeight = loading.outerHeight(true);
+        listContent.css({
+            paddingTop: 0
+        });
 
         //listContent.find('.posts__loading').remove();
         listContent
             .find('> li:not(.posts__loading)').addClass('inactive').end()
             .animate({
-                top: 0
+                paddingTop: loadingHeight
             }, 'fast', function() {
                 loading.removeClass('posts__loading--hidden');
             });
@@ -99,10 +98,10 @@ DnDMoM = (function($) {
             data: JSON.stringify({}),
             success: function(data, status, jqXHR) {
                 listContent
-                    .css({ top: loadingHeight })
+                    .css({ paddingTop: loadingHeight })
                     .html(data)
                     .animate({
-                        top: 0
+                        paddingTop: 0
                     }, 'fast');
                 if ( success !== undefined ) { success(data, status, jqXHR); }
             },
@@ -172,7 +171,8 @@ DnDMoM = (function($) {
                     break;
             }
             url = _parseVar_(url, { page: page });
-            _doFilterPosts_(
+
+            return _doFilterPosts_(
                 url,
                 function(data, status, jqXHR) {}, //success
                 function() {}, //error
@@ -358,6 +358,7 @@ DnDMoM = (function($) {
         },
 
         initRouter: function() {
+            var blogrollAjax;
             //router for 'posts'
             crossroads.addRoute('/posts.html:?query:', function(query) {
                 if ( query !== undefined ) {
@@ -373,7 +374,8 @@ DnDMoM = (function($) {
                     hasher.setHash(cate + '?p=1');
                 }
                 else {
-                    _hasherListener.blogroll( cate, parseInt(query.p) );
+                    if ( blogrollAjax !== undefined ) { blogrollAjax.abort(); }
+                    blogrollAjax = _hasherListener.blogroll( cate, parseInt(query.p) );
                 }
             });
             //=================

@@ -764,8 +764,6 @@ a:visited {
                     @include align-items(center);
                     @include display(flex);
                     @include flex-direction(row);
-                    position: relative;
-                    z-index: 2;
 
                     > li {
                         @include flex-grow(1);
@@ -810,7 +808,6 @@ a:visited {
                     clear: both;
                     min-height: 300px;
                     position: relative;
-                    z-index: 1;
 
                     > li {
                         padding: 15px 0;
@@ -856,12 +853,16 @@ a:visited {
                     }
 
                     > li.posts__loading {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        margin: 0 auto;
                         text-align: center;
                         border: 1px solid $primary-border-color;
                         padding: 15px 0;
                         color: $primary-text-color;
                         width: 50%;
-                        margin: 0 auto;
                         @include border-radius(3px);
                         @include opacity(1);
                         @include transition(opacity 0.1s ease-in-out);
@@ -895,23 +896,63 @@ a:visited {
             }
 
             .pagination {
+                width: 100%;
+                overflow: hidden;
+                padding: 10px 0;
 
                 > .pagination__list {
+                    @include align-items(space-between);
+                    @include display(flex);
+                    @include flex-direction(row);
+                    @include justify-content(space-between);
 
                     > li {
+
+                        > a {
+                            display: block;
+                            padding: 8px 0;
+                            min-width: 60px;
+                            @include bp(smartphone) {
+                                min-width: 35px;
+                            }
+                            text-align: center;
+                            @include border-radius(3px);
+
+                            &:hover {
+                                background: $hover-color;
+                            }
+                        }
 
                         > .pagination__index {
 
                             &.pagination__index--active {
-                                color: $theme-color;
+                                background: $theme-secondary-color;
+                                color: #fff;
                             }
                         }
 
-                        > .pagination__nav--disabled {
-                            color: $disabled-color;
-                            display: none;
+                        > .pagination__nav {
+                            padding: 8px 15px;
+                            border: 1px solid $primary-border-color;
+
+                            @include bp(smartphone) {
+                                padding: 8px 5px;
+
+                                > span {
+                                    display: none;
+                                }
+                            }
+
+                            &.pagination__nav--disabled {
+                                color: $disabled-color;
+                                @include opacity(0.2);
+                            }
                         }
                     }
+                }
+
+                &.pagination--bottom {
+                    padding-bottom: 50px;
                 }
             }
 
