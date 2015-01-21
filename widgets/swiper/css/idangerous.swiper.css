@@ -29,7 +29,7 @@ Basic Swiper Styles
 }
 .swiper-wrapper {
 	position:relative;
-	width:100%;
+	width: 9999em;
 	-webkit-transition-property:-webkit-transform, left, top;
 	-webkit-transition-duration:0s;
 	-webkit-transform:translate3d(0px,0,0);
