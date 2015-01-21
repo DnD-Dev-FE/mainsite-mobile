@@ -71,25 +71,24 @@ DnDMoM = (function($) {
 
     //get 5 newest posts by cate: all | news | events
     var _doFilterPosts_ = function(url, success, error, completed) {
-        var loading = $('<li class="posts__loading">Đang tải dữ liệu...</li>');
-        var loadingHeight;
         var listContent = $('#posts__list');
-        if ( listContent.find('.posts__loading').length == 0 ) {
-            listContent.prepend( loading.addClass('posts__loading--hidden') );
-            loadingHeight = loading.outerHeight(true);
-            listContent.css({
-                top: -loadingHeight
-            });
+        var loadingHTML = '<p class="posts__loading"><span>Đang tải dữ liệu...</span></p>';
+        var loading = listContent.prev('.posts__loading');
+        if ( loading.length == 0 ) {
+            loading = $( loadingHTML );
+            listContent.before( loading );
         }
-
-        //listContent.find('.posts__loading').remove();
         listContent
             .find('> li:not(.posts__loading)').addClass('inactive').end()
-            .animate({
-                top: 0
-            }, 'fast', function() {
-                loading.removeClass('posts__loading--hidden');
+            .addClass('posts__list--inactive');
+        loading.removeClass('posts__loading--hidden');
+
+        //scroll to top of list posts
+        if ( listContent.offset().top < $window.scrollTop() ) {
+            $('body, html').animate({
+                scrollTop: listContent.offset().top*$window.height()/$(document).height()
             });
+        }
 
         return $.ajax({
             type: 'POST',
@@ -99,11 +98,10 @@ DnDMoM = (function($) {
             data: JSON.stringify({}),
             success: function(data, status, jqXHR) {
                 listContent
-                    .css({ top: loadingHeight })
                     .html(data)
-                    .animate({
-                        top: 0
-                    }, 'fast');
+                    .removeClass('posts__list--inactive');
+                loading.addClass('posts__loading--hidden');
+
                 if ( success !== undefined ) { success(data, status, jqXHR); }
             },
             error: function() {
@@ -172,7 +170,8 @@ DnDMoM = (function($) {
                     break;
             }
             url = _parseVar_(url, { page: page });
-            _doFilterPosts_(
+
+            return _doFilterPosts_(
                 url,
                 function(data, status, jqXHR) {}, //success
                 function() {}, //error
@@ -358,6 +357,7 @@ DnDMoM = (function($) {
         },
 
         initRouter: function() {
+            var blogrollAjax;
             //router for 'posts'
             crossroads.addRoute('/posts.html:?query:', function(query) {
                 if ( query !== undefined ) {
@@ -373,7 +373,8 @@ DnDMoM = (function($) {
                     hasher.setHash(cate + '?p=1');
                 }
                 else {
-                    _hasherListener.blogroll( cate, parseInt(query.p) );
+                    if ( blogrollAjax !== undefined ) { blogrollAjax.abort(); }
+                    blogrollAjax = _hasherListener.blogroll( cate, parseInt(query.p) );
                 }
             });
             //=================

@@ -1,5 +1,5 @@
 <?php
-    sleep(2);
+    sleep(1);
     for ( $i=0; $i < 5; $i++ ) {
         echo('
             <li>
