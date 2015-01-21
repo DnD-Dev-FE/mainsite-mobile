@@ -4270,6 +4270,7 @@ a:visited {
   padding: 8px 0;
   min-width: 60px;
   /* breakpoint: smartphone | desktop; */
+  /* between desktop ~ smartphone */
   text-align: center;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
@@ -4280,7 +4281,7 @@ a:visited {
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
-@media (max-width: 666px) {
+@media (max-width: 666px), (min-width: 667px) and (max-width: 1023px) {
   /* line 930, ../sass/screen.scss */
   #outer main #main-content .pagination > .pagination__list > li > a {
     min-width: 35px;
@@ -4300,8 +4301,9 @@ a:visited {
   min-width: 120px;
   border: 1px solid #ccc;
   /* breakpoint: smartphone | desktop; */
+  /* between desktop ~ smartphone */
 }
-@media (max-width: 666px) {
+@media (max-width: 666px), (min-width: 667px) and (max-width: 1023px) {
   /* line 953, ../sass/screen.scss */
   #outer main #main-content .pagination > .pagination__list > li > .pagination__nav {
     min-width: 35px;
