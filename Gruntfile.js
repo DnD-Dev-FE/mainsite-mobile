@@ -34,6 +34,7 @@ module.exports = function(grunt) {
                     'js/jquery2.min.js',
                     'widgets/swiper/js/idangerous.swiper.min.js',
                     'js/modernizr.js',
+                    'js/pattern.js',
                     'js/main.js'
                 ],
                 // the location of the resulting JS file
@@ -48,6 +49,7 @@ module.exports = function(grunt) {
                     'js/signals.min.js',
                     'js/hasher.min.js',
                     'js/crossroads.min.js',
+                    'js/pattern.js',
                     'js/main.js'
                 ],
                 // the location of the resulting JS file
