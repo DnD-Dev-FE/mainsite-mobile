@@ -29,6 +29,10 @@
     @include transform( translate3d($offset, 0, 0) );
 }
 
+@mixin css-sliding($x, $y, $z) {
+    @include transform( translate3d($x, $y, $z) );
+}
+
 @mixin border-radius($radius) {
     @include border-top-radius($radius);
     @include border-bottom-radius($radius);
