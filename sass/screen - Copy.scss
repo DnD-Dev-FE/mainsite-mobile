@@ -1,0 +1,7 @@
+
+@import 'bourbon/bourbon';
+
+h6 {
+    $width: 100%;
+    @include calc(width, "#{$width} - 80px");
+}
