@@ -1,7 +1,9 @@
 @import 'screen';
 @import 'debug';
-@import "base/base";
 
+.rte {
+    @import "base/base";
+}
 .subpage {
     #outer {
         main {
