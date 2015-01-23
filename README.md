@@ -14,3 +14,8 @@ Mainsite template for mobile game
 - Optimizing animation performance by using harware accelerator and some tweak in code
 - Update Grunt tasks: 'build', 'build-homepage', 'build-subpage' => optimizing build size for each page
 - Fix minor bugs
+
+## Update [23-Jan-2015]
+- Adding bitters-compass by gem install, including by '@import 'base/base' => note bittets is used within wrapper = '.base'
+- Modifying "post-details.html" structure
+- Fix some minor bugs
