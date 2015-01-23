@@ -4946,22 +4946,36 @@ a:visited {
 
 /* line 13, ../sass/subpage.scss */
 .subpage-details {
-  float: left;
-  display: block;
-  margin-right: 2.35765%;
-  width: 65.88078%;
+  /* breakpoint: smartphone | desktop; */
+  /* breakpoint: smartphone | desktop; */
 }
-/* line 38, ../../../../../../var/lib/gems/1.9.1/gems/neat-compass-1.6.0/stylesheets/neat/grid/_span-columns.scss */
-.subpage-details:last-child {
-  margin-right: 0;
+@media (min-width: 667px) {
+  /* line 13, ../sass/subpage.scss */
+  .subpage-details {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 65.88078%;
+  }
+  /* line 38, ../../../../../../var/lib/gems/1.9.1/gems/neat-compass-1.6.0/stylesheets/neat/grid/_span-columns.scss */
+  .subpage-details:last-child {
+    margin-right: 0;
+  }
+}
+@media (max-width: 666px) {
+  /* line 13, ../sass/subpage.scss */
+  .subpage-details {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 
-/* line 21, ../sass/subpage.scss */
+/* line 27, ../sass/subpage.scss */
 .subpage #outer main .app-info {
   border-bottom: 2px solid #ccc;
   background: #dfdfdf;
 }
-/* line 28, ../sass/subpage.scss */
+/* line 34, ../sass/subpage.scss */
 .subpage #outer main #main-content .posts {
   float: left;
   display: block;
@@ -4976,7 +4990,7 @@ a:visited {
   margin-right: 0;
 }
 @media (max-width: 666px), (min-width: 667px) and (max-width: 1023px) {
-  /* line 28, ../sass/subpage.scss */
+  /* line 34, ../sass/subpage.scss */
   .subpage #outer main #main-content .posts {
     margin-left: 2.13245%;
     float: left;
@@ -4990,7 +5004,7 @@ a:visited {
   }
 }
 @media (max-width: 666px) {
-  /* line 28, ../sass/subpage.scss */
+  /* line 34, ../sass/subpage.scss */
   .subpage #outer main #main-content .posts {
     margin-left: 0%;
     float: left;
@@ -5004,7 +5018,7 @@ a:visited {
     margin-right: 0;
   }
 }
-/* line 42, ../sass/subpage.scss */
+/* line 48, ../sass/subpage.scss */
 .subpage #outer main #extra-content {
   float: left;
   display: block;
@@ -5020,7 +5034,7 @@ a:visited {
   margin-right: 0;
 }
 @media (max-width: 666px), (min-width: 667px) and (max-width: 1023px) {
-  /* line 42, ../sass/subpage.scss */
+  /* line 48, ../sass/subpage.scss */
   .subpage #outer main #extra-content {
     float: left;
     display: block;
@@ -5033,12 +5047,12 @@ a:visited {
   }
 }
 @media (max-width: 666px) {
-  /* line 42, ../sass/subpage.scss */
+  /* line 48, ../sass/subpage.scss */
   .subpage #outer main #extra-content {
     display: none;
   }
 }
-/* line 53, ../sass/subpage.scss */
+/* line 59, ../sass/subpage.scss */
 .subpage #outer main #extra-content h3 {
   color: #c7b961;
   font-size: 23px;
@@ -5048,24 +5062,24 @@ a:visited {
   font-weight: bold;
   text-align: left;
 }
-/* line 57, ../sass/subpage.scss */
+/* line 63, ../sass/subpage.scss */
 .subpage #outer main #extra-content .hotevent__list {
   display: none;
   /* breakpoint: smartphone | desktop; */
 }
 @media (min-width: 667px) {
-  /* line 57, ../sass/subpage.scss */
+  /* line 63, ../sass/subpage.scss */
   .subpage #outer main #extra-content .hotevent__list {
     display: block;
   }
 }
-/* line 62, ../sass/subpage.scss */
+/* line 68, ../sass/subpage.scss */
 .subpage #outer main #extra-content .hotevent__list a {
   display: block;
   overflow: hidden;
   border: 1px solid #ccc;
 }
-/* line 66, ../sass/subpage.scss */
+/* line 72, ../sass/subpage.scss */
 .subpage #outer main #extra-content .hotevent__list a img {
   display: inline-block;
   height: 200px;
@@ -5073,7 +5087,7 @@ a:visited {
   border: none;
   float: left;
 }
-/* line 73, ../sass/subpage.scss */
+/* line 79, ../sass/subpage.scss */
 .subpage #outer main #extra-content .hotevent__list a > div {
   float: left;
   width: 100%;
@@ -5081,7 +5095,7 @@ a:visited {
   padding: 15px 5%;
   text-align: left;
 }
-/* line 79, ../sass/subpage.scss */
+/* line 85, ../sass/subpage.scss */
 .subpage #outer main #extra-content .hotevent__list a > div h3 {
   font-size: 16px;
   color: #4d4d4d;
@@ -5089,7 +5103,7 @@ a:visited {
   text-align: left;
   line-height: 2;
 }
-/* line 86, ../sass/subpage.scss */
+/* line 92, ../sass/subpage.scss */
 .subpage #outer main #extra-content .hotevent__list a > div time {
   color: #000;
 }

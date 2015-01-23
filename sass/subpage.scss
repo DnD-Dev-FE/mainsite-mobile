@@ -11,7 +11,13 @@
 }
 
 .subpage-details {
-    @include span-columns(8);
+    @include bp(desktop) {
+        @include span-columns(8);
+    }
+    @include bp(smartphone) {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 }
 
 .subpage {
