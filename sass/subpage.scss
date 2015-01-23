@@ -1,6 +1,18 @@
 @import 'screen';
-@import 'debug';
-@import "base/base";
+
+.base {
+    @import 'base/base';
+}
+
+.rte {
+    padding: 40px 0;
+
+    * { font-family: $font-face; }
+}
+
+.subpage-details {
+    @include span-columns(8);
+}
 
 .subpage {
     #outer {
