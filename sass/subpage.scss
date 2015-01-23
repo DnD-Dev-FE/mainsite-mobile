@@ -5,7 +5,7 @@
 }
 
 .rte {
-    padding: 40px 0;
+    padding: 20px 0;
 
     * { font-family: $font-face; }
 }
@@ -43,54 +43,67 @@
                         padding: 15px;
                     }
                 }
-            }
 
-            #extra-content {
+                .posts--related {
+                    float: left;
 
-                @include span-columns(4);
-                @include bp(hybrid) {
-                    @include span-columns(3.75);
-                }
-
-                @include bp(smartphone) {
-                    display: none;
-                }
-                padding-top: 0;
-                h3 {
-                    @include section-title();
-                    text-align: left;
-                }
-                .hotevent__list {
-                    display: none;
                     @include bp(desktop) {
-                        display: block;
+                        @include span-columns(4);
+                        margin: 0;
                     }
-                    a {
-                        display: block;
-                        overflow: hidden;
-                        border: 1px solid $primary-border-color;
-                        img {
-                            display: inline-block;
-                            height: 200px;
-                            width: auto;
-                            border: none;
-                            float: left;
-                        }
-                        > div {
-                            float: left;
-                            width: 100%;
-                            border-top: 1px solid $primary-border-color;
-                            padding: 15px 5%;
-                            text-align: left;
-                            h3 {
-                                font-size: 16px;
-                                color: #4d4d4d;
-                                padding: 0;
-                                text-align: left;
-                                line-height: 2;
+                }
+
+                #extra-content {
+                    @include span-columns(4);
+                    @include bp(hybrid) {
+                        @include span-columns(3.75);
+                    }
+                    @include bp(smartphone) {
+                        display: none;
+                    }
+
+                    float: left;
+                    margin: 0;
+                    padding-top: 0;
+
+                    h3 {
+                        @include section-title();
+                        text-align: left;
+                    }
+
+                    .hotevent__list {
+
+                        a {
+                            display: block;
+                            overflow: hidden;
+                            border: 1px solid $primary-border-color;
+
+                            img {
+                                display: inline-block;
+                                height: 200px;
+                                width: auto;
+                                border: none;
+                                float: left;
                             }
-                            time {
-                                color: #000;
+
+                            > div {
+                                float: left;
+                                width: 100%;
+                                border-top: 1px solid $primary-border-color;
+                                padding: 15px 5%;
+                                text-align: left;
+
+                                h3 {
+                                    font-size: 16px;
+                                    color: #4d4d4d;
+                                    padding: 0;
+                                    text-align: left;
+                                    line-height: 2;
+                                }
+
+                                time {
+                                    color: #000;
+                                }
                             }
                         }
                     }

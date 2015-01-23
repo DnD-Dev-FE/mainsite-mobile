@@ -4937,7 +4937,7 @@ a:visited {
 
 /* line 7, ../sass/subpage.scss */
 .rte {
-  padding: 40px 0;
+  padding: 20px 0;
 }
 /* line 10, ../sass/subpage.scss */
 .rte * {
@@ -5018,8 +5018,27 @@ a:visited {
     margin-right: 0;
   }
 }
-/* line 48, ../sass/subpage.scss */
-.subpage #outer main #extra-content {
+/* line 47, ../sass/subpage.scss */
+.subpage #outer main #main-content .posts--related {
+  float: left;
+  /* breakpoint: smartphone | desktop; */
+}
+@media (min-width: 667px) {
+  /* line 47, ../sass/subpage.scss */
+  .subpage #outer main #main-content .posts--related {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 31.76157%;
+    margin: 0;
+  }
+  /* line 38, ../../../../../../var/lib/gems/1.9.1/gems/neat-compass-1.6.0/stylesheets/neat/grid/_span-columns.scss */
+  .subpage #outer main #main-content .posts--related:last-child {
+    margin-right: 0;
+  }
+}
+/* line 56, ../sass/subpage.scss */
+.subpage #outer main #main-content #extra-content {
   float: left;
   display: block;
   margin-right: 2.35765%;
@@ -5027,33 +5046,35 @@ a:visited {
   /* breakpoint: smartphone | desktop; */
   /* between desktop ~ smartphone */
   /* breakpoint: smartphone | desktop; */
+  float: left;
+  margin: 0;
   padding-top: 0;
 }
 /* line 38, ../../../../../../var/lib/gems/1.9.1/gems/neat-compass-1.6.0/stylesheets/neat/grid/_span-columns.scss */
-.subpage #outer main #extra-content:last-child {
+.subpage #outer main #main-content #extra-content:last-child {
   margin-right: 0;
 }
 @media (max-width: 666px), (min-width: 667px) and (max-width: 1023px) {
-  /* line 48, ../sass/subpage.scss */
-  .subpage #outer main #extra-content {
+  /* line 56, ../sass/subpage.scss */
+  .subpage #outer main #main-content #extra-content {
     float: left;
     display: block;
     margin-right: 2.35765%;
     width: 29.62911%;
   }
   /* line 38, ../../../../../../var/lib/gems/1.9.1/gems/neat-compass-1.6.0/stylesheets/neat/grid/_span-columns.scss */
-  .subpage #outer main #extra-content:last-child {
+  .subpage #outer main #main-content #extra-content:last-child {
     margin-right: 0;
   }
 }
 @media (max-width: 666px) {
-  /* line 48, ../sass/subpage.scss */
-  .subpage #outer main #extra-content {
+  /* line 56, ../sass/subpage.scss */
+  .subpage #outer main #main-content #extra-content {
     display: none;
   }
 }
-/* line 59, ../sass/subpage.scss */
-.subpage #outer main #extra-content h3 {
+/* line 69, ../sass/subpage.scss */
+.subpage #outer main #main-content #extra-content h3 {
   color: #c7b961;
   font-size: 23px;
   text-transform: uppercase;
@@ -5062,48 +5083,37 @@ a:visited {
   font-weight: bold;
   text-align: left;
 }
-/* line 63, ../sass/subpage.scss */
-.subpage #outer main #extra-content .hotevent__list {
-  display: none;
-  /* breakpoint: smartphone | desktop; */
-}
-@media (min-width: 667px) {
-  /* line 63, ../sass/subpage.scss */
-  .subpage #outer main #extra-content .hotevent__list {
-    display: block;
-  }
-}
-/* line 68, ../sass/subpage.scss */
-.subpage #outer main #extra-content .hotevent__list a {
+/* line 76, ../sass/subpage.scss */
+.subpage #outer main #main-content #extra-content .hotevent__list a {
   display: block;
   overflow: hidden;
   border: 1px solid #ccc;
 }
-/* line 72, ../sass/subpage.scss */
-.subpage #outer main #extra-content .hotevent__list a img {
+/* line 81, ../sass/subpage.scss */
+.subpage #outer main #main-content #extra-content .hotevent__list a img {
   display: inline-block;
   height: 200px;
   width: auto;
   border: none;
   float: left;
 }
-/* line 79, ../sass/subpage.scss */
-.subpage #outer main #extra-content .hotevent__list a > div {
+/* line 89, ../sass/subpage.scss */
+.subpage #outer main #main-content #extra-content .hotevent__list a > div {
   float: left;
   width: 100%;
   border-top: 1px solid #ccc;
   padding: 15px 5%;
   text-align: left;
 }
-/* line 85, ../sass/subpage.scss */
-.subpage #outer main #extra-content .hotevent__list a > div h3 {
+/* line 96, ../sass/subpage.scss */
+.subpage #outer main #main-content #extra-content .hotevent__list a > div h3 {
   font-size: 16px;
   color: #4d4d4d;
   padding: 0;
   text-align: left;
   line-height: 2;
 }
-/* line 92, ../sass/subpage.scss */
-.subpage #outer main #extra-content .hotevent__list a > div time {
+/* line 104, ../sass/subpage.scss */
+.subpage #outer main #main-content #extra-content .hotevent__list a > div time {
   color: #000;
 }
