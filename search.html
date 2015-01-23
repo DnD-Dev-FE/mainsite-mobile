@@ -28,9 +28,9 @@
                     <li><a href="index.html" title="Trang chủ">Trang chủ</a></li>
                     <li><a href="posts.html#!news" title="Tin tức">Tin tức</a></li>
                     <li><a href="posts.html#!events" title="Sự kiện">Sự kiện</a></li>
-                    <li><a href="#" title="Thư viện" class="main-nav__has-sub">Thư viện&nbsp;<i class="fa fa-chevron-down"></i></a>
+                    <li><a href="#" title="Thư viện" class="main-nav__has-sub active">Thư viện&nbsp;<i class="fa fa-chevron-down"></i></a>
                         <ul>
-                            <li><a href="subpage.html#!media" title="Hình nền">Hình nền</a></li>
+                            <li><a href="subpage.html#!media" title="Hình nền" class="active">Hình nền</a></li>
                             <li><a href="subpage.html#!media" title="Video">Video</a></li>
                         </ul>
                     </li>
@@ -76,7 +76,7 @@
 
                 <section id="main-content">
                     <div class="wrapper">
-                        <section class="posts" >
+                        <section class="search" >
                             <!-- do not change html, its belongs to master -->
                             <h2>Tin tức/Sự kiện</h2>
 
@@ -86,8 +86,34 @@
                                 <li><a href="#!events?p=1" title="Sự kiện">Sự kiện</a></li>
                             </ul>
 
-                            <ul class="posts__list" id="posts__list">
-                                <!-- Dynamic loading content via ajax -->
+                            <ul class="search__list" id="search__list">
+                                <li>
+                                    <p><strong class="posts__cate">1. Sự kiện</strong>&nbsp;|&nbsp;<time class="posts__time">34 phút trước</time></p>
+                                    <a href="#" title="">
+                                        <h3>Cập nhật phiên bản mới</h3>
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <p><strong class="posts__cate">2. Tin tức</strong>&nbsp;|&nbsp;<time class="posts__time">34 phút trước</time></p>
+                                    <a href="#" title="">
+                                        <h3>Cập nhật phiên bản mới</h3>
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <p><strong class="posts__cate">3. Tin tức</strong>&nbsp;|&nbsp;<time class="posts__time">34 phút trước</time></p>
+                                    <a href="#" title="">
+                                        <h3>Cập nhật phiên bản mới</h3>
+                                    </a>
+                                </li>
+                            
+                                <li>
+                                    <p><strong class="posts__cate">4. Tin tức</strong>&nbsp;|&nbsp;<time class="posts__time">34 phút trước</time></p>
+                                    <a href="#" title="">
+                                        <h3>Cập nhật phiên bản mới</h3>
+                                    </a>
+                                </li>
                             </ul>
                             <!-- ========================================= -->
 
@@ -107,22 +133,6 @@
                             </div>
                             <!-- ========================================= -->
                         </section>
-
-                        <!-- only available for desktop/tablet -->
-                        <aside id="extra-content">
-                            <h3>Sự kiện HOT</h3>
-
-                            <section class="hotevent__list">
-                                <a href="#" title="How to train your dragon 1">
-                                    <img src="" title="How to train your dragon 1" alt="How to train your dragon 1">
-                                    <div>
-                                        <h3>How to train your dragon 1</h3>
-                                        <time>01/10 — 20/10/2013</time>
-                                    </div>
-                                </a>
-                            </section>
-                        </aside>
-                        <!-- end of aside -->
                     </div>
 
                     <!-- do not change html, its belongs to master -->
@@ -156,7 +166,6 @@
         <script type="text/javascript" src="js/signals.min.js"></script>
         <script type="text/javascript" src="js/hasher.min.js"></script>
         <script type="text/javascript" src="js/crossroads.min.js"></script>
-        <script type="text/javascript" src="js/pattern.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
 
         <!-- Facebook integrated -->
