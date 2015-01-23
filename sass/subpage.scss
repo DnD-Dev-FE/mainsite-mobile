@@ -1,120 +1,124 @@
 @import 'screen';
 
 article {
-    @import 'base/base';
-    pre {
-        overflow: auto;
-    }
-    * {
-        color: $content-text-color;
-        font-family: $font-face;
-        // font-size: $font-size-base;
-    }
+	@import 'base/base';
+	pre {
+		overflow: auto;
+	}
+	* {
+		color: $content-text-color;
+		font-family: $font-face;
+		// font-size: $font-size-base;
+	}
+	h1 {
+		@include section-title();
+		text-align: left;
+	}
 }
 
 .rte {
-    padding: 20px 0;
-    * { font-family: $font-face; }
+	padding: 20px 0;
+	* { font-family: $font-face; }
 }
 
 .subpage-details {
-    @include bp(desktop) {
-        @include span-columns(8);
-    }
-    @include bp(smartphone) {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
+	@include bp(desktop) {
+		@include span-columns(8);
+	}
+	@include bp(smartphone) {
+		padding-left: 15px;
+		padding-right: 15px;
+	}
 }
 
 .subpage {
-    #outer {
-        main {
-            .app-info {
-                border-bottom: 2px solid $primary-border-color;
-                background: $placeholder-color;
-            }
+	#outer {
+		main {
+			.app-info {
+				border-bottom: 2px solid $primary-border-color;
+				background: $placeholder-color;
+			}
 
-            #main-content {
+			#main-content {
 
-                .posts {
-                    @include span-columns(8);
-                    @include bp(hybrid) {
-                        @include shift(0.25);
-                        @include span-columns(7.75);
-                    }
-                    @include bp(smartphone) {
-                        @include shift(0);
-                        @include span-columns(12);
-                        padding: 15px;
-                    }
-                }
+				.posts {
+					@include span-columns(8);
+					@include bp(hybrid) {
+						@include shift(0.25);
+						@include span-columns(7.75);
+					}
+					@include bp(smartphone) {
+						@include shift(0);
+						@include span-columns(12);
+						padding: 15px;
+					}
+				}
 
-                .posts--related {
-                    float: left;
+				.posts--related {
+					float: left;
 
-                    @include bp(desktop) {
-                        @include span-columns(4);
-                        margin: 0;
-                    }
-                }
+					@include bp(desktop) {
+						@include span-columns(4);
+						margin: 0;
+					}
+				}
 
-                #extra-content {
-                    @include span-columns(4);
-                    @include bp(hybrid) {
-                        @include span-columns(3.75);
-                    }
-                    @include bp(smartphone) {
-                        display: none;
-                    }
+				#extra-content {
+					@include span-columns(4);
+					@include bp(hybrid) {
+						@include span-columns(3.75);
+					}
+					@include bp(smartphone) {
+						display: none;
+					}
 
-                    float: left;
-                    margin: 0;
-                    padding-top: 0;
+					float: left;
+					margin: 0;
+					padding-top: 0;
 
-                    h3 {
-                        @include section-title();
-                        text-align: left;
-                    }
+					h3 {
+						@include section-title();
+						text-align: left;
+					}
 
-                    .hotevent__list {
+					.hotevent__list {
 
-                        a {
-                            display: block;
-                            overflow: hidden;
-                            border: 1px solid $primary-border-color;
+						a {
+							display: block;
+							overflow: hidden;
+							border: 1px solid $primary-border-color;
 
-                            img {
-                                display: inline-block;
-                                height: 200px;
-                                width: auto;
-                                border: none;
-                                float: left;
-                            }
+							img {
+								display: inline-block;
+								height: 200px;
+								width: auto;
+								border: none;
+								float: left;
+							}
 
-                            > div {
-                                float: left;
-                                width: 100%;
-                                border-top: 1px solid $primary-border-color;
-                                padding: 15px 5%;
-                                text-align: left;
+							> div {
+								float: left;
+								width: 100%;
+								border-top: 1px solid $primary-border-color;
+								padding: 15px 5%;
+								text-align: left;
 
-                                h3 {
-                                    font-size: 16px;
-                                    color: #4d4d4d;
-                                    padding: 0;
-                                    text-align: left;
-                                    line-height: 2;
-                                }
+								h3 {
+									font-size: 16px;
+									color: #4d4d4d;
+									padding: 0;
+									text-align: left;
+									line-height: 2;
+								}
 
-                                time {
-                                    color: #000;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+								time {
+									color: #000;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
