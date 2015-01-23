@@ -752,7 +752,7 @@ a:visited {
                     padding: 15px;
                 }
 
-                h2 {
+                > h2 {
                     @include section-title();
                 }
 

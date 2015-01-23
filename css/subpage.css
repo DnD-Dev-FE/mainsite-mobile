@@ -3986,7 +3986,7 @@ a:visited {
   }
 }
 /* line 755, ../sass/screen.scss */
-#outer main #main-content .posts h2 {
+#outer main #main-content .posts > h2 {
   color: #c7b961;
   font-size: 23px;
   text-transform: uppercase;
@@ -4679,15 +4679,15 @@ a:visited {
 }
 
 /* line 3, ../sass/subpage.scss */
-.base {
+article {
   /* Bitters 0.10.0
    * http://bitters.bourbon.io
    * Copyright 2013ΓÇô2014 thoughtbot, inc.
    * MIT License */
 }
 /* line 1, ../sass/base/extends/_button.scss */
-.base button,
-.base input[type="submit"] {
+article button,
+article input[type="submit"] {
   -webkit-font-smoothing: antialiased;
   background-color: #477DCA;
   border-radius: 3px;
@@ -4700,19 +4700,19 @@ a:visited {
   text-decoration: none;
 }
 /* line 13, ../sass/base/extends/_button.scss */
-.base button:hover,
-.base input[type="submit"]:hover {
+article button:hover,
+article input[type="submit"]:hover {
   background-color: #2c5999;
   color: white;
 }
 /* line 18, ../sass/base/extends/_button.scss */
-.base button:disabled,
-.base input[type="submit"]:disabled {
+article button:disabled,
+article input[type="submit"]:disabled {
   cursor: not-allowed;
   opacity: 0.5;
 }
 /* line 1, ../sass/base/_typography.scss */
-.base body {
+article body {
   -webkit-font-smoothing: antialiased;
   background-color: white;
   color: #333;
@@ -4721,47 +4721,47 @@ a:visited {
   line-height: 1.5;
 }
 /* line 10, ../sass/base/_typography.scss */
-.base h1,
-.base h2,
-.base h3,
-.base h4,
-.base h5,
-.base h6 {
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
   line-height: 1.25;
   margin: 0;
   text-rendering: optimizeLegibility;
 }
 /* line 22, ../sass/base/_typography.scss */
-.base h1 {
+article h1 {
   font-size: 2.25em;
 }
 /* line 26, ../sass/base/_typography.scss */
-.base h2 {
+article h2 {
   font-size: 2em;
 }
 /* line 30, ../sass/base/_typography.scss */
-.base h3 {
+article h3 {
   font-size: 1.75em;
 }
 /* line 34, ../sass/base/_typography.scss */
-.base h4 {
+article h4 {
   font-size: 1.5em;
 }
 /* line 38, ../sass/base/_typography.scss */
-.base h5 {
+article h5 {
   font-size: 1.25em;
 }
 /* line 42, ../sass/base/_typography.scss */
-.base h6 {
+article h6 {
   font-size: 1em;
 }
 /* line 46, ../sass/base/_typography.scss */
-.base p {
+article p {
   margin: 0 0 0.75em;
 }
 /* line 50, ../sass/base/_typography.scss */
-.base a {
+article a {
   -webkit-transition: color 0.1s linear;
   -moz-transition: color 0.1s linear;
   transition: color 0.1s linear;
@@ -4769,16 +4769,16 @@ a:visited {
   text-decoration: none;
 }
 /* line 55, ../sass/base/_typography.scss */
-.base a:hover {
+article a:hover {
   color: #2c5999;
 }
 /* line 59, ../sass/base/_typography.scss */
-.base a:active, .base a:focus {
+article a:active, article a:focus {
   color: #2c5999;
   outline: none;
 }
 /* line 65, ../sass/base/_typography.scss */
-.base hr {
+article hr {
   border-bottom: 1px solid #DDD;
   border-left: none;
   border-right: none;
@@ -4786,59 +4786,59 @@ a:visited {
   margin: 1.5em 0;
 }
 /* line 73, ../sass/base/_typography.scss */
-.base img,
-.base picture {
+article img,
+article picture {
   margin: 0;
   max-width: 100%;
 }
 /* line 79, ../sass/base/_typography.scss */
-.base blockquote {
+article blockquote {
   border-left: 2px solid #DDD;
   color: #595959;
   margin: 1.5em 0;
   padding-left: 0.75em;
 }
 /* line 86, ../sass/base/_typography.scss */
-.base cite {
+article cite {
   color: #737373;
   font-style: italic;
 }
 /* line 90, ../sass/base/_typography.scss */
-.base cite:before {
+article cite:before {
   content: "\2014 \00A0";
 }
 /* line 1, ../sass/base/_forms.scss */
-.base fieldset {
+article fieldset {
   background: #f7f7f7;
   border: 1px solid #DDD;
   margin: 0 0 0.75em 0;
   padding: 1.5em;
 }
 /* line 8, ../sass/base/_forms.scss */
-.base input,
-.base label,
-.base select {
+article input,
+article label,
+article select {
   display: block;
   font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
   font-size: 1em;
 }
 /* line 16, ../sass/base/_forms.scss */
-.base label {
+article label {
   font-weight: bold;
   margin-bottom: 0.375em;
 }
 /* line 20, ../sass/base/_forms.scss */
-.base label.required:after {
+article label.required:after {
   content: "*";
 }
 /* line 24, ../sass/base/_forms.scss */
-.base label abbr {
+article label abbr {
   display: none;
 }
 /* line 29, ../sass/base/_forms.scss */
-.base textarea,
-.base input[type="email"], .base input[type="number"], .base input[type="password"], .base input[type="search"], .base input[type="tel"], .base input[type="text"], .base input[type="url"], .base input[type="color"], .base input[type="date"], .base input[type="datetime"], .base input[type="datetime-local"], .base input[type="month"], .base input[type="time"], .base input[type="week"],
-.base select[multiple=multiple] {
+article textarea,
+article input[type="email"], article input[type="number"], article input[type="password"], article input[type="search"], article input[type="tel"], article input[type="text"], article input[type="url"], article input[type="color"], article input[type="date"], article input[type="datetime"], article input[type="datetime-local"], article input[type="month"], article input[type="time"], article input[type="week"],
+article select[multiple=multiple] {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -4856,25 +4856,25 @@ a:visited {
   width: 100%;
 }
 /* line 44, ../sass/base/_forms.scss */
-.base textarea:hover,
-.base input[type="email"]:hover, .base input[type="number"]:hover, .base input[type="password"]:hover, .base input[type="search"]:hover, .base input[type="tel"]:hover, .base input[type="text"]:hover, .base input[type="url"]:hover, .base input[type="color"]:hover, .base input[type="date"]:hover, .base input[type="datetime"]:hover, .base input[type="datetime-local"]:hover, .base input[type="month"]:hover, .base input[type="time"]:hover, .base input[type="week"]:hover,
-.base select[multiple=multiple]:hover {
+article textarea:hover,
+article input[type="email"]:hover, article input[type="number"]:hover, article input[type="password"]:hover, article input[type="search"]:hover, article input[type="tel"]:hover, article input[type="text"]:hover, article input[type="url"]:hover, article input[type="color"]:hover, article input[type="date"]:hover, article input[type="datetime"]:hover, article input[type="datetime-local"]:hover, article input[type="month"]:hover, article input[type="time"]:hover, article input[type="week"]:hover,
+article select[multiple=multiple]:hover {
   border-color: #c4c4c4;
 }
 /* line 48, ../sass/base/_forms.scss */
-.base textarea:focus,
-.base input[type="email"]:focus, .base input[type="number"]:focus, .base input[type="password"]:focus, .base input[type="search"]:focus, .base input[type="tel"]:focus, .base input[type="text"]:focus, .base input[type="url"]:focus, .base input[type="color"]:focus, .base input[type="date"]:focus, .base input[type="datetime"]:focus, .base input[type="datetime-local"]:focus, .base input[type="month"]:focus, .base input[type="time"]:focus, .base input[type="week"]:focus,
-.base select[multiple=multiple]:focus {
+article textarea:focus,
+article input[type="email"]:focus, article input[type="number"]:focus, article input[type="password"]:focus, article input[type="search"]:focus, article input[type="tel"]:focus, article input[type="text"]:focus, article input[type="url"]:focus, article input[type="color"]:focus, article input[type="date"]:focus, article input[type="datetime"]:focus, article input[type="datetime-local"]:focus, article input[type="month"]:focus, article input[type="time"]:focus, article input[type="week"]:focus,
+article select[multiple=multiple]:focus {
   border-color: #477DCA;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06), 0 0 5px rgba(55, 112, 192, 0.7);
   outline: none;
 }
 /* line 55, ../sass/base/_forms.scss */
-.base textarea {
+article textarea {
   resize: vertical;
 }
 /* line 59, ../sass/base/_forms.scss */
-.base input[type="search"] {
+article input[type="search"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
@@ -4882,70 +4882,70 @@ a:visited {
   appearance: none;
 }
 /* line 63, ../sass/base/_forms.scss */
-.base input[type="checkbox"],
-.base input[type="radio"] {
+article input[type="checkbox"],
+article input[type="radio"] {
   display: inline;
   margin-right: 0.375em;
 }
 /* line 69, ../sass/base/_forms.scss */
-.base input[type="file"] {
+article input[type="file"] {
   padding-bottom: 0.75em;
   width: 100%;
 }
 /* line 74, ../sass/base/_forms.scss */
-.base select {
+article select {
   margin-bottom: 1.5em;
   max-width: 100%;
   width: auto;
 }
 /* line 1, ../sass/base/_tables.scss */
-.base table {
+article table {
   border-collapse: collapse;
   margin: 0.75em 0;
   table-layout: fixed;
   width: 100%;
 }
 /* line 8, ../sass/base/_tables.scss */
-.base th {
+article th {
   border-bottom: 1px solid #b7b7b7;
   font-weight: bold;
   padding: 0.75em 0;
   text-align: left;
 }
 /* line 15, ../sass/base/_tables.scss */
-.base td {
+article td {
   border-bottom: 1px solid #DDD;
   padding: 0.75em 0;
 }
 /* line 20, ../sass/base/_tables.scss */
-.base tr,
-.base td,
-.base th {
+article tr,
+article td,
+article th {
   vertical-align: middle;
 }
 /* line 1, ../sass/base/_lists.scss */
-.base ul,
-.base ol {
+article ul,
+article ol {
   margin: 0;
   padding: 0;
   list-style-type: none;
 }
 /* line 20, ../sass/base/_lists.scss */
-.base dl {
+article dl {
   margin-bottom: 0.75em;
 }
 /* line 23, ../sass/base/_lists.scss */
-.base dl dt {
+article dl dt {
   font-weight: bold;
   margin-top: 0.75em;
 }
 /* line 28, ../sass/base/_lists.scss */
-.base dl dd {
+article dl dd {
   margin: 0;
 }
 /* line 1, ../sass/base/_buttons.scss */
-.base button,
-.base input[type="submit"] {
+article button,
+article input[type="submit"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
@@ -4958,36 +4958,31 @@ a:visited {
   white-space: nowrap;
 }
 /* line 5, ../sass/subpage.scss */
-.base pre {
+article pre {
   overflow: auto;
 }
 /* line 8, ../sass/subpage.scss */
-.base h2 {
+article * {
   color: #434343;
-  font-size: 23px;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 35px 0 20px;
-  font-weight: bold;
-  text-align: left;
+  font-family: "Roboto", Arial, Tahoma, sans-serif;
 }
 
-/* line 24, ../sass/subpage.scss */
+/* line 15, ../sass/subpage.scss */
 .rte {
   padding: 20px 0;
 }
-/* line 26, ../sass/subpage.scss */
+/* line 17, ../sass/subpage.scss */
 .rte * {
   font-family: "Roboto", Arial, Tahoma, sans-serif;
 }
 
-/* line 29, ../sass/subpage.scss */
+/* line 20, ../sass/subpage.scss */
 .subpage-details {
   /* breakpoint: smartphone | desktop; */
   /* breakpoint: smartphone | desktop; */
 }
 @media (min-width: 667px) {
-  /* line 29, ../sass/subpage.scss */
+  /* line 20, ../sass/subpage.scss */
   .subpage-details {
     float: left;
     display: block;
@@ -5000,19 +4995,19 @@ a:visited {
   }
 }
 @media (max-width: 666px) {
-  /* line 29, ../sass/subpage.scss */
+  /* line 20, ../sass/subpage.scss */
   .subpage-details {
     padding-left: 15px;
     padding-right: 15px;
   }
 }
 
-/* line 42, ../sass/subpage.scss */
+/* line 33, ../sass/subpage.scss */
 .subpage #outer main .app-info {
   border-bottom: 2px solid #ccc;
   background: #dfdfdf;
 }
-/* line 49, ../sass/subpage.scss */
+/* line 40, ../sass/subpage.scss */
 .subpage #outer main #main-content .posts {
   float: left;
   display: block;
@@ -5027,7 +5022,7 @@ a:visited {
   margin-right: 0;
 }
 @media (max-width: 666px), (min-width: 667px) and (max-width: 1023px) {
-  /* line 49, ../sass/subpage.scss */
+  /* line 40, ../sass/subpage.scss */
   .subpage #outer main #main-content .posts {
     margin-left: 2.13245%;
     float: left;
@@ -5041,7 +5036,7 @@ a:visited {
   }
 }
 @media (max-width: 666px) {
-  /* line 49, ../sass/subpage.scss */
+  /* line 40, ../sass/subpage.scss */
   .subpage #outer main #main-content .posts {
     margin-left: 0%;
     float: left;
@@ -5055,13 +5050,13 @@ a:visited {
     margin-right: 0;
   }
 }
-/* line 62, ../sass/subpage.scss */
+/* line 53, ../sass/subpage.scss */
 .subpage #outer main #main-content .posts--related {
   float: left;
   /* breakpoint: smartphone | desktop; */
 }
 @media (min-width: 667px) {
-  /* line 62, ../sass/subpage.scss */
+  /* line 53, ../sass/subpage.scss */
   .subpage #outer main #main-content .posts--related {
     float: left;
     display: block;
@@ -5074,7 +5069,7 @@ a:visited {
     margin-right: 0;
   }
 }
-/* line 71, ../sass/subpage.scss */
+/* line 62, ../sass/subpage.scss */
 .subpage #outer main #main-content #extra-content {
   float: left;
   display: block;
@@ -5092,7 +5087,7 @@ a:visited {
   margin-right: 0;
 }
 @media (max-width: 666px), (min-width: 667px) and (max-width: 1023px) {
-  /* line 71, ../sass/subpage.scss */
+  /* line 62, ../sass/subpage.scss */
   .subpage #outer main #main-content #extra-content {
     float: left;
     display: block;
@@ -5105,12 +5100,12 @@ a:visited {
   }
 }
 @media (max-width: 666px) {
-  /* line 71, ../sass/subpage.scss */
+  /* line 62, ../sass/subpage.scss */
   .subpage #outer main #main-content #extra-content {
     display: none;
   }
 }
-/* line 84, ../sass/subpage.scss */
+/* line 75, ../sass/subpage.scss */
 .subpage #outer main #main-content #extra-content h3 {
   color: #c7b961;
   font-size: 23px;
@@ -5120,13 +5115,13 @@ a:visited {
   font-weight: bold;
   text-align: left;
 }
-/* line 91, ../sass/subpage.scss */
+/* line 82, ../sass/subpage.scss */
 .subpage #outer main #main-content #extra-content .hotevent__list a {
   display: block;
   overflow: hidden;
   border: 1px solid #ccc;
 }
-/* line 96, ../sass/subpage.scss */
+/* line 87, ../sass/subpage.scss */
 .subpage #outer main #main-content #extra-content .hotevent__list a img {
   display: inline-block;
   height: 200px;
@@ -5134,7 +5129,7 @@ a:visited {
   border: none;
   float: left;
 }
-/* line 104, ../sass/subpage.scss */
+/* line 95, ../sass/subpage.scss */
 .subpage #outer main #main-content #extra-content .hotevent__list a > div {
   float: left;
   width: 100%;
@@ -5142,7 +5137,7 @@ a:visited {
   padding: 15px 5%;
   text-align: left;
 }
-/* line 111, ../sass/subpage.scss */
+/* line 102, ../sass/subpage.scss */
 .subpage #outer main #main-content #extra-content .hotevent__list a > div h3 {
   font-size: 16px;
   color: #4d4d4d;
@@ -5150,7 +5145,7 @@ a:visited {
   text-align: left;
   line-height: 2;
 }
-/* line 119, ../sass/subpage.scss */
+/* line 110, ../sass/subpage.scss */
 .subpage #outer main #main-content #extra-content .hotevent__list a > div time {
   color: #000;
 }

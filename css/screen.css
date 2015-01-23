@@ -3986,7 +3986,7 @@ a:visited {
   }
 }
 /* line 755, ../sass/screen.scss */
-#outer main #main-content .posts h2 {
+#outer main #main-content .posts > h2 {
   color: #c7b961;
   font-size: 23px;
   text-transform: uppercase;
