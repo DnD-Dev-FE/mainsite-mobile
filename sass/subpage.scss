@@ -3,6 +3,9 @@
 
 .rte {
     @import "base/base";
+    pre {
+        overflow: auto;
+    }
 }
 .subpage {
     #outer {
