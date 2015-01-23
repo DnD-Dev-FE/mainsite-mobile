@@ -4716,9 +4716,9 @@ article body {
   -webkit-font-smoothing: antialiased;
   background-color: white;
   color: #333;
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "Roboto", Arial, Tahoma, sans-serif;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.7;
 }
 /* line 10, ../sass/base/_typography.scss */
 article h1,
@@ -4727,8 +4727,8 @@ article h3,
 article h4,
 article h5,
 article h6 {
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-  line-height: 1.25;
+  font-family: "Roboto", Arial, Tahoma, sans-serif;
+  line-height: 1.5;
   margin: 0;
   text-rendering: optimizeLegibility;
 }
@@ -4758,7 +4758,7 @@ article h6 {
 }
 /* line 46, ../sass/base/_typography.scss */
 article p {
-  margin: 0 0 0.75em;
+  margin: 0 0 0.85em;
 }
 /* line 50, ../sass/base/_typography.scss */
 article a {
@@ -4783,7 +4783,7 @@ article hr {
   border-left: none;
   border-right: none;
   border-top: none;
-  margin: 1.5em 0;
+  margin: 1.7em 0;
 }
 /* line 73, ../sass/base/_typography.scss */
 article img,
@@ -4795,8 +4795,8 @@ article picture {
 article blockquote {
   border-left: 2px solid #DDD;
   color: #595959;
-  margin: 1.5em 0;
-  padding-left: 0.75em;
+  margin: 1.7em 0;
+  padding-left: 0.85em;
 }
 /* line 86, ../sass/base/_typography.scss */
 article cite {
@@ -4811,21 +4811,21 @@ article cite:before {
 article fieldset {
   background: #f7f7f7;
   border: 1px solid #DDD;
-  margin: 0 0 0.75em 0;
-  padding: 1.5em;
+  margin: 0 0 0.85em 0;
+  padding: 1.7em;
 }
 /* line 8, ../sass/base/_forms.scss */
 article input,
 article label,
 article select {
   display: block;
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "Roboto", Arial, Tahoma, sans-serif;
   font-size: 14px;
 }
 /* line 16, ../sass/base/_forms.scss */
 article label {
   font-weight: bold;
-  margin-bottom: 0.375em;
+  margin-bottom: 0.425em;
 }
 /* line 20, ../sass/base/_forms.scss */
 article label.required:after {
@@ -4849,10 +4849,10 @@ article select[multiple=multiple] {
   border-radius: 3px;
   border: 1px solid #DDD;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+  font-family: "Roboto", Arial, Tahoma, sans-serif;
   font-size: 14px;
-  margin-bottom: 0.75em;
-  padding: 0.5em 0.5em;
+  margin-bottom: 0.85em;
+  padding: 0.56667em 0.56667em;
   width: 100%;
 }
 /* line 44, ../sass/base/_forms.scss */
@@ -4885,23 +4885,23 @@ article input[type="search"] {
 article input[type="checkbox"],
 article input[type="radio"] {
   display: inline;
-  margin-right: 0.375em;
+  margin-right: 0.425em;
 }
 /* line 69, ../sass/base/_forms.scss */
 article input[type="file"] {
-  padding-bottom: 0.75em;
+  padding-bottom: 0.85em;
   width: 100%;
 }
 /* line 74, ../sass/base/_forms.scss */
 article select {
-  margin-bottom: 1.5em;
+  margin-bottom: 1.7em;
   max-width: 100%;
   width: auto;
 }
 /* line 1, ../sass/base/_tables.scss */
 article table {
   border-collapse: collapse;
-  margin: 0.75em 0;
+  margin: 0.85em 0;
   table-layout: fixed;
   width: 100%;
 }
@@ -4909,13 +4909,13 @@ article table {
 article th {
   border-bottom: 1px solid #b7b7b7;
   font-weight: bold;
-  padding: 0.75em 0;
+  padding: 0.85em 0;
   text-align: left;
 }
 /* line 15, ../sass/base/_tables.scss */
 article td {
   border-bottom: 1px solid #DDD;
-  padding: 0.75em 0;
+  padding: 0.85em 0;
 }
 /* line 20, ../sass/base/_tables.scss */
 article tr,
@@ -4932,12 +4932,12 @@ article ol {
 }
 /* line 20, ../sass/base/_lists.scss */
 article dl {
-  margin-bottom: 0.75em;
+  margin-bottom: 0.85em;
 }
 /* line 23, ../sass/base/_lists.scss */
 article dl dt {
   font-weight: bold;
-  margin-top: 0.75em;
+  margin-top: 0.85em;
 }
 /* line 28, ../sass/base/_lists.scss */
 article dl dd {
@@ -4976,23 +4976,35 @@ article h1 {
   font-weight: bold;
   text-align: left;
 }
+/* line 18, ../sass/subpage.scss */
+article img {
+  border: 1px solid #DDD;
+}
+/* line 21, ../sass/subpage.scss */
+article p {
+  line-height: 1.7;
+}
+/* line 24, ../sass/subpage.scss */
+article ul, article ol {
+  margin-left: 15px;
+}
 
-/* line 19, ../sass/subpage.scss */
+/* line 29, ../sass/subpage.scss */
 .rte {
   padding: 20px 0;
 }
-/* line 21, ../sass/subpage.scss */
+/* line 31, ../sass/subpage.scss */
 .rte * {
   font-family: "Roboto", Arial, Tahoma, sans-serif;
 }
 
-/* line 24, ../sass/subpage.scss */
+/* line 34, ../sass/subpage.scss */
 .subpage-details {
   /* breakpoint: smartphone | desktop; */
   /* breakpoint: smartphone | desktop; */
 }
 @media (min-width: 667px) {
-  /* line 24, ../sass/subpage.scss */
+  /* line 34, ../sass/subpage.scss */
   .subpage-details {
     float: left;
     display: block;
@@ -5005,19 +5017,19 @@ article h1 {
   }
 }
 @media (max-width: 666px) {
-  /* line 24, ../sass/subpage.scss */
+  /* line 34, ../sass/subpage.scss */
   .subpage-details {
     padding-left: 15px;
     padding-right: 15px;
   }
 }
 
-/* line 37, ../sass/subpage.scss */
+/* line 47, ../sass/subpage.scss */
 .subpage #outer main .app-info {
   border-bottom: 2px solid #ccc;
   background: #dfdfdf;
 }
-/* line 44, ../sass/subpage.scss */
+/* line 54, ../sass/subpage.scss */
 .subpage #outer main #main-content .posts {
   float: left;
   display: block;
@@ -5032,7 +5044,7 @@ article h1 {
   margin-right: 0;
 }
 @media (max-width: 666px), (min-width: 667px) and (max-width: 1023px) {
-  /* line 44, ../sass/subpage.scss */
+  /* line 54, ../sass/subpage.scss */
   .subpage #outer main #main-content .posts {
     margin-left: 2.13245%;
     float: left;
@@ -5046,7 +5058,7 @@ article h1 {
   }
 }
 @media (max-width: 666px) {
-  /* line 44, ../sass/subpage.scss */
+  /* line 54, ../sass/subpage.scss */
   .subpage #outer main #main-content .posts {
     margin-left: 0%;
     float: left;
@@ -5060,13 +5072,13 @@ article h1 {
     margin-right: 0;
   }
 }
-/* line 57, ../sass/subpage.scss */
+/* line 67, ../sass/subpage.scss */
 .subpage #outer main #main-content .posts--related {
   float: left;
   /* breakpoint: smartphone | desktop; */
 }
 @media (min-width: 667px) {
-  /* line 57, ../sass/subpage.scss */
+  /* line 67, ../sass/subpage.scss */
   .subpage #outer main #main-content .posts--related {
     float: left;
     display: block;
@@ -5079,7 +5091,7 @@ article h1 {
     margin-right: 0;
   }
 }
-/* line 66, ../sass/subpage.scss */
+/* line 76, ../sass/subpage.scss */
 .subpage #outer main #main-content #extra-content {
   float: left;
   display: block;
@@ -5097,7 +5109,7 @@ article h1 {
   margin-right: 0;
 }
 @media (max-width: 666px), (min-width: 667px) and (max-width: 1023px) {
-  /* line 66, ../sass/subpage.scss */
+  /* line 76, ../sass/subpage.scss */
   .subpage #outer main #main-content #extra-content {
     float: left;
     display: block;
@@ -5110,12 +5122,12 @@ article h1 {
   }
 }
 @media (max-width: 666px) {
-  /* line 66, ../sass/subpage.scss */
+  /* line 76, ../sass/subpage.scss */
   .subpage #outer main #main-content #extra-content {
     display: none;
   }
 }
-/* line 79, ../sass/subpage.scss */
+/* line 89, ../sass/subpage.scss */
 .subpage #outer main #main-content #extra-content h3 {
   color: #c7b961;
   font-size: 23px;
@@ -5125,13 +5137,13 @@ article h1 {
   font-weight: bold;
   text-align: left;
 }
-/* line 86, ../sass/subpage.scss */
+/* line 96, ../sass/subpage.scss */
 .subpage #outer main #main-content #extra-content .hotevent__list a {
   display: block;
   overflow: hidden;
   border: 1px solid #ccc;
 }
-/* line 91, ../sass/subpage.scss */
+/* line 101, ../sass/subpage.scss */
 .subpage #outer main #main-content #extra-content .hotevent__list a img {
   display: inline-block;
   height: 200px;
@@ -5139,7 +5151,7 @@ article h1 {
   border: none;
   float: left;
 }
-/* line 99, ../sass/subpage.scss */
+/* line 109, ../sass/subpage.scss */
 .subpage #outer main #main-content #extra-content .hotevent__list a > div {
   float: left;
   width: 100%;
@@ -5147,7 +5159,7 @@ article h1 {
   padding: 15px 5%;
   text-align: left;
 }
-/* line 106, ../sass/subpage.scss */
+/* line 116, ../sass/subpage.scss */
 .subpage #outer main #main-content #extra-content .hotevent__list a > div h3 {
   font-size: 16px;
   color: #4d4d4d;
@@ -5155,7 +5167,7 @@ article h1 {
   text-align: left;
   line-height: 2;
 }
-/* line 114, ../sass/subpage.scss */
+/* line 124, ../sass/subpage.scss */
 .subpage #outer main #main-content #extra-content .hotevent__list a > div time {
   color: #000;
 }
