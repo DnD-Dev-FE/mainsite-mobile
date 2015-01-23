@@ -2,11 +2,27 @@
 
 .base {
     @import 'base/base';
+    pre {
+        overflow: auto;
+    }
+    h2 {
+        color: $content-text-color;
+        font-size: 23px;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 35px 0 20px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    // > h3 {
+    //     @include section-title();
+    //     text-align: left;
+    // }
 }
 
 .rte {
     padding: 20px 0;
-
     * { font-family: $font-face; }
 }
 
@@ -23,7 +39,6 @@
 .subpage {
     #outer {
         main {
-
             .app-info {
                 border-bottom: 2px solid $primary-border-color;
                 background: $placeholder-color;
