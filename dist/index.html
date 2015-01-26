@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Mainsite mobile template</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="css/dnd.mom.homepage.min.css" media="screen" />
+    </head>
+
+    <body class="homepage">
+        <div id="outer">
+            <nav id="main-nav">
+                <div class="site-search">
+                    <form method="post" action="#" role="search">
+                        <fieldset>
+                            <legend>Tìm kiếm</legend>
+                            <input class="site-search__field" type="search" placeholder="Tìm kiếm" />
+                            <button type="submit" class="site-search__button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </fieldset>
+                    </form>
+                </div>
+
+                <ul id="main-nav__list">
+                    <li><a href="index.html" title="Trang chủ" class="active">Trang chủ</a></li>
+                    <li><a href="posts.html#!news" title="Tin tức">Tin tức</a></li>
+                    <li><a href="posts.html#!events" title="Sự kiện">Sự kiện</a></li>
+                    <li><a href="#" title="Thư viện" class="main-nav__has-sub">Thư viện&nbsp;<i class="fa fa-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="subpage.html#!media" title="Hình nền">Hình nền</a></li>
+                            <li><a href="subpage.html#!media" title="Video">Video</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" title="Cộng đồng" class="main-nav__has-sub">Cộng đồng&nbsp;<i class="fa fa-chevron-down"></i></a>
+
+                        <ul>
+                            <li><a href="http://facebook.com" title="Fanpage">Fanpage</a></li>
+                            <li><a href="http://diendan.zing.vn" title="Diễn đàn">Diễn đàn</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <input type="checkbox" id="drawer-toggle" name="drawer-toggle" />
+            <label for="drawer-toggle" id="drawer-toggle-label"></label>
+
+            <p class="hotline"><strong><a href="tel:1900 576 885">1900 576 885</a><br />( 500đ/phút )</strong><i class="fa fa-mobile"></i></p>
+
+            <main>
+                <!-- primary banner can contains: image, video -->
+                <div id="primary-banner">
+                    <!-- <img src="" title="Primary banner" alt="Primary banner" width="100%" height="100%" /> -->
+                    <video width="100%">
+                        <source src="http://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                        <source src="http://www.w3schools.com/html/mov_bbb.ogg" type="video/ogg">
+                        Your browser does not support HTML5 video.
+                    </video>
+                </div>
+                <!-- end of primary banner -->
+
+                <div class="app-info">
+                    <div class="wrapper">
+                        <a href="" title="" class="app-info__icon"><img src="" title="App icon" alt="App icon" /></a>
+                        <p class="app-info__brief"><strong>How to train your dragon</strong><br />Nhà phát hành VNG</p>
+
+                        <ul class="app-info__install">
+                            <li class="app-info__install--mobile"><a href="#" title="Cài đặt">Cài đặt</a></li>
+                            <li class="app-info__install--desktop app-info__install--app-store"><a href="#" title="Tải game trên App Store">Tải game trên App Store</a></li>
+                            <li class="app-info__install--desktop app-info__install--google-play"><a href="#" title="Tải game trên Google Play">Tải game trên Google Play</a></li>
+                        </ul>
+
+                        <div class="fb-like-placeholder">
+                            <!-- embeded content -->
+                            <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="100" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+                        </div>
+
+                        <img src="images/qr-code.png" alt="QR code" class="app-info__qr" />
+                    </div>
+                </div>
+
+                <section id="main-content">
+                    <section id="key-features" class="swiper-container">
+                        <ul class="swiper-wrapper">
+                            <li class="swiper-slide">
+                                <img src="" title="Key features" alt="Key features" />
+                            </li>
+                            <li class="swiper-slide">
+                                <img src="" title="Screenshot" alt="Screenshot" />
+                            </li>
+                            <li class="swiper-slide">
+                                <img src="" title="Video" alt="Video" />
+                            </li>
+                            <li class="swiper-slide">
+                                <img src="" title="Key features" alt="Key features" />
+                            </li>
+                            <li class="swiper-slide">
+                                <img src="" title="Key features" alt="Key features" />
+                            </li>
+                            <li class="swiper-slide">
+                                <img src="" title="Video" alt="Video" />
+                            </li>
+                            <li class="swiper-slide">
+                                <img src="" title="Video" alt="Video" />
+                            </li>
+                            <li class="swiper-slide">
+                                <img src="" title="Video" alt="Video" />
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section id="hot-event" class="slider slider--full">
+                        <h2>Sự kiện hot</h2>
+                        <div id="hot-events__list" class="swiper-container">
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide swiper-slide--active">
+                                    <a href="post-details.html" title="How to train your dragon 1">
+                                        <img src="#" title="How to train your dragon 1" alt="How to train your dragon 1" />
+                                        <div>
+                                            <h3>How to train your dragon 1</h3>
+                                            <time>01/10 &mdash; 20/10/2013</time>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="post-details.html" title="How to train your dragon 2">
+                                        <img src="" title="How to train your dragon 2" alt="How to train your dragon 2" />
+                                        <div>
+                                            <h3>How to train your dragon 2. Next time, you win.</h3>
+                                            <time>02/10 &mdash; 20/10/2014</time>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="post-details.html" title="How to train your dragon 3">
+                                        <img src="" title="How to train your dragon 3" alt="How to train your dragon 3" />
+                                        <div>
+                                            <h3>How to train your dragon 3</h3>
+                                            <time>03/10 &mdash; 20/10/2015</time>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="swiper-slide">
+                                    <a href="post-details.html" title="How to train your dragon 4">
+                                        <img src="" title="How to train your dragon 4" alt="How to train your dragon 4" />
+                                        <div>
+                                            <h3>How to train your dragon 4</h3>
+                                            <time>03/10 &mdash; 20/10/2015</time>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <div class="wrapper">
+                        <section class="posts" >
+                            <h2>Tin tức/Sự kiện</h2>
+
+                            <ul class="posts__tabs" id="posts__tabs">
+                                <li><a href="php/all-posts/danh-sach.1.php" data-cate="all" title="Tất cả">Tất cả</a></li>
+                                <li><a href="php/tin-tuc/danh-sach.1.php" data-cate="news" title="Tin tức">Tin tức</a></li>
+                                <li><a href="php/su-kien/danh-sach.1.php" data-cate="events" title="Sự kiện">Sự kiện</a></li>
+                            </ul>
+
+                            <ul class="posts__list" id="posts__list">
+                                <!-- Dynamic loading content via ajax -->
+                            </ul>
+
+                            <a href="posts.html#!all?p=1" data-href="posts.html#!{{ cate }}?p=1" title="Xem thêm" class="posts__view-all" id="posts__view-all">Xem thêm&nbsp;<i class="fa fa-long-arrow-right"></i></a>
+                        </section>
+
+                        <!-- only available for desktop/tablet -->
+                        <aside id="extra-content">
+                            <section class="rating-box">
+                                <h3>Đánh giá game này</h3>
+                                <ul id="rating-box--choices" class="rating-box__stars">
+                                    <li><a href="1" title="Đánh giá 1 sao"><i class="fa fa-star-o"></i><span>&nbsp;1 star</span></a></li>
+                                    <li><a href="2" title="Đánh giá 2 sao"><i class="fa fa-star-o"></i><span>&nbsp;2 star</span></a></li>
+                                    <li><a href="3" title="Đánh giá 3 sao"><i class="fa fa-star-o"></i><span>&nbsp;3 star</span></a></li>
+                                    <li><a href="4" title="Đánh giá 4 sao"><i class="fa fa-star-o"></i><span>&nbsp;4 star</span></a></li>
+                                    <li><a href="5" title="Đánh giá 5 sao"><i class="fa fa-star-o"></i><span>&nbsp;5 star</span></a></li>
+                                </ul>
+
+                                <hr />
+
+                                <p id="rating-box__average-points" class="rating-box__average-points">4.5</p>
+                                <ul class="rating-box__stars rating-box__stars--average">
+                                    <li><i class="fa fa-star"></i><span>&nbsp;1 star</span></li>
+                                    <li><i class="fa fa-star"></i><span>&nbsp;2 star</span></li>
+                                    <li><i class="fa fa-star"></i><span>&nbsp;3 star</span></li>
+                                    <li><i class="fa fa-star-half-o"></i><span>&nbsp;4 star</span></li>
+                                    <li><i class="fa fa-star-o"></i><span>&nbsp;5 star</span></li>
+                                </ul>
+                                <p class="rating-box__total-rating"><i class="fa fa-user"></i>&nbsp;<span id="rating-box__total-rating-number">3,068</span></p>
+
+                                <ul id="rating-box__statistic-list" class="rating-box__statistic" data-total-vote="3046" data-max-vote="1000" data-min-vote="320">
+                                    <li>
+                                        <label>5 <i class="fa fa-star"></i></label>
+                                        <div class="rating-box__statistic-bar"><span data-value="1000">1000<span></div>
+                                    </li>
+                                    <li>
+                                        <label>4 <i class="fa fa-star"></i></label>
+                                        <div class="rating-box__statistic-bar"><span data-value="502">502<span></div>
+                                    </li>
+                                    <li>
+                                        <label>3 <i class="fa fa-star"></i></label>
+                                        <div class="rating-box__statistic-bar"><span data-value="456">456<span></div>
+                                    </li>
+                                    <li>
+                                        <label>2 <i class="fa fa-star"></i></label>
+                                        <div class="rating-box__statistic-bar"><span data-value="320">320<span></div>
+                                    </li>
+                                    <li>
+                                        <label>1 <i class="fa fa-star"></i></label>
+                                        <div class="rating-box__statistic-bar"><span data-value="768">768<span></div>
+                                    </li>
+                                </ul>
+                            </section>
+                        </aside>
+                        <!-- end of aside -->
+                    </div>
+
+                    <section class="socials">
+                        <ul class="socials__list">
+                            <li><a href="#" title=""><i class="fa fa-wechat"></i><br />Forum</a></li>
+                            <li><a href="#" title=""><i class="fa fa-facebook"></i><br />Fanpage</a></li>
+                            <li><a href="#" title=""><i class="fa fa-youtube"></i><br />Mobile TV</a></li>
+                        </ul>
+                    </section>
+                </section>
+
+                <footer>
+                    <p class="copyright"><i class="fa fa-copyright"></i>&nbsp;bản quyền thuộc về VNG 2015.</p>
+                </footer>
+            </main>
+
+            <aside class="flyout-content">
+                <a href="#" title="Trở về đầu trang" id="top-button" class="flyout-content__top-button"><i class="fa fa-chevron-up"></i><br />Top</a>
+            </aside>
+        </div>
+
+        <script type="text/javascript" src="js/dnd.mom.homepage.min.js"></script>
+
+        <!-- Facebook integrated -->
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&appId=584394941662737&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+        <!-- end of Facebook integrated -->
+    </body>
+</html>
