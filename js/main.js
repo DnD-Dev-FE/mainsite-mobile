@@ -357,6 +357,8 @@ DnDMoM = (function($) {
         },
 
         initSubpageHasher: function() {
+            if ( typeof hasher === 'undefined' ) { return false; }
+
             //setup #Hasher
             function parseHash (newHash, oldHash) { //callback when 'setHash'
                 setTimeout(function() { //fix delay
@@ -372,6 +374,8 @@ DnDMoM = (function($) {
         },
 
         initRouter: function() {
+            if ( typeof crossroads === 'undefined' ) { return false; }
+
             var blogrollAjax;
             //router for 'posts'
             crossroads.addRoute('/posts.html:?query:', function(query) {

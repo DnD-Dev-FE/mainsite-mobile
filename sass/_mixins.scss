@@ -78,12 +78,12 @@
     font-size: 23px;
     text-transform: uppercase;
     text-align: center;
-    padding: 35px 0 20px;
+    padding: 38px 0 14px;
     font-weight: bold;
 }
 
 @mixin post-title() {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bold;
     color: $post-title-color;
     &:hover {
@@ -102,4 +102,44 @@
     height: 0;
     border: none;
     border-bottom: 1px solid $primary-border-color;
+}
+
+@mixin post-cate-and-time {
+    color: $secondary-text-color;
+
+    .search__cate,
+    .posts__cate {
+        color: $category-color;
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-right: 5px;
+    }
+
+    .search__time,
+    .posts__time {
+        color: $time-color;
+        margin-left: 5px;
+    }
+}
+
+@mixin fb-placeholder {
+    border: 2px solid #4561aa;
+    text-align: center;
+    background: #fff;
+    @include bp(smartphone) {
+        width: 100px;
+        height: 40px;
+    }
+
+    @include border-radius(3px);
+
+    > .fb-like {
+        display: inline-block;
+        margin: 12px 0 0;
+
+        @include bp(smartphone) {
+            margin: 8px 0 0;
+        }
+    }
 }

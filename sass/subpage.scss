@@ -8,11 +8,16 @@ article {
 	* {
 		color: $content-text-color;
 		font-family: $font-face;
-		// font-size: $font-size-base;
 	}
 	h1 {
 		@include section-title();
 		text-align: left;
+		padding-top: 36px;
+	}
+
+	h2 {
+		font-size: 20px;
+		font-weight: bold;
 	}
 
 	img {
@@ -24,10 +29,37 @@ article {
 	ul, ol {
 		margin-left: 15px;
 	}
+
+	.post__cate-and-time {
+		@include post-cate-and-time();
+	}
+}
+
+.post {
+
+	.post__sharing {
+		min-height: 40px;
+		margin-top: 20px;
+	}
+
+	.post_tags {
+		font-size: 12px;
+		margin-bottom: 80px;
+
+		@include bp(smartphone) {
+			margin-bottom: 0;
+		}
+
+		a {
+			margin: 0 5px;
+		}
+		a:hover {
+			color: $hover-secondary-color;
+		}
+	}
 }
 
 .rte {
-	padding: 20px 0;
 	* { font-family: $font-face; }
 }
 
@@ -35,9 +67,13 @@ article {
 	@include bp(desktop) {
 		@include span-columns(8);
 	}
+	@include bp(hybrid) {
+		@include span-columns(7.75);
+		@include shift(0.25);
+	}
 	@include bp(smartphone) {
-		padding-left: 15px;
-		padding-right: 15px;
+		@include span-columns(11);
+		@include shift(0.5);
 	}
 }
 
@@ -51,10 +87,20 @@ article {
 
 			#main-content {
 				.wrapper {
+
 					.search {
 						@include span-columns(12);
+
+						@include bp(hybrid) {
+							@include span-columns(11.5);
+						}
+
+						@include bp(smartphone) {
+							@include span-columns(12);
+						}
 					}
 				}
+
 
 				.posts {
 					@include span-columns(8);
@@ -63,10 +109,18 @@ article {
 						@include span-columns(7.75);
 					}
 					@include bp(smartphone) {
-						@include shift(0);
-						@include span-columns(12);
-						padding: 15px;
+						@include span-columns(11);
+						@include shift(0.5);
+						padding: 0;
 					}
+				}
+
+				aside h2,
+				.posts h2{
+					font-size: 20px;
+					font-weight: bold;
+					color: $primary-text-color;
+					text-align: left;
 				}
 
 				.posts--related {
@@ -76,12 +130,25 @@ article {
 						@include span-columns(4);
 						margin: 0;
 					}
+
+					> h2 {
+						padding: 40px 0 0;
+					}
+
+					.posts__list {
+
+						> li:last-child {
+							border-bottom: none;
+							padding-bottom: 80px;
+						}
+					}
 				}
 
 				#extra-content {
 					@include span-columns(4);
 					@include bp(hybrid) {
 						@include span-columns(3.75);
+						margin-right: 0;
 					}
 					@include bp(smartphone) {
 						display: none;
@@ -89,45 +156,47 @@ article {
 
 					float: left;
 					margin: 0;
-					padding-top: 0;
+					padding-top: 38px;
 
-					h3 {
-						@include section-title();
-						text-align: left;
-					}
+					.hotevent {
 
-					.hotevent__list {
+						> h2 {
+							margin-bottom: 14px;
+						}
 
-						a {
-							display: block;
-							overflow: hidden;
-							border: 1px solid $primary-border-color;
+						.hotevent__list {
 
-							img {
-								display: inline-block;
-								height: 200px;
-								width: auto;
-								border: none;
-								float: left;
-							}
+							a {
+								display: block;
+								overflow: hidden;
+								border: 1px solid $primary-border-color;
 
-							> div {
-								float: left;
-								width: 100%;
-								border-top: 1px solid $primary-border-color;
-								padding: 15px 5%;
-								text-align: left;
-
-								h3 {
-									font-size: 16px;
-									color: #4d4d4d;
-									padding: 0;
-									text-align: left;
-									line-height: 2;
+								img {
+									display: inline-block;
+									height: 200px;
+									width: auto;
+									border: none;
+									float: left;
 								}
 
-								time {
-									color: #000;
+								> div {
+									float: left;
+									width: 100%;
+									border-top: 1px solid $primary-border-color;
+									padding: 15px 5%;
+									text-align: left;
+
+									h3 {
+										font-size: 16px;
+										color: #4d4d4d;
+										padding: 0;
+										text-align: left;
+										line-height: 2;
+									}
+
+									time {
+										color: #000;
+									}
 								}
 							}
 						}
@@ -137,13 +206,12 @@ article {
 				.gallery {
 					@include span-columns(12);
 					@include bp(hybrid) {
-						// @include shift(0.25);
-						// @include span-columns(7.75);
+						@include shift(0.25);
+						@include span-columns(11.5);
 					}
 					@include bp(smartphone) {
-						@include shift(0);
-						@include span-columns(12);
-						padding: 15px;
+						@include shift(0.5);
+						@include span-columns(11);
 					}
 					h2 {
 						@include section-title();
@@ -197,12 +265,12 @@ article {
 	                }
 					ul.gallery__list {
 						@include span-columns(12);
-						// float: left;
 						display: block;
 						list-style: none;
-						// display: none;
 						overflow: hidden;
 						margin-top: 20px;
+						border-bottom: 1px solid $primary-border-color;
+
 						li,
 						li.gallery__item {
 							@include span-columns(6 of 12);

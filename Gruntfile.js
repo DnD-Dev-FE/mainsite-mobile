@@ -40,7 +40,7 @@ module.exports = function(grunt) {
                 // the location of the resulting JS file
                 dest: 'dist/js/<%= pkg.name %>.homepage.js'
             },
-            subpage_js: {
+            posts_js: {
                 // the files to concatenate
                 src: [
                     'js/jquery2.min.js',
@@ -53,7 +53,40 @@ module.exports = function(grunt) {
                     'js/main.js'
                 ],
                 // the location of the resulting JS file
-                dest: 'dist/js/<%= pkg.name %>.subpage.js'
+                dest: 'dist/js/<%= pkg.name %>.posts.js'
+            },
+            post_details_js: {
+                // the files to concatenate
+                src: [
+                    'js/jquery2.min.js',
+                    'js/modernizr.js',
+                    'js/pattern.js',
+                    'js/main.js'
+                ],
+                // the location of the resulting JS file
+                dest: 'dist/js/<%= pkg.name %>.post-details.js'
+            },
+            gallery_js: {
+                // the files to concatenate
+                src: [
+                    'js/jquery2.min.js',
+                    'js/modernizr.js',
+                    'js/pattern.js',
+                    'js/main.js'
+                ],
+                // the location of the resulting JS file
+                dest: 'dist/js/<%= pkg.name %>.gallery.js'
+            },
+            search_js: {
+                // the files to concatenate
+                src: [
+                    'js/jquery2.min.js',
+                    'js/modernizr.js',
+                    'js/pattern.js',
+                    'js/main.js'
+                ],
+                // the location of the resulting JS file
+                dest: 'dist/js/<%= pkg.name %>.search.js'
             }
         },
         cssmin: {
@@ -77,9 +110,24 @@ module.exports = function(grunt) {
                     'dist/js/<%= pkg.name %>.homepage.min.js': ['<%= concat.homepage_js.dest %>']
                 }
             },
-            subpage_js: {
+            posts_js: {
                 files: {
-                    'dist/js/<%= pkg.name %>.subpage.min.js': ['<%= concat.subpage_js.dest %>']
+                    'dist/js/<%= pkg.name %>.posts.min.js': ['<%= concat.posts_js.dest %>']
+                }
+            },
+            post_details_js: {
+                files: {
+                    'dist/js/<%= pkg.name %>.post-details.min.js': ['<%= concat.post_details_js.dest %>']
+                }
+            },
+            gallery_js: {
+                files: {
+                    'dist/js/<%= pkg.name %>.gallery.min.js': ['<%= concat.gallery_js.dest %>']
+                }
+            },
+            search_js: {
+                files: {
+                    'dist/js/<%= pkg.name %>.search.min.js': ['<%= concat.search_js.dest %>']
                 }
             }
         }
@@ -94,6 +142,20 @@ module.exports = function(grunt) {
 
     // set of task(s).
     grunt.registerTask('build', ['clean', 'copy', 'concat', 'cssmin', 'uglify']);
+
     grunt.registerTask('build-homepage', ['concat:homepage_js', 'cssmin:homepage_css', 'uglify:homepage_js']);
-    grunt.registerTask('build-subpage', ['concat:subpage_js', 'cssmin:subpage_css', 'uglify:subpage_js']);
+
+    grunt.registerTask('build-subpage', [
+        'concat:posts_js',
+        'concat:post_details_js',
+        'concat:gallery_js',
+        'concat:search_js',
+
+        'cssmin:subpage_css',
+
+        'uglify:posts_js',
+        'uglify:post_details_js',
+        'uglify:gallery_js',
+        'uglify:search_js'
+    ]);
 };

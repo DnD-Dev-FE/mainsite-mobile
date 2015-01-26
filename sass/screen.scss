@@ -418,11 +418,16 @@ a:visited {
                 border: 1px solid $primary-border-color;
                 @include border-radius(3px);
                 margin: 22px 19px 0 0;
+                padding: 0;
 
+                @include bp(hybrid) {
+                    @include shift(0.25);
+                }
                 @include bp(smartphone) {
-                    margin: 22px 10px 0 15px;
+                    margin: 22px 10px 0 0;
                     width: 100px;
                     height: 100px;
+                    @include shift(0.5);
                 }
 
                 > img {
@@ -507,28 +512,11 @@ a:visited {
             }
 
             .fb-like-placeholder {
-                float: left;
+                @include fb-placeholder();
                 width: 120px;
                 height: 50px;
-                border: 2px solid #4561aa;
+                float: left;
                 margin: 22px 0 0;
-                text-align: center;
-                background: #fff;
-                @include bp(smartphone) {
-                    width: 100px;
-                    height: 40px;
-                }
-
-                @include border-radius(3px);
-
-                > .fb-like {
-                    display: inline-block;
-                    margin: 12px 0 0;
-
-                    @include bp(smartphone) {
-                        margin: 8px 0 0;
-                    }
-                }
             }
         }
 
@@ -831,22 +819,7 @@ a:visited {
                         border-bottom: 1px solid $primary-border-color;
 
                         p {
-                            color: $secondary-text-color;
-
-                            .search__cate,
-                            .posts__cate {
-                                color: $category-color;
-                                font-size: 12px;
-                                text-transform: uppercase;
-                                font-weight: bold;
-                                margin-right: 5px;
-                            }
-
-                            .search__time,
-                            .posts__time {
-                                color: $time-color;
-                                margin-left: 5px;
-                            }
+                            @include post-cate-and-time();
                         }
                         a  {
                             text-decoration: none;
@@ -933,6 +906,7 @@ a:visited {
                 width: 100%;
                 overflow: hidden;
                 padding: 10px 0;
+                @include box-sizing(border-box);
 
                 > .pagination__list {
                     @include align-items(space-between);
@@ -1036,7 +1010,7 @@ a:visited {
             }
 
             float: right;
-            padding-top: 82px;
+            padding-top: 79px;
 
             .rating-box {
                 padding: 10px 20px;
@@ -1191,7 +1165,7 @@ a:visited {
         right: 0;
 
         @include bp(widescreen) {
-            right: calc( (100% - #{$desktop-max-width})/2  - 40px );
+            right: calc( 50% - #{$desktop-max-width}/2  - 40px );
         }
 
         .flyout-content__top-button {
