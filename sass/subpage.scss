@@ -57,6 +57,25 @@ article {
 			color: $hover-secondary-color;
 		}
 	}
+
+	table {
+		th {
+			background-color: $table-header-background-color;
+		}
+		td {
+			border: 1px solid $table-border-color;
+			box-sizing: border-box;
+			padding: 5px;
+		}
+		tr {
+			&:nth-child(even) {
+				background-color: $table-even-row-background-color;
+			}
+			&:nth-child(odd) {
+				background-color: $table-odd-row-background-color;
+			}
+		}
+	}
 }
 
 .rte {
