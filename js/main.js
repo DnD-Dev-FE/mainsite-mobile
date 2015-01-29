@@ -97,10 +97,13 @@ DnDMoM = (function($) {
             contentType: 'json', //send
             data: JSON.stringify({}),
             success: function(data, status, jqXHR) {
-                listContent
-                    .html(data)
-                    .removeClass('posts__list--inactive');
-                loading.addClass('posts__loading--hidden');
+                var delay = new Date().valueOf() - timer;
+                setTimeout(function() {
+                    listContent
+                        .html(data)
+                        .removeClass('posts__list--inactive');
+                    loading.addClass('posts__loading--hidden');
+                },  delay >= 1000 ? 0 : 1000 );
 
                 if ( success !== undefined ) { success(data, status, jqXHR); }
             },
