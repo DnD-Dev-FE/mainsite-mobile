@@ -71,6 +71,7 @@ DnDMoM = (function($) {
 
     //get 5 newest posts by cate: all | news | events
     var _doFilterPosts_ = function(url, success, error, completed) {
+        var timer = new Date().valueOf();
         var listContent = $('#posts__list');
         var loadingHTML = '<p class="posts__loading"><span>Đang tải dữ liệu...</span></p>';
         var loading = listContent.prev('.posts__loading');
