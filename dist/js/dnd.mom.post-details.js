@@ -55,50 +55,68 @@ Pattern.Mediator = (function () {
 var DnDMoM = {};
 
 jQuery(document).ready(function(e) {
+
     (function($) {
         var $window = $(window);
         var $body = $('body');
 
         //load config
-        $.get('config/config.json', {/* post data */}, function(data) {
-            DnDMoM.config = data;
+        var url = 'http://img.zing.vn/products/devmobile/config/config.json?callback=?'; 
 
-            //init main navigation sub-menu behavior
-            DnDMoM.initMainNav();
+        $.ajax({
+           type: 'GET',
+            url: url,
+            async: false,
+            jsonpCallback: 'jsonCallback',
+            contentType: "application/json",
+            dataType: 'jsonp',
+            success: function(data) {
+                DnDMoM.config = data;
 
-            //init key feature + hot events slider on homepage
-            if ( $body.hasClass('homepage') ) {
-                DnDMoM.initImageSlider('#key-features');
-                DnDMoM.initHotEventSlider();
-            }
+                //init main navigation sub-menu behavior
+                DnDMoM.initMainNav();
 
-            //init to top button behavior
-            DnDMoM.initTopButton();
-
-            //init rating box only on bp(desktop) on homepage
-            if ( $body.hasClass('homepage') ) {
-                var _fn_ = function() {
-                    if ( Modernizr.mq('only screen and (min-width: 667px)' ) ) {
-                        DnDMoM.initRatingBox();
-                    }
+                //init key feature + hot events slider on homepage
+                if ( $body.hasClass('homepage') ) {
+                    DnDMoM.initImageSlider('#key-features');
+                    DnDMoM.initHotEventSlider();
                 }
-                $window.on('resize', function(e) {
+
+                //init to top button behavior
+                DnDMoM.initTopButton();
+
+                //init rating box only on bp(desktop) on homepage
+                
+                if ( $body.hasClass('homepage') ) {                
+                    var _fn_ = function() {
+                        if ( Modernizr.mq('only screen and (min-width: 667px)' ) ) {
+                            DnDMoM.initRatingBox();
+                        }
+                    }
+                    $window.on('resize', function(e) {
+                        _fn_();
+                    });
                     _fn_();
-                });
-                _fn_();
-            }
+                }
 
-            //init filter posts by category for homepage
-            if ( $body.hasClass('homepage') ) {
-                DnDMoM.initFilterPosts('#posts__tabs');
-            }
+                //init filter posts by category for homepage
+                if ( $body.hasClass('homepage') ) {                
+                    DnDMoM.initFilterPosts('#posts__tabs');
+                }
 
-            //init Hasher for subpage
-            if ( $body.hasClass('subpage') ) {
-                DnDMoM.initRouter();
-                DnDMoM.initSubpageHasher();
+                //init Hasher for subpage
+                if ( $body.hasClass('subpage') ) {
+
+                    DnDMoM.initRouter();
+                    DnDMoM.initSubpageHasher();
+                }
+            },
+            error: function(e) {
+               console.log(e.message);
             }
-        }, 'json'/* receiving data type */);
+        });
+
+        
     })(jQuery);
 });
 
@@ -116,7 +134,7 @@ DnDMoM = (function($) {
 
     var _parseVar_ = function(str, valueObj) {
         $.each(valueObj, function(key, value) {
-            str = str.replace( new RegExp('{{ ' + key + ' }}'), value );
+            str = str.replace( new RegExp('{ ' + key + ' }'), value );
         });
         return str;
     }
@@ -145,10 +163,10 @@ DnDMoM = (function($) {
         return $.ajax({
             type: 'POST',
             url: url,
-            dataType: 'html', //receive
+            dataType: 'json', //receive
             contentType: 'json', //send
             data: JSON.stringify({}),
-            success: function(data, status, jqXHR) {
+            success: function(data, status, jqXHR) {                
                 listContent
                     .html(data)
                     .removeClass('posts__list--inactive');
@@ -181,6 +199,7 @@ DnDMoM = (function($) {
             var totalPage = 0;
             //update pagination index
             $('.pagination__list a.pagination__index').each(function() {
+                console.log(cate)
                 totalPage++;
                 var $this = $(this);
                 var href = $this.data('href');
@@ -221,6 +240,7 @@ DnDMoM = (function($) {
                     url = DnDMoM.config.eventsService;
                     break;
             }
+            
             url = _parseVar_(url, { page: page });
 
             return _doFilterPosts_(
@@ -373,7 +393,9 @@ DnDMoM = (function($) {
         },
 
         initFilterPosts: function(controlSelector) {
-            var control = $( controlSelector );
+          
+
+           var control = $( controlSelector );
             var filterPostsAjax;
 
             if ( control.length == 0 ) { return false; }
@@ -394,8 +416,9 @@ DnDMoM = (function($) {
 
                 //update view more posts href
                 var viewMorePostsBtn = $('#posts__view-all');
+                
                 viewMorePostsBtn.attr( 'href', _parseVar_( viewMorePostsBtn.data('href'), { cate: $this.data('cate') } ) );
-
+                                
                 filterPostsAjax = _doFilterPosts_(
                     url,
                     function(data, status, jqXHR) {}, //success
@@ -406,6 +429,7 @@ DnDMoM = (function($) {
                 return false;
             });
             control.find('a:eq(0)').trigger('click');
+           
         },
 
         initSubpageHasher: function() {
@@ -426,11 +450,13 @@ DnDMoM = (function($) {
         },
 
         initRouter: function() {
-            if ( typeof crossroads === 'undefined' ) { return false; }
-
+            
+            if ( typeof crossroads === 'undefined' ) { return false; }            
+            console.log('aftersubpage')
             var blogrollAjax;
             //router for 'posts'
             crossroads.addRoute('/posts.html:?query:', function(query) {
+
                 if ( query !== undefined ) {
                     var queryLocation = window.location.href.indexOf('?');
                     window.location = window.location.href.substr(0, queryLocation) + '#!all?' + $.param(query);
