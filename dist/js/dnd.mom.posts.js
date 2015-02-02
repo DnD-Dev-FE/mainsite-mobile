@@ -108,8 +108,8 @@ jQuery(document).ready(function(e) {
         var $body = $('body');
 
         //load config
-        var url = 'http://img.zing.vn/products/devmobile/config/config.json?callback=?';
-        //var url = 'config/config.json?callback=?';
+        //var url = 'http://img.zing.vn/products/devmobile/config/config.json?callback=?';
+        var url = 'config/config.json?callback=?';
 
         $.ajax({
            type: 'GET',
