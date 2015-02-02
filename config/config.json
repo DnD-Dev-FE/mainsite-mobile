@@ -1,9 +1,8 @@
 jsonCallback(
     {
 	    "ratingService": "php/fake-response.php",
-	    "allPostsService": "tin-tuc/danh-sach.{ page }.html",
-	    "newsService": "tin-tuc/danh-sach.{ page }.html",
-	    "eventsService": "su-kien/danh-sach.{ page }.html"
+	    "allPostsService": "php/all-posts/danh-sach.{ page }.php",
+	    "newsService": "php/tin-tuc/danh-sach.{ page }.php",
+	    "eventsService": "php/su-kien/danh-sach.{ page }.php"
 	}
-
 );

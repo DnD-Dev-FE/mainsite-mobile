@@ -54,17 +54,12 @@ jQuery(document).ready(function(e) {
 
                 //init Hasher for subpage
                 if ( $body.hasClass('subpage') ) {
-
                     DnDMoM.initRouter();
                     DnDMoM.initSubpageHasher();
                 }
             },
-            error: function(e) {
-               console.log(e.message);
-            }
+            error: function(e) {}
         });
-
-
     })(jQuery);
 });
 
@@ -82,7 +77,7 @@ DnDMoM = (function($) {
 
     var _parseVar_ = function(str, valueObj) {
         $.each(valueObj, function(key, value) {
-            str = str.replace( new RegExp('{ ' + key + ' }'), value );
+            str = str.replace( new RegExp('{ ' + key + ' }', 'g'), value );
         });
         return str;
     }
@@ -137,47 +132,16 @@ DnDMoM = (function($) {
     var _hasherListener = {
         //get posts with pagination by cate: all | news | events
         blogroll: function(cate, page) {
+            var liIndexItem = '<li><a href="" class="pagination__index" data-index={ page } data-href="#!{ cate }?p={ page }" title="{ page }">{ page }</a></li>';
+
             //active tab
             $('#posts__tabs')
                 .find('> li.active').removeClass('active').end()
-                .find('a[href="#!' + cate + '?p=1"]').parent().addClass('active');
+                .find('a[href="#!' + cate + '?p=' + page + '"]').parent().addClass('active');
 
-            //active page index
-            $('.pagination__list a.pagination__index')
-                .removeClass('pagination__index--active')
-                .eq(page-1).addClass('pagination__index--active');
-
-            var totalPage = 0;
-            //update pagination index
-            $('.pagination__list a.pagination__index').each(function() {
-                console.log(cate)
-                totalPage++;
-                var $this = $(this);
-                var href = $this.data('href');
-                $this.attr( 'href', _parseVar_(href, {cate: cate}) );
-            });
-            //update prev/next navigation
-            $('.pagination__list a.pagination__nav').each(function() {
-                var $this = $(this);
-                var href = $this.data('href');
-                $this.attr( 'href', _parseVar_(href, {
-                    cate: cate,
-                    page: $this.hasClass('pagination__nav-prev')
-                        ? page-1
-                        : page+1
-                }) );
-
-                if ( $this.hasClass('pagination__nav-prev') ) {
-                    $this.toggleClass('pagination__nav--disabled', page == 1);
-                }
-
-                if ( $this.hasClass('pagination__nav-next') ) {
-                    $this.toggleClass('pagination__nav--disabled', page == totalPage);
-                }
-            });
             $('.pagination__list').on('click', '.pagination__nav--disabled', function(e) {
                 return false;
-            })
+            });
 
             var url = DnDMoM.config.allPostsService;;
             switch ( cate ) {
@@ -196,7 +160,58 @@ DnDMoM = (function($) {
 
             return _doFilterPosts_(
                 url,
-                function(data, status, jqXHR) {}, //success
+                function(data, status, jqXHR) {
+                    var itemTotal = $('#itemTotal').val();
+                    var itemPerPage = $('#itemPerPage').val();
+                    var pagingTotal = Math.ceil(itemTotal/itemPerPage);
+                    var pagingDisplay = 5;
+
+                    //generate indexes
+                    var lisHTML = '';
+                    if ( page >= pagingDisplay ) {
+                        for ( var i=page-2; i < page+pagingDisplay-2; i++ ) {
+                            lisHTML += _parseVar_( liIndexItem, { cate: cate, page: i } );
+                        }
+                    }
+                    else {
+                        for ( var i=0; i < pagingDisplay; i++ ) {
+                            lisHTML += _parseVar_( liIndexItem, { cate: cate, page: (i+1) } );
+                        }
+                    }
+                    $('.pagination__list a.pagination__index').parent().remove();
+                    $('.pagination__list li:first-child').after( lisHTML );
+
+                    //active page index
+                    $('.pagination__list a.pagination__index')
+                        .removeClass('pagination__index--active')
+                        .filter('[data-index=' + page + ']').addClass('pagination__index--active');
+
+                    //update pagination index
+                    $('.pagination__list a.pagination__index').each(function() {
+                        var $this = $(this);
+                        var href = $this.data('href');
+                        $this.attr( 'href', _parseVar_(href, {cate: cate}) );
+                    });
+                    //update prev/next navigation
+                    $('.pagination__list a.pagination__nav').each(function() {
+                        var $this = $(this);
+                        var href = $this.data('href');
+                        $this.attr( 'href', _parseVar_(href, {
+                            cate: cate,
+                            page: $this.hasClass('pagination__nav-prev')
+                                ? page-1
+                                : page+1
+                        }) );
+
+                        if ( $this.hasClass('pagination__nav-prev') ) {
+                            $this.toggleClass('pagination__nav--disabled', page == 1);
+                        }
+
+                        if ( $this.hasClass('pagination__nav-next') ) {
+                            $this.toggleClass('pagination__nav--disabled', page == pagingTotal);
+                        }
+                    });
+                }, //success
                 function() {}, //error
                 function() {} //completed
             );
@@ -344,9 +359,7 @@ DnDMoM = (function($) {
         },
 
         initFilterPosts: function(controlSelector) {
-
-
-           var control = $( controlSelector );
+            var control = $( controlSelector );
             var filterPostsAjax;
 
             if ( control.length == 0 ) { return false; }
@@ -380,7 +393,6 @@ DnDMoM = (function($) {
                 return false;
             });
             control.find('a:eq(0)').trigger('click');
-
         },
 
         initSubpageHasher: function() {
@@ -401,13 +413,10 @@ DnDMoM = (function($) {
         },
 
         initRouter: function() {
-
             if ( typeof crossroads === 'undefined' ) { return false; }
-            console.log('aftersubpage')
             var blogrollAjax;
             //router for 'posts'
             crossroads.addRoute('/posts.html:?query:', function(query) {
-
                 if ( query !== undefined ) {
                     var queryLocation = window.location.href.indexOf('?');
                     window.location = window.location.href.substr(0, queryLocation) + '#!all?' + $.param(query);
@@ -427,9 +436,6 @@ DnDMoM = (function($) {
                 }
             });
             //=================
-        },
-
-        distributeHeight: function(wrapperSelector, itemSelector) {
         },
 
         destroySlider:  function(object) {
