@@ -16,6 +16,7 @@
 @mixin opacity($alpha) {
     opacity: $alpha;
     -moz-opacity: $alpha;
+    -webkit-opacity: $alpha;
     filter: alpha(opacity=$alpha*100);
 }
 

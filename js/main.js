@@ -9,7 +9,7 @@ jQuery(document).ready(function(e) {
         var $body = $('body');
 
         //load config
-        var url = 'http://img.zing.vn/products/devmobile/config/config.json?callback=?'; 
+        var url = 'http://img.zing.vn/products/devmobile/config/config.json?callback=?';
 
         $.ajax({
            type: 'GET',
@@ -34,8 +34,8 @@ jQuery(document).ready(function(e) {
                 DnDMoM.initTopButton();
 
                 //init rating box only on bp(desktop) on homepage
-                
-                if ( $body.hasClass('homepage') ) {                
+
+                if ( $body.hasClass('homepage') ) {
                     var _fn_ = function() {
                         if ( Modernizr.mq('only screen and (min-width: 667px)' ) ) {
                             DnDMoM.initRatingBox();
@@ -48,7 +48,7 @@ jQuery(document).ready(function(e) {
                 }
 
                 //init filter posts by category for homepage
-                if ( $body.hasClass('homepage') ) {                
+                if ( $body.hasClass('homepage') ) {
                     DnDMoM.initFilterPosts('#posts__tabs');
                 }
 
@@ -64,7 +64,7 @@ jQuery(document).ready(function(e) {
             }
         });
 
-        
+
     })(jQuery);
 });
 
@@ -89,6 +89,7 @@ DnDMoM = (function($) {
 
     //get 5 newest posts by cate: all | news | events
     var _doFilterPosts_ = function(url, success, error, completed) {
+        var timer = new Date().valueOf();
         var listContent = $('#posts__list');
         var loadingHTML = '<p class="posts__loading"><span>Đang tải dữ liệu...</span></p>';
         var loading = listContent.prev('.posts__loading');
@@ -111,14 +112,16 @@ DnDMoM = (function($) {
         return $.ajax({
             type: 'POST',
             url: url,
-            dataType: 'json', //receive
+            dataType: 'html', //receive
             contentType: 'json', //send
             data: JSON.stringify({}),
-            success: function(data, status, jqXHR) {                
-                listContent
-                    .html(data)
-                    .removeClass('posts__list--inactive');
-                loading.addClass('posts__loading--hidden');
+            success: function(data, status, jqXHR) {
+                setTimeout(function() {
+                    listContent
+                        .html(data)
+                        .removeClass('posts__list--inactive');
+                    loading.addClass('posts__loading--hidden');
+                }, new Date().valueOf() - timer >= 1000 ? 0 : 1000);
 
                 if ( success !== undefined ) { success(data, status, jqXHR); }
             },
@@ -188,7 +191,7 @@ DnDMoM = (function($) {
                     url = DnDMoM.config.eventsService;
                     break;
             }
-            
+
             url = _parseVar_(url, { page: page });
 
             return _doFilterPosts_(
@@ -341,7 +344,7 @@ DnDMoM = (function($) {
         },
 
         initFilterPosts: function(controlSelector) {
-          
+
 
            var control = $( controlSelector );
             var filterPostsAjax;
@@ -364,9 +367,9 @@ DnDMoM = (function($) {
 
                 //update view more posts href
                 var viewMorePostsBtn = $('#posts__view-all');
-                
+
                 viewMorePostsBtn.attr( 'href', _parseVar_( viewMorePostsBtn.data('href'), { cate: $this.data('cate') } ) );
-                                
+
                 filterPostsAjax = _doFilterPosts_(
                     url,
                     function(data, status, jqXHR) {}, //success
@@ -377,7 +380,7 @@ DnDMoM = (function($) {
                 return false;
             });
             control.find('a:eq(0)').trigger('click');
-           
+
         },
 
         initSubpageHasher: function() {
@@ -398,8 +401,8 @@ DnDMoM = (function($) {
         },
 
         initRouter: function() {
-            
-            if ( typeof crossroads === 'undefined' ) { return false; }            
+
+            if ( typeof crossroads === 'undefined' ) { return false; }
             console.log('aftersubpage')
             var blogrollAjax;
             //router for 'posts'
