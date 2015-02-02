@@ -4,7 +4,7 @@ require 'neat-compass'
 require 'bitters-compass'
 
 # Set this to the root of your project when deployed:
-http_path = '/github/mainsite-mobile/'
+http_path = '../'
 css_dir = 'css'
 sass_dir = 'sass'
 images_dir = 'images'

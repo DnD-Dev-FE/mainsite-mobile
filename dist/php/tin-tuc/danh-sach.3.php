@@ -11,3 +11,5 @@
         ');
     }
 ?>
+<input type="hidden" id="itemTotal" value="57" />
+<input type="hidden" id="itemPerPage" value="10" />
