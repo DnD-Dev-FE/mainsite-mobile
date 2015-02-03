@@ -72,55 +72,53 @@ Pattern.Mediator = (function () {
 var DnDMoM = {};
 
 jQuery(document).ready(function(e) {
-
     (function($) {
         var $window = $(window);
         var $body = $('body');
 
-        //load config
+        //init main navigation sub-menu behavior
+        DnDMoM.initMainNav();
+
+        //init key feature + hot events slider on homepage
+        if ( $body.hasClass('homepage') ) {
+            DnDMoM.initImageSlider('#key-features');
+            DnDMoM.initHotEventSlider();
+        }
+
+        //init to top button behavior
+        DnDMoM.initTopButton();
+
+        //init rating box only on bp(desktop) on homepage
+
+        if ( $body.hasClass('homepage') ) {
+            var _fn_ = function() {
+                if ( Modernizr.mq('only screen and (min-width: 667px)' ) ) {
+                    DnDMoM.initRatingBox();
+                }
+            }
+            $window.on('resize', function(e) {
+                _fn_();
+            });
+            _fn_();
+        }
+
+        //init filter posts by category for homepage
+        if ( $body.hasClass('homepage') ) {
+            DnDMoM.initFilterPosts('#posts__tabs');
+        }
+
+        //load config for subpages
         var url = 'http://img.zing.vn/products/devmobile/config/config.json?callback=?';
         //var url = 'config/config.json?callback=?';
-
         $.ajax({
            type: 'GET',
             url: url,
             async: false,
             jsonpCallback: 'jsonCallback',
-            contentType: "application/json",
+            contentType: 'application/json',
             dataType: 'jsonp',
             success: function(data) {
                 DnDMoM.config = data;
-
-                //init main navigation sub-menu behavior
-                DnDMoM.initMainNav();
-
-                //init key feature + hot events slider on homepage
-                if ( $body.hasClass('homepage') ) {
-                    DnDMoM.initImageSlider('#key-features');
-                    DnDMoM.initHotEventSlider();
-                }
-
-                //init to top button behavior
-                DnDMoM.initTopButton();
-
-                //init rating box only on bp(desktop) on homepage
-
-                if ( $body.hasClass('homepage') ) {
-                    var _fn_ = function() {
-                        if ( Modernizr.mq('only screen and (min-width: 667px)' ) ) {
-                            DnDMoM.initRatingBox();
-                        }
-                    }
-                    $window.on('resize', function(e) {
-                        _fn_();
-                    });
-                    _fn_();
-                }
-
-                //init filter posts by category for homepage
-                if ( $body.hasClass('homepage') ) {
-                    DnDMoM.initFilterPosts('#posts__tabs');
-                }
 
                 //init Hasher for subpage
                 if ( $body.hasClass('subpage') ) {

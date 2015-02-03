@@ -143,6 +143,10 @@ module.exports = function(grunt) {
     // set of task(s).
     grunt.registerTask('build', ['clean', 'copy', 'concat', 'cssmin', 'uglify']);
 
+    grunt.registerTask('build-js', ['concat', 'uglify']);
+
+    grunt.registerTask('build-css', ['cssmin']);
+
     grunt.registerTask('build-homepage', ['concat:homepage_js', 'cssmin:homepage_css', 'uglify:homepage_js']);
 
     grunt.registerTask('build-subpage', [
