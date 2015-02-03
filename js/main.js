@@ -114,14 +114,15 @@ DnDMoM = (function($) {
             contentType: 'json', //send
             data: JSON.stringify({}),
             success: function(data, status, jqXHR) {
-               // setTimeout(function() {
+                setTimeout(function() {
                     listContent
                         .html(data)
                         .removeClass('posts__list--inactive');
                     loading.addClass('posts__loading--hidden');
-               // }, new Date().valueOf() - timer >= 1000 ? 0 : 1000);
 
-                if ( success !== undefined ) { success(data, status, jqXHR); }
+                    if ( success !== undefined ) { success(data, status, jqXHR); }
+                }, new Date().valueOf() - timer >= 1000 ? 0 : 1000);
+
             },
             error: function() {
                 if ( error !== undefined ) { error(); }
@@ -135,7 +136,6 @@ DnDMoM = (function($) {
     var _hasherListener = {
         //get posts with pagination by cate: all | news | events
         blogroll: function(cate, page) {
-
             var liIndexItem = '<li><a href="" class="pagination__index" data-index={ page } data-href="#!{ cate }?p={ page }" title="{ page }">{ page }</a></li>';
             //active tab
             $('#posts__tabs')
@@ -166,8 +166,9 @@ DnDMoM = (function($) {
                 function(data, status, jqXHR) {
                     var itemTotal = $('#itemTotal').val();
                     var itemPerPage = $('#itemPerPage').val();
-                    var pagingTotal = Math.ceil(itemTotal/itemPerPage);                  
-                    var pagingDisplay = pagingTotal < 5 ? pagingTotal : 5;
+                    var _defaultPagingDisplay = 5;
+                    var pagingTotal = Math.ceil(itemTotal/itemPerPage);
+                    var pagingDisplay = pagingTotal < _defaultPagingDisplay ? pagingTotal : _defaultPagingDisplay;
 
                     //generate indexes
                     var lisHTML = '';
@@ -179,8 +180,8 @@ DnDMoM = (function($) {
                    
                     $('.pagination__list li:first-child').after( lisHTML );
 
-                        lisHTML = '';
-                    if(pagingTotal > 5) {        
+                    lisHTML = '';
+                    if ( pagingTotal > _defaultPagingDisplay ) {        
                         if ( page >= pagingDisplay ) {
                             for ( var i=page-2; i < page+pagingDisplay-2; i++ ) {
                                 lisHTML += _parseVar_( liIndexItem, { cate: cate, page: i } );
