@@ -9,8 +9,8 @@ jQuery(document).ready(function(e) {
         var $body = $('body');
 
         //load config
-        //var url = 'http://img.zing.vn/products/devmobile/config/config.json?callback=?';
-        var url = 'config/config.json?callback=?';
+        var url = 'http://img.zing.vn/products/devmobile/config/config.json?callback=?';
+        //var url = 'config/config.json?callback=?';
 
         $.ajax({
            type: 'GET',
@@ -76,12 +76,11 @@ DnDMoM = (function($) {
     }
     var $window = $(window);
 
-    var _parseVar_ = function(str, valueObj) {       
+    var _parseVar_ = function(str, valueObj) {
         $.each(valueObj, function(key, value) {
-            console.log(key + '**' + value)
             str = str.replace( new RegExp('{ ' + key + ' }', 'g'), value );
         });
-       
+
         return str;
     }
 
@@ -110,7 +109,7 @@ DnDMoM = (function($) {
         return $.ajax({
             type: 'POST',
             url: url,
-            dataType: 'json', //receive
+            dataType: 'html', //receive
             contentType: 'json', //send
             data: JSON.stringify({}),
             success: function(data, status, jqXHR) {
@@ -173,15 +172,15 @@ DnDMoM = (function($) {
                     //generate indexes
                     var lisHTML = '';
                     $('.pagination__list a.pagination__index').parent().remove();
-                   
-                    for ( var i= 1 ; i <= pagingDisplay; i++ ) { 
+
+                    for ( var i= 1 ; i <= pagingDisplay; i++ ) {
                         lisHTML += _parseVar_( liIndexItem, { cate: cate, page: i } );
                     }
-                   
+
                     $('.pagination__list li:first-child').after( lisHTML );
 
                     lisHTML = '';
-                    if ( pagingTotal > _defaultPagingDisplay ) {        
+                    if ( pagingTotal > _defaultPagingDisplay ) {
                         if ( page >= pagingDisplay ) {
                             for ( var i=page-2; i < page+pagingDisplay-2; i++ ) {
                                 lisHTML += _parseVar_( liIndexItem, { cate: cate, page: i } );
@@ -191,7 +190,7 @@ DnDMoM = (function($) {
                             for ( var i=0; i < pagingDisplay; i++ ) {
                                 lisHTML += _parseVar_( liIndexItem, { cate: cate, page: (i+1) } );
                             }
-                        }                   
+                        }
 
                         $('.pagination__list a.pagination__index').parent().remove();
                         $('.pagination__list li:first-child').after( lisHTML );

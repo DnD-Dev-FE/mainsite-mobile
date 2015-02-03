@@ -61,8 +61,8 @@ jQuery(document).ready(function(e) {
         var $body = $('body');
 
         //load config
-        //var url = 'http://img.zing.vn/products/devmobile/config/config.json?callback=?';
-        var url = 'config/config.json?callback=?';
+        var url = 'http://img.zing.vn/products/devmobile/config/config.json?callback=?';
+        //var url = 'config/config.json?callback=?';
 
         $.ajax({
            type: 'GET',
@@ -132,6 +132,7 @@ DnDMoM = (function($) {
         $.each(valueObj, function(key, value) {
             str = str.replace( new RegExp('{ ' + key + ' }', 'g'), value );
         });
+
         return str;
     }
 
@@ -169,9 +170,10 @@ DnDMoM = (function($) {
                         .html(data)
                         .removeClass('posts__list--inactive');
                     loading.addClass('posts__loading--hidden');
+
+                    if ( success !== undefined ) { success(data, status, jqXHR); }
                 }, new Date().valueOf() - timer >= 1000 ? 0 : 1000);
 
-                if ( success !== undefined ) { success(data, status, jqXHR); }
             },
             error: function() {
                 if ( error !== undefined ) { error(); }
@@ -186,7 +188,6 @@ DnDMoM = (function($) {
         //get posts with pagination by cate: all | news | events
         blogroll: function(cate, page) {
             var liIndexItem = '<li><a href="" class="pagination__index" data-index={ page } data-href="#!{ cate }?p={ page }" title="{ page }">{ page }</a></li>';
-
             //active tab
             $('#posts__tabs')
                 .find('> li.active').removeClass('active').end()
@@ -216,23 +217,36 @@ DnDMoM = (function($) {
                 function(data, status, jqXHR) {
                     var itemTotal = $('#itemTotal').val();
                     var itemPerPage = $('#itemPerPage').val();
+                    var _defaultPagingDisplay = 5;
                     var pagingTotal = Math.ceil(itemTotal/itemPerPage);
-                    var pagingDisplay = 5;
+                    var pagingDisplay = pagingTotal < _defaultPagingDisplay ? pagingTotal : _defaultPagingDisplay;
 
                     //generate indexes
                     var lisHTML = '';
-                    if ( page >= pagingDisplay ) {
-                        for ( var i=page-2; i < page+pagingDisplay-2; i++ ) {
-                            lisHTML += _parseVar_( liIndexItem, { cate: cate, page: i } );
-                        }
-                    }
-                    else {
-                        for ( var i=0; i < pagingDisplay; i++ ) {
-                            lisHTML += _parseVar_( liIndexItem, { cate: cate, page: (i+1) } );
-                        }
-                    }
                     $('.pagination__list a.pagination__index').parent().remove();
+
+                    for ( var i= 1 ; i <= pagingDisplay; i++ ) {
+                        lisHTML += _parseVar_( liIndexItem, { cate: cate, page: i } );
+                    }
+
                     $('.pagination__list li:first-child').after( lisHTML );
+
+                    lisHTML = '';
+                    if ( pagingTotal > _defaultPagingDisplay ) {
+                        if ( page >= pagingDisplay ) {
+                            for ( var i=page-2; i < page+pagingDisplay-2; i++ ) {
+                                lisHTML += _parseVar_( liIndexItem, { cate: cate, page: i } );
+                            }
+                        }
+                        else {
+                            for ( var i=0; i < pagingDisplay; i++ ) {
+                                lisHTML += _parseVar_( liIndexItem, { cate: cate, page: (i+1) } );
+                            }
+                        }
+
+                        $('.pagination__list a.pagination__index').parent().remove();
+                        $('.pagination__list li:first-child').after( lisHTML );
+                    }
 
                     //active page index
                     $('.pagination__list a.pagination__index')
