@@ -176,7 +176,7 @@ DnDMoM = (function($) {
         return $.ajax({
             type: 'POST',
             url: url,
-            dataType: 'html', //receive
+            dataType: 'json', //receive
             contentType: 'json', //send
             data: JSON.stringify({}),
             success: function(data, status, jqXHR) {
