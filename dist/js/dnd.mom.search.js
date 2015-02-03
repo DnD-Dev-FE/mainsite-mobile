@@ -186,10 +186,11 @@ DnDMoM = (function($) {
         //get posts with pagination by cate: all | news | events
         blogroll: function(cate, page) {
             var liIndexItem = '<li><a href="" class="pagination__index" data-index={ page } data-href="#!{ cate }?p={ page }" title="{ page }">{ page }</a></li>';
+
             //active tab
             $('#posts__tabs')
                 .find('> li.active').removeClass('active').end()
-                .find('a[href="#!' + cate + '?p=' + page + '"]').parent().addClass('active');
+                .find('a[data-cate=' + cate + ']').parent().addClass('active');
 
             $('.pagination__list').on('click', '.pagination__nav--disabled', function(e) {
                 return false;
