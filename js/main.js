@@ -76,10 +76,12 @@ DnDMoM = (function($) {
     }
     var $window = $(window);
 
-    var _parseVar_ = function(str, valueObj) {
+    var _parseVar_ = function(str, valueObj) {       
         $.each(valueObj, function(key, value) {
+            console.log(key + '**' + value)
             str = str.replace( new RegExp('{ ' + key + ' }', 'g'), value );
         });
+       
         return str;
     }
 
@@ -108,16 +110,16 @@ DnDMoM = (function($) {
         return $.ajax({
             type: 'POST',
             url: url,
-            dataType: 'html', //receive
+            dataType: 'json', //receive
             contentType: 'json', //send
             data: JSON.stringify({}),
             success: function(data, status, jqXHR) {
-                setTimeout(function() {
+               // setTimeout(function() {
                     listContent
                         .html(data)
                         .removeClass('posts__list--inactive');
                     loading.addClass('posts__loading--hidden');
-                }, new Date().valueOf() - timer >= 1000 ? 0 : 1000);
+               // }, new Date().valueOf() - timer >= 1000 ? 0 : 1000);
 
                 if ( success !== undefined ) { success(data, status, jqXHR); }
             },
@@ -133,8 +135,8 @@ DnDMoM = (function($) {
     var _hasherListener = {
         //get posts with pagination by cate: all | news | events
         blogroll: function(cate, page) {
-            var liIndexItem = '<li><a href="" class="pagination__index" data-index={ page } data-href="#!{ cate }?p={ page }" title="{ page }">{ page }</a></li>';
 
+            var liIndexItem = '<li><a href="" class="pagination__index" data-index={ page } data-href="#!{ cate }?p={ page }" title="{ page }">{ page }</a></li>';
             //active tab
             $('#posts__tabs')
                 .find('> li.active').removeClass('active').end()
@@ -164,23 +166,35 @@ DnDMoM = (function($) {
                 function(data, status, jqXHR) {
                     var itemTotal = $('#itemTotal').val();
                     var itemPerPage = $('#itemPerPage').val();
-                    var pagingTotal = Math.ceil(itemTotal/itemPerPage);
-                    var pagingDisplay = 5;
+                    var pagingTotal = Math.ceil(itemTotal/itemPerPage);                  
+                    var pagingDisplay = pagingTotal < 5 ? pagingTotal : 5;
 
                     //generate indexes
                     var lisHTML = '';
-                    if ( page >= pagingDisplay ) {
-                        for ( var i=page-2; i < page+pagingDisplay-2; i++ ) {
-                            lisHTML += _parseVar_( liIndexItem, { cate: cate, page: i } );
-                        }
-                    }
-                    else {
-                        for ( var i=0; i < pagingDisplay; i++ ) {
-                            lisHTML += _parseVar_( liIndexItem, { cate: cate, page: (i+1) } );
-                        }
-                    }
                     $('.pagination__list a.pagination__index').parent().remove();
+                   
+                    for ( var i= 1 ; i <= pagingDisplay; i++ ) { 
+                        lisHTML += _parseVar_( liIndexItem, { cate: cate, page: i } );
+                    }
+                   
                     $('.pagination__list li:first-child').after( lisHTML );
+
+                        lisHTML = '';
+                    if(pagingTotal > 5) {        
+                        if ( page >= pagingDisplay ) {
+                            for ( var i=page-2; i < page+pagingDisplay-2; i++ ) {
+                                lisHTML += _parseVar_( liIndexItem, { cate: cate, page: i } );
+                            }
+                        }
+                        else {
+                            for ( var i=0; i < pagingDisplay; i++ ) {
+                                lisHTML += _parseVar_( liIndexItem, { cate: cate, page: (i+1) } );
+                            }
+                        }                   
+
+                        $('.pagination__list a.pagination__index').parent().remove();
+                        $('.pagination__list li:first-child').after( lisHTML );
+                    }
 
                     //active page index
                     $('.pagination__list a.pagination__index')
