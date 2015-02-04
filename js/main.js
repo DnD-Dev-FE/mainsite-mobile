@@ -155,6 +155,9 @@ DnDMoM = (function($) {
                 case 'events':
                     url = DnDMoM.config.eventsService;
                     break;
+                case 'gallery':
+                    url = DnDMoM.config.galleryService;
+                    break;                     
             }
 
             url = _parseVar_(url, { page: page });
@@ -450,6 +453,26 @@ DnDMoM = (function($) {
                 }
             });
             //=================
+            //router for 'media'
+            crossroads.addRoute('/media.html:?query:', function(query) {
+                if ( query !== undefined ) {
+                    var queryLocation = window.location.href.indexOf('?');
+                    window.location = window.location.href.substr(0, queryLocation) + '#!all?' + $.param(query);
+                }
+                else {
+                    hasher.setHash('all');
+                }
+            });
+            crossroads.addRoute('/media.html#!{cate}:?query:', function(cate, query) {
+                if ( query === undefined || query.p === undefined ) {
+                    hasher.setHash(cate + '?p=1');
+                }
+                else {
+                    if ( blogrollAjax !== undefined ) { blogrollAjax.abort(); }
+                    blogrollAjax = _hasherListener.blogroll( cate, parseInt(query.p) );
+                    DnDMoM.pub('mainNav:changed', [cate]);
+                }
+            });            
         },
 
         destroySlider:  function(object) {
