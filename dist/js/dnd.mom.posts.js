@@ -153,6 +153,9 @@ jQuery(document).ready(function(e) {
                 if ( $body.hasClass('subpage') ) {
                     DnDMoM.initRouter();
                     DnDMoM.initSubpageHasher();
+                    if($('#posts__list').hasClass('gallery__list')) {
+                        DnDMoM.initPopup('.fancybox');
+                    }    
                 }
             },
             error: function(e) {}
@@ -599,6 +602,24 @@ DnDMoM = (function($) {
             });
             //=================           
         },
+
+        initPopup : function(selector) {
+            if ($(selector).length > 0) {
+                $(selector).fancybox({
+                    openEffect: 'elastic',
+                    autoCenter: true,
+                    padding: [7, 7, 7, 7],
+                    helpers: {
+                        title: {
+                            type: 'inside'
+                        },
+                        media: {}
+                    },
+                    nextEffect: 'elastic',
+                    prevEffect: 'elastic'
+                });
+            }
+        },        
 
         destroySlider:  function(object) {
             if ( object !== undefined ) {
