@@ -1,7 +1,8 @@
-@import 'screen';
+@import "screen";
+@import "../widgets/fancybox/sass/jquery.fancybox";
 
 article {
-	@import 'base/base';
+	@import "base/base";
 	pre {
 		overflow: auto;
 	}
@@ -94,6 +95,8 @@ article {
 		@include span-columns(11);
 		@include shift(0.5);
 	}
+
+	padding-bottom: 40px;
 }
 
 .subpage {
@@ -235,53 +238,7 @@ article {
 					h2 {
 						@include section-title();
 					}
-	                .gallery__tabs {
-	                    display: block;
-	                    margin-bottom: 10px;
-	                    background: #fff;
-	                    @include span-columns(8 of 8);
-	                    @include align-items(center);
-	                    @include display(flex);
-	                    @include flex-direction(row);
 
-	                    > li {
-	                        @include flex-grow(1);
-
-	                        border: 1px solid $primary-border-color;
-	                        border-right: none;
-	                        text-align: center;
-	                        font-weight: bold;
-
-	                        &.active,
-	                        &:hover.active {
-	                            background: $active-dark-color;
-
-	                            > a,
-	                            > a:hover {
-	                                color: #fff;
-	                            }
-	                        }
-	                        &:hover {
-	                            background: $hover-color;
-	                        }
-
-	                        &:first-child {
-	                            @include border-left-radius(3px);
-	                        }
-
-	                        &:last-child {
-	                            border-right: 1px solid $primary-border-color;
-	                            @include border-right-radius(3px);
-	                        }
-
-	                        a {
-	                            padding: 20px;
-	                            display: block;
-	                            text-decoration: none;
-	                            font-size: 15px;
-	                        }
-	                    }
-	                }
 					ul.gallery__list {
 						@include span-columns(12);
 						display: block;
@@ -300,7 +257,7 @@ article {
 							display: block;
 							list-style: none;
 							margin-bottom: 20px;
-							height: 290px;
+							height: 350px;
 							&:nth-child(even) {
 								margin-right: 0;
 							}
@@ -311,11 +268,13 @@ article {
 								position: relative;
 								height: 100%;
 								width: 100%;
+								@include border-radius(3px);
+								border: 1px solid $primary-border-color;
 
 								img {
 									display: inline-block;
-									height: 100%;
 									width: 100%;
+									height: 290px;
 									border: none;
 									float: left;
 
@@ -323,14 +282,15 @@ article {
 								}
 
 								> h3 {
-									font-size: 30px;
-									color: #fff;
-									padding: 0;
-									text-align: left;
-									line-height: 1;
-									position: absolute;
-									bottom: 20px;
-									left: 20px;
+									font-size: 20px;
+									color: $primary-text-color;
+									height: 60px;
+									line-height: 60px;
+									text-indent: 20px;
+								}
+
+								&:hover {
+									@include opacity(0.8);
 								}
 							}
 						}

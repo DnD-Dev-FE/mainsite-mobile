@@ -1,14 +1,14 @@
-@import '_variables';
-@import '_mixins';
-@import 'compass/reset';
-@import 'bourbon/bourbon';
-/*@import 'debug';*/
-@import 'neat/neat';
-@import 'font-awesome/font-awesome';
-@import '../widgets/swiper/sass/idangerous.swiper';
+@import "_variables";
+@import "_mixins";
+@import "compass/reset";
+@import "bourbon/bourbon";
+/*@import "debug";*/
+@import "neat/neat";
+@import "font-awesome/font-awesome";
+@import "../widgets/swiper/sass/idangerous.swiper";
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 
-@import 'sprites/*.png';
+@import "sprites/*.png";
 
 body {
     font: 14px $font-face;
@@ -290,7 +290,7 @@ a:visited {
             @include off-canvas-sliding(0);
 
             &:before {
-                content: '';
+                content: "";
                 display: block;
                 height: 3px;
                 width: 24px;
@@ -909,10 +909,10 @@ a:visited {
                 @include box-sizing(border-box);
 
                 > .pagination__list {
-                    @include align-items(space-between);
+                    @include align-items(space-around);
                     @include display(flex);
                     @include flex-direction(row);
-                    @include justify-content(space-between);
+                    @include justify-content(space-around);
 
                     > li {
 

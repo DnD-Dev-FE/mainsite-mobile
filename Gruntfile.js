@@ -70,7 +70,11 @@ module.exports = function(grunt) {
                 // the files to concatenate
                 src: [
                     'js/jquery2.min.js',
+                    'widgets/fancybox/js/jquery.fancybox.pack.js',
                     'js/modernizr.js',
+                    'js/signals.min.js',
+                    'js/hasher.min.js',
+                    'js/crossroads.min.js',
                     'js/pattern.js',
                     'js/main.js'
                 ],
@@ -87,6 +91,17 @@ module.exports = function(grunt) {
                 ],
                 // the location of the resulting JS file
                 dest: 'dist/js/<%= pkg.name %>.search.js'
+            },
+            subpage_js: {
+                // the files to concatenate
+                src: [
+                    'js/jquery2.min.js',
+                    'js/modernizr.js',
+                    'js/pattern.js',
+                    'js/main.js'
+                ],
+                // the location of the resulting JS file
+                dest: 'dist/js/<%= pkg.name %>.subpage.js'
             }
         },
         cssmin: {
@@ -129,6 +144,11 @@ module.exports = function(grunt) {
                 files: {
                     'dist/js/<%= pkg.name %>.search.min.js': ['<%= concat.search_js.dest %>']
                 }
+            },
+            subpage_js: {
+                files: {
+                    'dist/js/<%= pkg.name %>.subpage.min.js': ['<%= concat.subpage_js.dest %>']
+                }
             }
         }
     });
@@ -160,6 +180,7 @@ module.exports = function(grunt) {
         'uglify:posts_js',
         'uglify:post_details_js',
         'uglify:gallery_js',
-        'uglify:search_js'
+        'uglify:search_js',
+        'uglify:subpage_js'
     ]);
 };

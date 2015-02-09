@@ -44,7 +44,6 @@ jQuery(document).ready(function(e) {
         $.ajax({
            type: 'GET',
             url: url,
-            async: false,
             jsonpCallback: 'jsonCallback',
             contentType: 'application/json',
             dataType: 'jsonp',
@@ -259,10 +258,22 @@ DnDMoM = (function($) {
             });
 
             //listen main nav change
-            DnDMoM.sub('mainNav:changed', function(nav) {
+            DnDMoM.sub('mainNav:changed', function(section, cate) {
                 mainNavList.find('a.active').removeClass('active');
-                mainNavList.find('a[href="posts.html#!' + nav + '"]').addClass('active');
+                mainNavList.find('a[href$="' + section + '.html#!' + cate + '?p=1"]').addClass('active');
             });
+
+            //init state for reload page
+            if ( mainNavList.find('a.active').length == 0 ) {
+                var section = window.location.href.split('/').pop();
+                var sectionRegExp = new RegExp('*.html', 'g');
+                if ( sectionRegExp.test(section) ) {
+                    mainNavList.find('a[href*="' + section + '"]').addClass('active');
+                }
+                else {
+                    mainNavList.find('a').eq(0).addClass('active');   
+                }
+            }
 
             return mainNavList;
         },
@@ -449,10 +460,11 @@ DnDMoM = (function($) {
                 else {
                     if ( blogrollAjax !== undefined ) { blogrollAjax.abort(); }
                     blogrollAjax = _hasherListener.blogroll( cate, parseInt(query.p) );
-                    DnDMoM.pub('mainNav:changed', [cate]);
+                    DnDMoM.pub( 'mainNav:changed', 'posts', cate );
                 }
             });
             //=================
+
             //router for 'media'
             crossroads.addRoute('/media.html:?query:', function(query) {
                 if ( query !== undefined ) {
@@ -470,9 +482,23 @@ DnDMoM = (function($) {
                 else {
                     if ( blogrollAjax !== undefined ) { blogrollAjax.abort(); }
                     blogrollAjax = _hasherListener.blogroll( cate, parseInt(query.p) );
-                    DnDMoM.pub('mainNav:changed', [cate]);
+                    blogrollAjax.success( function() {
+                        var _fancyOpts = {
+                            helpers : {
+                                overlay : {
+                                    locked : false // try changing to true and scrolling around the page
+                                }
+                            }
+                        }
+                        setTimeout(function () {
+                            $('.gallery__list a.fancybox').fancybox(_fancyOpts);
+                        }, 1000);
+                    });
+
+                    DnDMoM.pub( 'mainNav:changed', 'media', cate );
                 }
-            });            
+            });
+            //=================           
         },
 
         destroySlider:  function(object) {
