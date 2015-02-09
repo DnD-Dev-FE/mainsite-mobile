@@ -368,7 +368,7 @@ DnDMoM = (function($) {
             //init state for reload page
             if ( mainNavList.find('a.active').length == 0 ) {
                 var section = window.location.href.split('/').pop();
-                var sectionRegExp = new RegExp('*.html', 'g');
+                var sectionRegExp = new RegExp('.html', 'g');
                 if ( sectionRegExp.test(section) ) {
                     mainNavList.find('a[href*="' + section + '"]').addClass('active');
                 }
