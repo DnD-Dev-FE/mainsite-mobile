@@ -1,4 +1,5 @@
 @import 'screen';
+@import '../widgets/fancybox/sass/jquery.fancybox';
 
 article {
 	@import 'base/base';
@@ -235,6 +236,11 @@ article {
 					h2 {
 						@include section-title();
 					}
+					p.posts__loading {						
+						font-size: 32px;
+						@extend p.posts__loading;
+					}
+
 	                .gallery__tabs {
 	                    display: block;
 	                    margin-bottom: 10px;
