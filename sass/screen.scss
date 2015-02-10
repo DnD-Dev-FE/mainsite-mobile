@@ -517,6 +517,10 @@ a:visited {
                 height: 50px;
                 float: left;
                 margin: 22px 0 0;
+
+                iframe {
+                    z-index: 2;
+                }
             }
         }
 
