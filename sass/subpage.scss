@@ -135,6 +135,10 @@ article {
 						@include shift(0.5);
 						padding: 0;
 					}
+
+					h2 {
+						display: block!important;
+					}
 				}
 
 				aside h2,
@@ -256,8 +260,8 @@ article {
 							}
 							display: block;
 							list-style: none;
-							margin-bottom: 20px;
-							height: 350px;
+							margin-bottom: 10px;
+							
 							&:nth-child(even) {
 								margin-right: 0;
 							}
@@ -274,19 +278,21 @@ article {
 								img {
 									display: inline-block;
 									width: 100%;
-									height: 290px;
+									
 									border: none;
 									float: left;
-
 									background: #bababa;
 								}
 
 								> h3 {
-									font-size: 20px;
-									color: $primary-text-color;
-									height: 60px;
-									line-height: 60px;
+									font-size: 15px;																	
+									line-height: 40px;
 									text-indent: 20px;
+									position: absolute;																	
+									width: 100%;
+									bottom: 0;
+									color: #fff;
+									background: rgba(0,0,0,0.5);
 								}
 
 								&:hover {

@@ -124,10 +124,9 @@
     }
 }
 
-@mixin fb-placeholder {
-    border: 2px solid #4561aa;
+@mixin fb-placeholder {  
     text-align: center;
-    background: #fff;
+    background: none;
     @include bp(smartphone) {
         width: 100px;
         height: 40px;
@@ -136,11 +135,12 @@
     @include border-radius(3px);
 
     > .fb-like {
+        float: left;
         display: inline-block;
-        margin: 12px 0 0;
+        margin: 28px 0 0;
 
         @include bp(smartphone) {
-            margin: 8px 0 0;
+            margin: 18px 0 0;
         }
     }
 }
