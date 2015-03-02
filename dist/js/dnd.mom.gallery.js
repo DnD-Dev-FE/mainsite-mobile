@@ -160,6 +160,23 @@ jQuery(document).ready(function(e) {
                 _fn_();
             });
             _fn_();
+
+            var video = $('#primary-banner__video')
+            video.on('click', function() {
+                var $parent = $(this).parent();
+                if ( this.played.length > 0 && !this.paused ) {
+                    this.pause();
+                    $parent.addClass('video--paused');
+                }
+                else {
+                    this.play();
+                    $parent.removeClass('video--paused');
+                }
+            });
+            video.prev('.primary-banner__overlays').on('click', function(e) {
+                video.trigger('click');
+                return false;
+            });
         }
 
         //init filter posts by category for homepage
@@ -371,16 +388,16 @@ DnDMoM = (function($) {
             //main navigation
             var mainNavList = $('#main-nav__list');
             mainNavList
-                .on('click touchstart', ' > li > a:not(.main-nav__has-sub)', function(e) {
+                .on('click touchend', ' > li > a:not(.main-nav__has-sub)', function(e) {
                     if ( Modernizr.mq('only screen and (max-width: 666px)') ) {
                         $('#drawer-toggle').removeAttr('checked');
                     }
                     return true;
                 })
-                .on('click touchstart', ' > li > ul a', function(e) {
+                .on('click touchend', ' > li > ul a', function(e) {
                     e.stopPropagation();
                 })
-                .on('click touchstart', ' > li > a.main-nav__has-sub', function(e) {
+                .on('click touchend', ' > li > a.main-nav__has-sub', function(e) {
                     $('#main-nav__list > li > a.main-nav__has-sub.focus').not(this).removeClass('focus');
                     $(this).toggleClass('focus');
                     return false;

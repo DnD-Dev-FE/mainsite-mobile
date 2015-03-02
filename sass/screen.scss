@@ -399,6 +399,30 @@ a:visited {
             max-height: 389px;
             background: $placeholder-color;
             overflow: hidden;
+            position: relative;
+
+            > div.primary-banner__overlays {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: rgba(255, 255, 255, 0.3);
+                display: none;
+                text-align: center;
+                cursor: pointer;
+
+                > .fa {
+                    color: #fff;
+                    font-size: 100px;
+                    line-height: 389px;
+                    cursor: pointer;
+                }
+            }
+
+            &.video--paused > div.primary-banner__overlays {
+                display: block;
+            }
 
             > img,
             > video,
