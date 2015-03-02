@@ -1,5 +1,4 @@
 @import "screen";
-@import "../widgets/fancybox/sass/jquery.fancybox";
 
 article {
 	@import "base/base";
@@ -265,7 +264,7 @@ article {
 							display: block;
 							list-style: none;
 							margin-bottom: 10px;
-							
+
 							&:nth-child(even) {
 								margin-right: 0;
 							}
@@ -282,17 +281,17 @@ article {
 								img {
 									display: inline-block;
 									width: 100%;
-									
+
 									border: none;
 									float: left;
 									background: #bababa;
 								}
 
 								> h3 {
-									font-size: 15px;																	
+									font-size: 15px;
 									line-height: 40px;
 									text-indent: 20px;
-									position: absolute;																	
+									position: absolute;
 									width: 100%;
 									bottom: 0;
 									color: #fff;

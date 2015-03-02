@@ -33,6 +33,7 @@ module.exports = function(grunt) {
                 src: [
                     'js/jquery2.min.js',
                     'widgets/swiper/js/idangerous.swiper.min.js',
+                    'widgets/fancybox/js/jquery.fancybox.pack.js',
                     'js/modernizr.js',
                     'js/pattern.js',
                     'js/main.js'

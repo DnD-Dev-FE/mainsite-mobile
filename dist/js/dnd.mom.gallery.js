@@ -185,7 +185,7 @@ jQuery(document).ready(function(e) {
                     DnDMoM.initSubpageHasher();
                     if($('#posts__list').hasClass('gallery__list')) {
                         DnDMoM.initPopup('.fancybox');
-                    }    
+                    }
                 }
             },
             error: function(e) {}
@@ -288,7 +288,7 @@ DnDMoM = (function($) {
                     break;
                 case 'gallery':
                     url = DnDMoM.config.galleryService;
-                    break;                     
+                    break;
             }
 
             url = _parseVar_(url, { page: page });
@@ -403,7 +403,7 @@ DnDMoM = (function($) {
                     mainNavList.find('a[href*="' + section + '"]').addClass('active');
                 }
                 else {
-                    mainNavList.find('a').eq(0).addClass('active');   
+                    mainNavList.find('a').eq(0).addClass('active');
                 }
             }
 
@@ -411,11 +411,36 @@ DnDMoM = (function($) {
         },
 
         initImageSlider: function(selector) {
+            var _disableFancyClick_ = function() { return false; }
+            var fancylinks = $( selector + ' a.key-features__fancybox');
+            if ( Modernizr.mq('only screen and (min-width: 667px)' ) ) {
+                var _fancyOpts = {
+                    helpers : {
+                        overlay : {
+                            locked : false // try changing to true and scrolling around the page
+                        }
+                    }
+                }
+                fancylinks.fancybox(_fancyOpts);
+            }
+
             return $( selector ).swiper( $.extend(true, _options.swiper, {
                 freeMode: true,
                 freeModeFluid: true,
                 slidesPerViewFit: false,
-                autoResize: false
+                autoResize: false,
+                onTouchMove: function(swiper, duration) {
+                    if ( fancylinks.hasClass('key-features__fancybox--disabled') ) {
+                        return false;
+                    }
+                    fancylinks.addClass('key-features__fancybox--disabled').on( 'click', _disableFancyClick_ );
+                },
+                onTouchEnd: function(swiper, e) {
+                    setTimeout(function() {
+                        fancylinks.off( 'click', _disableFancyClick_ );
+                        fancylinks.removeClass('key-features__fancybox--disabled')
+                    }, 1);
+                }
             }) );
         },
 
@@ -630,7 +655,7 @@ DnDMoM = (function($) {
                     DnDMoM.pub( 'mainNav:changed', 'media', cate );
                 }
             });
-            //=================           
+            //=================
         },
 
         initPopup : function(selector) {
@@ -649,7 +674,7 @@ DnDMoM = (function($) {
                     prevEffect: 'elastic'
                 });
             }
-        },        
+        },
 
         destroySlider:  function(object) {
             if ( object !== undefined ) {
