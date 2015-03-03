@@ -160,15 +160,24 @@ article {
 						margin: 0;
 					}
 
+					@include bp(smartphone) {
+						border-top: 1px solid $primary-border-color;
+						padding-top: 10px;
+					}
+
 					> h2 {
 						padding: 40px 0 0;
+						@include bp(smartphone) {
+							padding: 10px 0 0;
+						}
 					}
 
 					.posts__list {
+						min-height: inherit;
 
 						> li:last-child {
 							border-bottom: none;
-							padding-bottom: 80px;
+							padding-bottom: 40px;
 						}
 					}
 				}
@@ -264,6 +273,10 @@ article {
 							display: block;
 							list-style: none;
 							margin-bottom: 10px;
+							@include bp(desktop) {
+								height: 292px;
+								overflow: hidden;
+							}
 
 							&:nth-child(even) {
 								margin-right: 0;

@@ -424,6 +424,19 @@ DnDMoM = (function($) {
                 }
             }
 
+            if ( Modernizr.mq('only screen and (max-width: 666px)' ) ) {
+                $('#drawer-toggle').on('change', function() {
+                    if ( $(this).is(':checked') ) {
+                        $('#main-nav').show();
+                    }
+                    else {
+                        setTimeout(function() {
+                            $('#main-nav').hide();
+                        }, 250);
+                    }
+                });
+            }
+
             return mainNavList;
         },
 
@@ -442,17 +455,16 @@ DnDMoM = (function($) {
             }
 
             return $( selector ).swiper( $.extend(true, _options.swiper, {
-                freeMode: true,
-                freeModeFluid: true,
-                slidesPerViewFit: false,
                 autoResize: false,
-                onTouchMove: function(swiper, duration) {
-                    if ( fancylinks.hasClass('key-features__fancybox--disabled') ) {
-                        return false;
+                onTouchMove: function(swiper, e, diff) {
+                    if ( diff !== 0 ) {
+                        if ( fancylinks.hasClass('key-features__fancybox--disabled') ) {
+                            return false;
+                        }
+                        fancylinks.addClass('key-features__fancybox--disabled').on( 'click', _disableFancyClick_ );
                     }
-                    fancylinks.addClass('key-features__fancybox--disabled').on( 'click', _disableFancyClick_ );
                 },
-                onTouchEnd: function(swiper, e) {
+                onTouchEnd: function(swiper) {
                     setTimeout(function() {
                         fancylinks.off( 'click', _disableFancyClick_ );
                         fancylinks.removeClass('key-features__fancybox--disabled')
