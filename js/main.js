@@ -19,18 +19,8 @@ jQuery(document).ready(function(e) {
         //init to top button behavior
         DnDMoM.initTopButton();
 
-        //init rating box only on bp(desktop) on homepage
-
         if ( $body.hasClass('homepage') ) {
-            var _fn_ = function() {
-                if ( Modernizr.mq('only screen and (min-width: 667px)' ) ) {
-                    DnDMoM.initRatingBox();
-                }
-            }
-            $window.on('resize', function(e) {
-                _fn_();
-            });
-            _fn_();
+            DnDMoM.setHeaderView();
 
             var video = $('#primary-banner__video')
             video.on('click', function() {
@@ -41,7 +31,7 @@ jQuery(document).ready(function(e) {
                 }
                 else {
                     this.play();
-                    $parent.removeClass('video--paused');
+                    $parent.removeClass('video--preloading').removeClass('video--paused');
                 }
             });
             video.prev('.primary-banner__overlays').on('click', function(e) {
@@ -325,8 +315,11 @@ DnDMoM = (function($) {
                 fancylinks.fancybox(_fancyOpts);
             }
 
-            return $( selector ).swiper( $.extend(true, _options.swiper, {
-                autoResize: false,
+            //init swiper
+            var keyFeaturesSwiper = new Swiper(selector, $.extend(true, {}, _options.swiper, {
+                autoResize: true,
+                slidesPerViewFit: true,
+                slidesPerView: Modernizr.mq('only screen and (min-width: 667px)' ) ? 'auto' : 1.1,
                 onTouchMove: function(swiper, e, diff) {
                     if ( diff !== 0 ) {
                         if ( fancylinks.hasClass('key-features__fancybox--disabled') ) {
@@ -342,6 +335,20 @@ DnDMoM = (function($) {
                     }, 1);
                 }
             }) );
+
+            //init control for swiper
+            if ( Modernizr.mq('only screen and (min-width: 667px)' ) ) {
+                $('.key-features__control').on('click', function(e) {
+                    return false;
+                });
+                $('.key-features__control--prev').on('click', function(e) {
+                    keyFeaturesSwiper.swipePrev();
+
+                });
+                $('.key-features__control--next').on('click', function(e) {
+                    keyFeaturesSwiper.swipeNext();
+                });
+            }
         },
 
         initHotEventSlider: function(selector) { /* for smartphone */
@@ -349,8 +356,8 @@ DnDMoM = (function($) {
                 if ( Modernizr.mq('only screen and (max-width: 666px)' ) ) {
                     if ( DnDMoM.hotEvent === undefined ) {
                         DnDMoM.hotEvent = (function() {
-                            return $('#hot-events__list').swiper( $.extend(true, _options.swiper, {
-                                slidesPerView: 1.5,
+                            return new Swiper( '#hot-events__list', $.extend(true, {}, _options.swiper, {
+                                slidesPerView: 1.1,
                                 slideActiveClass: 'swiper-slide--active'
                             }) );
                         })();
@@ -401,46 +408,6 @@ DnDMoM = (function($) {
                 });
                 return false;
             });
-        },
-
-        initRatingBox: function() {
-            //rating
-            $('#rating-box--choices').on('click', ' > li > a', function(e) {
-                var value = $(this).attr('href');
-                $.ajax({
-                    type: 'post',
-                    url: DnDMoM.config.ratingService,
-                    contentType: 'json', //sending
-                    dataType: 'json', //return back
-                    data: JSON.stringify({
-                        rating: value
-                    }),
-                    success: function(data, status, jqXHR) {
-                        //TODO...
-                        //expected response: data: { totalRating, average, statistic[i]}
-                        $('#rating-box__average-points').text( data.average );
-                        $('#rating-box__total-rating-number').text( data.totalRating );
-                        ratingStatisticList.find('> li:eq(' + (5 - value) + ') > div > span')
-                            .text( data.statistic[value] )
-                            .attr( 'data-value', data.statistic[value] )
-                    },
-                    error: function() {
-                    },
-                    completed: function() {
-                    }
-                });
-
-                return false;
-            });
-
-            //statistic
-            var ratingStatisticList = $('#rating-box__statistic-list');
-            var ratingStatisticListData = ratingStatisticList.data();
-            var maxVote = ratingStatisticListData.maxVote;
-            $('#rating-box__statistic-list > li > .rating-box__statistic-bar > span').each(function(e) {
-                var $this = $(this);
-                $this.width( ( $this.data('value')*100/maxVote - 5 ) + '%' );
-            })
         },
 
         initFilterPosts: function(controlSelector) {
@@ -583,6 +550,14 @@ DnDMoM = (function($) {
                 container.find('*').stop(true, true).removeAttr('style');
                 object.destroy();
                 return undefined;
+            }
+        },
+
+        setHeaderView: function() {
+            if ( Modernizr.mq('only screen and (max-width: 666px)' ) ) {
+                $('#primary-banner').css({
+                    height: $(window).height() - $('.app-info').eq(0).height()
+                });
             }
         }
     }

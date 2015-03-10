@@ -107,7 +107,7 @@ a:visited {
                 .site-search__field {
                     width: 100%;
                     height: $top-bar-height - 2;
-                    font-size: 14px;
+                    font-size: 16px;
                     border: none;
                     background: none;
                     @include box-sizing(border-box);
@@ -120,6 +120,7 @@ a:visited {
 
                 .site-search__button {
                     width: 32px;
+                    line-height: 32px;
                     height: 100%;
                     background: none;
                     border: none;
@@ -128,6 +129,7 @@ a:visited {
                     right: 0;
 
                     > .fa {
+                        font-size: 20px;
                         color: invert($primary-text-color);
                     }
                 }
@@ -396,41 +398,51 @@ a:visited {
 
         #primary-banner {
             width: 100%;
-            max-height: 389px;
             background: $placeholder-color;
             overflow: hidden;
             position: relative;
 
             @include bp(desktop) {
                 height: 389px;
+            }
+            > div.primary-banner__overlays {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: rgba(255, 255, 255, 0.3);
+                display: none;
+                text-align: center;
+                cursor: pointer;
 
-                > div.primary-banner__overlays {
-                    width: 100%;
-                    height: 100%;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    background: rgba(255, 255, 255, 0.3);
-                    display: none;
-                    text-align: center;
+                > .fa {
+                    color: #fff;
+                    font-size: 100px;
+                    line-height: 389px;
                     cursor: pointer;
-
-                    > .fa {
-                        color: #fff;
-                        font-size: 100px;
-                        line-height: 389px;
-                        cursor: pointer;
-                    }
                 }
 
-                &.video--paused > div.primary-banner__overlays {
+                & ~ video {
                     display: block;
                 }
             }
+
+            &.video--paused > div.primary-banner__overlays {
+                display: block;
+            }
+            &.video--preloading > div.primary-banner__overlays ~ video {
+                display: none;
+            }
             @include bp(smartphone) {
-                > div.primary-banner__overlays,
-                &.video--paused > div.primary-banner__overlays {
-                    display: none;
+                > div.primary-banner__overlays {
+                    > .fa {
+                        line-height: inherit;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        margin: -51px 0 0 -41px;
+                    }
                 }
             }
 
@@ -446,7 +458,7 @@ a:visited {
         }
 
         .app-info {
-            height: 158px;
+            height: 150px;
 
             > .wrapper {
                 position: relative;
@@ -491,7 +503,7 @@ a:visited {
                 padding: 9px 0 0;
 
                 @include bp(hybrid) {
-                    padding: 20px 0 0;                    
+                    padding: 20px 0 0;
                 }
 
                 > .app-info__install--mobile {
@@ -579,15 +591,17 @@ a:visited {
                 width: 100%;
                 height: 268px;
                 overflow: hidden;
+                position: relative;
 
                 > .swiper-wrapper {
 
                     > .swiper-slide {
                         width: 427px;
-                        padding: 0 5px 0 0;
+                        padding: 0 10px 0 0;
                         height: 268px;
                         float: left;
                         margin: 0;
+                        @include box-sizing(border-box);
 
                         &:last-child {
                             padding-right: 0;
@@ -608,17 +622,51 @@ a:visited {
                         }
                     }
                 }
+
+                .key-features__control {
+                    @include bp(smartphone) {
+                        display: none;
+                    }
+
+                    @include bp(desktop) {
+                        display: block;
+                        width: 60px;
+                        position: absolute;
+                        z-index: 10000;
+                        top: 50%;
+                        margin-top: -30px;
+                        background: rgba(0, 0, 0, 0.5);
+                        text-align: center;
+                        @include opacity(0.6);
+
+                        &.key-features__control--prev {
+                            left: 0;
+                        }
+                        &.key-features__control--next {
+                            right: 0;
+                        }
+                        &:hover {
+                            @include opacity(1);
+                        }
+
+                        > .fa {
+                            font-size: 40px;
+                            color: #fff;
+                            height: 60px;
+                            line-height: 60px;
+                        }
+                    }
+                }
             }
 
             /* section #hot-events */
-
             #hot-event {
                 overflow: hidden ;
                 background: #fafafa;
                 border-bottom: 1px solid #eaeaea;
 
                 @include bp(desktop) {
-                    padding-bottom: 35px;
+                    padding-bottom: 25px;
                 }
                 @include bp(smartphone) {
                     padding-bottom: 0;
@@ -643,7 +691,7 @@ a:visited {
                         @include shift(0);
                         @include span-columns(12);
                         overflow: hidden;
-                        height: 215px;
+                        height: 220px;
                     }
 
                     > ul {
@@ -733,8 +781,7 @@ a:visited {
                                     @include post-title();
 
                                     @include bp(smartphone) {
-                                        font-size: 14px;
-                                        min-height: 42px;
+                                        min-height: 48px;
                                     }
 
                                     &:hover {
@@ -795,7 +842,7 @@ a:visited {
                 @include bp(smartphone) {
                     @include shift(0);
                     @include span-columns(12);
-                    padding: 15px;
+                    padding: 0 15px 15px;
                 }
 
                 > h2 {
@@ -1072,128 +1119,12 @@ a:visited {
             float: right;
             padding-top: 30px;
 
-            .rating-box {
-                padding: 10px 20px;
+            .fb-fanpage-box {
                 border: 1px solid $primary-border-color;
-
-                > h3 {
-                    @include post-title();
-                    text-align: center;
-                    margin-top: 10px;
-                }
-
-                .rating-box__stars {
-                    width: 100%;
-                    padding: 20px 0;
-                    @include align-items(space-between);
-                    @include display(flex);
-                    @include flex-direction(row);
-                    @include justify-content(space-between);
-
-                    > li {
-                        font-size: 18px;
-                        color: $secondary-text-color;
-
-                        > a {
-                            display: block;
-                            width: 100%;
-                            text-align: center;
-                            font-size: 28px;
-                            color: $secondary-text-color;
-
-                            &:hover {
-                                color: $primary-text-color;
-                            }
-                        }
-
-                        span {
-                            display: none;
-                        }
-                    }
-                }
-                .rating-box__stars--average {
-                    padding-bottom: 5px;
-                    @include align-items(center);
-                    @include justify-content(center);
-
-                    > li {
-                        margin: 0 5px;
-                    }
-                }
-
-                > hr {
-                    @include hr();
-                }
-
-                > .rating-box__average-points {
-                    text-align: center;
-                    font-size: 96px;
-                    font-weight: normal;
-                    display: block;
-                    padding: 44px 0 0;
-                    line-height: 60px;
-                    color: $primary-text-color;
-                }
-
-                > .rating-box__total-rating {
-                    text-align: center;
-                    color: $primary-text-color;
-                    font-size: 16px;
-                    padding-bottom: 20px;
-                }
-
-                > .rating-box__statistic {
-                    padding-bottom: 13px;
-
-                    > li {
-                        width: 100%;
-                        overflow: hidden;
-                        padding-bottom: 1px;
-
-                        > label {
-                            float: left;
-                            width: 40px;
-                            color: $primary-text-color;
-                            padding-top: 4px;
-
-                            > .fa {
-                                margin: 0 5px;
-                            }
-                        }
-
-                        > .rating-box__statistic-bar {
-                            float: left;
-                            width: calc( 100% - 40px );
-                            height: 25px;
-                            background: #dfdfdf;
-
-                            > span {
-                                display: block;
-                                height: 25px;
-                                text-indent: 20px;
-                                color: $primary-text-color;
-                                font-size: 14px;
-                                line-height: 25px;
-                                @include box-sizing(border-box);
-                            }
-                        }
-                        &:nth-child(1) > .rating-box__statistic-bar > span {
-                            background: #a0c05b;
-                        }
-                        &:nth-child(2) > .rating-box__statistic-bar > span {
-                            background: #add632;
-                        }
-                        &:nth-child(3) > .rating-box__statistic-bar > span {
-                            background: #ffd833;
-                        }
-                        &:nth-child(4) > .rating-box__statistic-bar > span {
-                            background: #ffb234;
-                        }
-                        &:nth-child(5) > .rating-box__statistic-bar > span {
-                            background: #ff8b5a;
-                        }
-                    }
-                }
+            }
+            /* To fill the container and nothing else */
+            .fb-like-box, .fb-like-box span, .fb-like-box span iframe[style] {
+                width: 100% !important;
             }
 
             @include bp(smartphone) {
