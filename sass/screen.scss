@@ -411,7 +411,6 @@ a:visited {
                 position: absolute;
                 top: 0;
                 left: 0;
-                background: rgba(255, 255, 255, 0.3);
                 display: none;
                 text-align: center;
                 cursor: pointer;
@@ -430,6 +429,9 @@ a:visited {
 
             &.video--paused > div.primary-banner__overlays {
                 display: block;
+            }
+            &.video--preloading > div.primary-banner__overlays {
+            background: url(../images/video-preload.jpg) no-repeat center center;
             }
             &.video--preloading > div.primary-banner__overlays ~ video {
                 display: none;
