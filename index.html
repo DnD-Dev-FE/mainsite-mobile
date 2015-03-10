@@ -78,24 +78,24 @@
                 <section id="main-content">
                     <section id="key-features" class="swiper-container">
                         <ul class="swiper-wrapper">
-                            <li class="swiper-slide">
-                                <a rel="mediaGroup" href="http://image.motortrend.com/f/auto_shows/los_angeles/2011/1111_2013_mazda_cx_5/35740618/2013-mazda-cx-5-drivers-side.jpg" class="key-features__fancybox fancybox fancybox.image">
-                                    <img src="http://bit.ly/18eGcRe" title="Key features" alt="Key features" width="427" height="268" />
+                            <li class="swiper-slide key-features__photoswipe" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                                <a itemprop="contentUrl" rel="mediaGroup" href="http://image.motortrend.com/f/auto_shows/los_angeles/2011/1111_2013_mazda_cx_5/35740618/2013-mazda-cx-5-drivers-side.jpg" class="key-features__fancybox fancybox fancybox.image">
+                                    <img src="http://bit.ly/18eGcRe" itemprop="thumbnail" title="Key features" alt="Key features" width="427" height="268" />
                                 </a>
                             </li>
-                            <li class="swiper-slide">
-                                <a rel="mediaGroup" href="https://www.youtube.com/embed/BgPVzKtyvtg" class="key-features__fancybox fancybox fancybox.iframe">
-                                    <img src="http://i.ytimg.com/vi/BgPVzKtyvtg/maxresdefault.jpg" title="Video" alt="Video" width="427" height="268" />
+                            <li class="swiper-slide" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                                <a itemprop="contentUrl" rel="mediaGroup" href="https://www.youtube.com/embed/BgPVzKtyvtg" class="key-features__fancybox fancybox fancybox.iframe">
+                                    <img src="http://i.ytimg.com/vi/BgPVzKtyvtg/maxresdefault.jpg" itemprop="thumbnail" title="Video" alt="Video" width="427" height="268" />
                                 </a>
                             </li>
-                            <li class="swiper-slide">
-                                <a rel="mediaGroup" href="http://static.danhgiaxe.com/data/images/2013_mitsubishi_mirage(1).jpg" class="key-features__fancybox fancybox fancybox.image">
-                                    <img src="http://static.danhgiaxe.com/data/images/2013_mitsubishi_mirage(1).jpg" title="Key features" alt="Video" width="427" height="268" />
+                            <li class="swiper-slide key-features__photoswipe" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                                <a itemprop="contentUrl" rel="mediaGroup" href="http://static.danhgiaxe.com/data/images/2013_mitsubishi_mirage(1).jpg" class="key-features__fancybox fancybox fancybox.image">
+                                    <img src="http://static.danhgiaxe.com/data/images/2013_mitsubishi_mirage(1).jpg" itemprop="thumbnail" title="Key features" alt="Key features" width="427" height="268" />
                                 </a>
                             </li>
-                            <li class="swiper-slide">
-                                <a rel="mediaGroup" href="http://cnet4.cbsistatic.com/hub/i/r/2014/01/31/c3735ca7-8bb6-11e3-a24e-d4ae52e62bcc/thumbnail/770x433/e27c1352f17921e12d6c6a4d87a252a0/2014_Mazda3_35827087-7510-007.jpg" class="key-features__fancybox fancybox fancybox.image">
-                                    <img src="http://cnet4.cbsistatic.com/hub/i/r/2014/01/31/c3735ca7-8bb6-11e3-a24e-d4ae52e62bcc/thumbnail/770x433/e27c1352f17921e12d6c6a4d87a252a0/2014_Mazda3_35827087-7510-007.jpg" title="Key features" alt="Key features" width="427" height="268" />
+                            <li class="swiper-slide key-features__photoswipe" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+                                <a itemprop="contentUrl" rel="mediaGroup" href="http://cnet4.cbsistatic.com/hub/i/r/2014/01/31/c3735ca7-8bb6-11e3-a24e-d4ae52e62bcc/thumbnail/770x433/e27c1352f17921e12d6c6a4d87a252a0/2014_Mazda3_35827087-7510-007.jpg" class="key-features__fancybox fancybox fancybox.image">
+                                    <img src="http://cnet4.cbsistatic.com/hub/i/r/2014/01/31/c3735ca7-8bb6-11e3-a24e-d4ae52e62bcc/thumbnail/770x433/e27c1352f17921e12d6c6a4d87a252a0/2014_Mazda3_35827087-7510-007.jpg" itemprop="thumbnail" title="Screenshot" alt="Key features" width="427" height="268" />
                                 </a>
                             </li>
                         </ul>
@@ -191,9 +191,73 @@
             </aside>
         </div>
 
+        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+            <!-- Background of PhotoSwipe. 
+                 It's a separate element as animating opacity is faster than rgba(). -->
+            <div class="pswp__bg"></div>
+            <!-- Slides wrapper with overflow:hidden. -->
+            <div class="pswp__scroll-wrap">
+
+                <!-- Container that holds slides. 
+                    PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                    Don't modify these 3 pswp__item elements, data is added later on. -->
+                <div class="pswp__container">
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                    <div class="pswp__item"></div>
+                </div>
+
+                <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+                <div class="pswp__ui pswp__ui--hidden">
+
+                    <div class="pswp__top-bar">
+
+                        <!--  Controls are self-explanatory. Order can be changed. -->
+
+                        <div class="pswp__counter"></div>
+
+                        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                        <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                        <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                        <!-- element will get class pswp__preloader--active when preloader is running -->
+                        <div class="pswp__preloader">
+                            <div class="pswp__preloader__icn">
+                              <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                        <div class="pswp__share-tooltip"></div> 
+                    </div>
+
+                    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                    </button>
+
+                    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                    </button>
+
+                    <div class="pswp__caption">
+                        <div class="pswp__caption__center"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
         <script type="text/javascript" src="js/jquery2.min.js"></script>
         <script type="text/javascript" src="widgets/swiper/js/idangerous.swiper.min.js"></script>
         <script type="text/javascript" src="widgets/fancybox/js/jquery.fancybox.pack.js"></script>
+        <script type="text/javascript" src="widgets/photoswipe/js/photoswipe.min.js"></script>
+        <script type="text/javascript" src="widgets/photoswipe/js/photoswipe-ui.min.js"></script>
         <script type="text/javascript" src="js/modernizr.js"></script>
         <script type="text/javascript" src="js/pattern.js"></script>
         <script type="text/javascript" src="js/main.js"></script>

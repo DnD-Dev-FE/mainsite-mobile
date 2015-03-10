@@ -7,6 +7,8 @@
 @import "font-awesome/font-awesome";
 @import "../widgets/swiper/sass/idangerous.swiper";
 @import "../widgets/fancybox/sass/jquery.fancybox";
+@import "../widgets/photoswipe/sass/photoswipe";
+@import "../widgets/photoswipe/sass/photoswipe-skin";
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin,vietnamese");
 
 @import "sprites/*.png";
@@ -131,6 +133,8 @@ a:visited {
                     > .fa {
                         font-size: 20px;
                         color: invert($primary-text-color);
+                        height: 45px;
+                        line-height: 45px;
                     }
                 }
 
@@ -693,7 +697,7 @@ a:visited {
                         @include shift(0);
                         @include span-columns(12);
                         overflow: hidden;
-                        height: 220px;
+                        height: 280px;
                     }
 
                     > ul {
@@ -720,7 +724,7 @@ a:visited {
                             float: none;
 
                             @include bp(smartphone) {
-                                width: 250px;
+                                width: 3100px;
                                 float: left;
                                 padding-right: 10px;
                                 box-sizing:border-box;
@@ -745,7 +749,7 @@ a:visited {
                                         @include span-columns(12);
                                         position: relative;
                                         @include opacity(1);
-                                        max-height: 120px;
+                                        max-height: 180px;
                                     }
                                 }
                             }

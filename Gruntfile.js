@@ -34,6 +34,8 @@ module.exports = function(grunt) {
                     'js/jquery2.min.js',
                     'widgets/swiper/js/idangerous.swiper.min.js',
                     'widgets/fancybox/js/jquery.fancybox.pack.js',
+                    'widgets/photoswipe/js/photoswipe.min.js',
+                    'widgets/photoswipe/js/photoswipe-ui.min.js',
                     'js/modernizr.js',
                     'js/pattern.js',
                     'js/main.js'
@@ -72,6 +74,8 @@ module.exports = function(grunt) {
                 src: [
                     'js/jquery2.min.js',
                     'widgets/fancybox/js/jquery.fancybox.pack.js',
+                    'widgets/photoswipe/js/photoswipe.min.js',
+                    'widgets/photoswipe/js/photoswipe-ui.min.js',
                     'js/modernizr.js',
                     'js/signals.min.js',
                     'js/hasher.min.js',
