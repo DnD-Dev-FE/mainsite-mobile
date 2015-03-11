@@ -13,6 +13,7 @@ article {
 		@include section-title();
 		text-align: left;
 		padding-top: 36px;
+		text-transform: inherit;
 	}
 
 	h2 {
@@ -32,6 +33,7 @@ article {
 
 	.post__cate-and-time {
 		@include post-cate-and-time();
+		margin-bottom: 0;
 	}
 }
 
@@ -200,40 +202,40 @@ article {
 
 						> h2 {
 							margin-bottom: 14px;
+							text-transform: uppercase;
 						}
 
 						.hotevent__list {
 
-							a {
-								display: block;
-								overflow: hidden;
-								border: 1px solid $primary-border-color;
+							> li {
+								padding-bottom: 20px;
 
-								img {
-									display: inline-block;
-									height: 200px;
-									width: auto;
-									border: none;
-									float: left;
-								}
+								a {
+									display: block;
+									overflow: hidden;
+									border: 1px solid $primary-border-color;
 
-								> div {
-									float: left;
-									width: 100%;
-									border-top: 1px solid $primary-border-color;
-									padding: 15px 5%;
-									text-align: left;
-
-									h3 {
-										font-size: 16px;
-										color: #4d4d4d;
-										padding: 0;
-										text-align: left;
-										line-height: 2;
+									img {
+										display: inline-block;
+										height: 200px;
+										width: auto;
+										border: none;
+										float: left;
 									}
 
-									time {
-										color: #000;
+									> div {
+										float: left;
+										width: 100%;
+										padding: 15px 5%;
+										text-align: left;
+
+										h3 {
+											@include post-title();
+										}
+
+										time {
+											color: $time-color;
+										}
 									}
 								}
 							}
@@ -260,8 +262,7 @@ article {
 						display: block;
 						list-style: none;
 						overflow: hidden;
-						margin-top: 20px;
-						border-bottom: 1px solid $primary-border-color;
+						padding: 20px 0;
 
 						li,
 						li.gallery__item {
@@ -273,6 +274,7 @@ article {
 							display: block;
 							list-style: none;
 							margin-bottom: 10px;
+
 							@include bp(desktop) {
 								height: 292px;
 								overflow: hidden;
@@ -288,12 +290,14 @@ article {
 								position: relative;
 								height: 100%;
 								width: 100%;
-								@include border-radius(3px);
 								border: 1px solid $primary-border-color;
+								padding: 1px;
+								@include box-sizing(border-box);
 
 								img {
 									display: inline-block;
 									width: 100%;
+									height: auto;
 
 									border: none;
 									float: left;

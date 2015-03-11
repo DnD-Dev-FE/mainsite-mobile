@@ -94,9 +94,9 @@ a:visited {
             }
 
             @include bp(widescreen) {
-                width: 400px;
+                width: 450px;
                 float: right;
-                margin: 0 130px 0 0;
+                margin: 0 140px 0 0;
                 @-moz-document url-prefix() {
                     margin-right: 140px;
                 }
@@ -237,8 +237,8 @@ a:visited {
 
                     a {
                         float: left;
-                        height: 47px;
-                        line-height: 47px;
+                        height: $top-bar-height;
+                        line-height: $top-bar-height;
                     }
 
                     > a:hover {
@@ -296,6 +296,7 @@ a:visited {
             z-index: 4;
             width: $top-bar-height;
             height: $top-bar-height;
+            padding-left: 5px;
             background: none;
 
             @include off-canvas-translate3d();
@@ -312,19 +313,13 @@ a:visited {
             }
         }
         #drawer-toggle-label:hover {
-            @include opacity(0.8);
         }
         #drawer-toggle:checked ~ #drawer-toggle-label {
-            @include transition(transform 0.25s ease-out, background 0.5s ease-out);
+            @include transition(transform 0.25s ease-out);
             @include off-canvas-sliding($offset-canvas);
 
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-
-            &:hover {
-                @include opacity(1);
-            }
         }
         #drawer-toggle:checked ~ main {
             @include off-canvas-sliding($offset-canvas);
@@ -342,7 +337,7 @@ a:visited {
     .hotline {
         width: 100%;
         max-width: $desktop-max-width;
-        height: 47px;
+        height: $top-bar-height;
         background: #fff;
         overflow: hidden;
         border-bottom: 1px solid $primary-border-color;
@@ -358,8 +353,8 @@ a:visited {
         @include off-canvas-sliding(0);
 
         > i.fa {
-            font-size: 47px;
-            height: 45px;
+            font-size: $top-bar-height;
+            height: $top-bar-height - 2; /*border-top/bottom*/
             margin: 1px 0 0;
             float: right;
             color: $primary-text-color;
@@ -367,7 +362,7 @@ a:visited {
 
         > strong {
             float: right;
-            padding: 5px 10px 0 5px;
+            padding: 5px 15px 0 5px;
             line-height: 17px;
 
             > a {
@@ -496,20 +491,20 @@ a:visited {
             .app-info__brief {
                 color: #000;
                 padding: 24px 0 0;
-                font-size: 12px;
+                font-size: 14px;
 
                 > strong {
-                    font-size: 16px;
+                    font-size: 18px;
                     font-weight: bold;
                 }
             }
 
             .app-info__install {
                 float: left;
-                padding: 9px 0 0;
+                padding: 5px 0 0;
 
                 @include bp(hybrid) {
-                    padding: 20px 0 0;
+                    padding: 15px 0 0;
                 }
 
                 > .app-info__install--mobile {
@@ -557,7 +552,8 @@ a:visited {
             }
 
             @include bp(hybrid) {
-                .app-info__qr {
+                .app-info__qr,
+                .app-info__qr-help-text {
                     display: none;
                 }
             }
@@ -572,6 +568,13 @@ a:visited {
                     border: 1px solid $primary-border-color;
                     @include border-radius(3px);
                 }
+                .app-info__qr-help-text {
+                    position: absolute;
+                    bottom: 12px;
+                    right: 110px;
+                    font-size: 14px;
+                    color: $primary-text-color;
+                }
             }
 
             .fb-like-placeholder {
@@ -579,9 +582,9 @@ a:visited {
                 width: 120px;
                 height: 50px;
                 float: left;
-                margin: 11px 0 0;
+                margin: 7px 0 0;
                 @include bp(hybrid) {
-                    margin: 22px 0 0;
+                    margin: 17px 0 0;
                 }
 
                 iframe {
@@ -595,28 +598,42 @@ a:visited {
             /* section #key-features */
             #key-features {
                 width: 100%;
-                height: 268px;
+                height: 288px;
                 overflow: hidden;
                 position: relative;
+                border-bottom: 1px solid $primary-border-color;
+
+                @include bp(smartphone) {
+                    height: 180px;
+                }
 
                 > .swiper-wrapper {
+                    width: 100%;
+                    overflow: hidden;
 
                     > .swiper-slide {
                         width: 427px;
-                        padding: 0 10px 0 0;
                         height: 268px;
+                        overflow: hidden;
+                        padding-right: 15px;
+                        @include bp(smartphone) {
+                            width: 255px;
+                            height: 160px;
+                        }
                         float: left;
                         margin: 0;
-                        @include box-sizing(border-box);
 
-                        &:last-child {
-                            padding-right: 0;
+                        @include bp(desktop) {
+                            &:last-child {
+                                padding-right: 0;
+                            }
                         }
 
                         > a {
                             display: block;
                             width: 100%;
                             height: 100%;
+                            position: relative;
 
                             > img,
                             > video {
@@ -624,6 +641,15 @@ a:visited {
                                 width: 100%;
                                 height: 100%;
                                 background: $placeholder-color;
+                            }
+
+                            > .key-features__video-icon {
+                                color: #fff;
+                                font-size: 80px;
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                margin: -40px 0 0 -34px;
                             }
                         }
                     }
@@ -668,11 +694,11 @@ a:visited {
             /* section #hot-events */
             #hot-event {
                 overflow: hidden ;
-                background: #fafafa;
-                border-bottom: 1px solid #eaeaea;
+                width: 100%;
+                border-bottom: 1px solid $primary-border-color;
 
                 @include bp(desktop) {
-                    padding-bottom: 25px;
+                    padding-bottom: 20px;
                 }
                 @include bp(smartphone) {
                     padding-bottom: 0;
@@ -680,6 +706,12 @@ a:visited {
 
                 h2 {
                     @include section-title();
+                    padding: 15px 0;
+
+                    @include bp(smartphone) {
+                        text-align: left;
+                        padding-left: 15px;
+                    }
                 }
 
                 > .swiper-container {
@@ -697,7 +729,7 @@ a:visited {
                         @include shift(0);
                         @include span-columns(12);
                         overflow: hidden;
-                        height: 280px;
+                        height: 250px;
                     }
 
                     > ul {
@@ -724,14 +756,8 @@ a:visited {
                             float: none;
 
                             @include bp(smartphone) {
-                                width: 3100px;
                                 float: left;
-                                padding-right: 10px;
-                                box-sizing:border-box;
-
-                                &:last-child {
-                                    padding-right: 0;
-                                }
+                                padding-right: 15px;
                             }
 
                             > a {
@@ -748,8 +774,8 @@ a:visited {
                                     @include bp(smartphone) {
                                         @include span-columns(12);
                                         position: relative;
-                                        @include opacity(1);
-                                        max-height: 180px;
+                                        width: 255px;
+                                        height: 160px;
                                     }
                                 }
                             }
@@ -766,9 +792,9 @@ a:visited {
                             div {
                                 @include bp(smartphone) {
                                     clear: both;
-                                    width: 100%;
-                                    border: 1px solid $primary-border-color;
-                                    padding: 10px;
+                                    width: 255px;
+                                    border: none;
+                                    padding: 10px 0;
                                 }
 
                                 @include bp(desktop) {
@@ -848,7 +874,7 @@ a:visited {
                 @include bp(smartphone) {
                     @include shift(0);
                     @include span-columns(12);
-                    padding: 0 15px 15px;
+                    padding: 0 15px;
                 }
 
                 > h2 {
@@ -861,7 +887,7 @@ a:visited {
                 .search__tabs,
                 .posts__tabs {
                     display: block;
-                    margin-top: 30px;
+                    margin-top: 20px;
                     margin-bottom: 10px;
                     background: #fff;
                     @include span-columns(8 of 8);
@@ -900,11 +926,11 @@ a:visited {
                         }
 
                         a {
-                            padding: 20px;
+                            padding: 20px 10px;
                             display: block;
                             text-decoration: none;
                             text-transform: uppercase;
-                            font-size: 14px;
+                            font-size: 18px;
 
                         }
                     }
@@ -915,24 +941,19 @@ a:visited {
                     clear: both;
                     min-height: 300px;
                     position: relative;
-                    /*@include off-canvas-translate3d();
-                    @include css-sliding(0, 0, 0);*/
 
                     &.search__list--inactive,
                     &.posts__list--inactive {
-                        /*@include css-sliding(0, 48px, 0);*/
                     }
 
                     > li {
                         padding: 15px 0;
 
-                        @include bp(smartphone) {
-                            width: calc( 100% + 30px );
-                            margin-left: -15px;
-                            padding: 15px;
-                        }
+                        border-top: 1px solid $primary-border-color;
 
-                        border-bottom: 1px solid $primary-border-color;
+                        &:first-child {
+                            border-top: none;
+                        }
 
                         p {
                             @include post-cate-and-time();
@@ -1000,7 +1021,7 @@ a:visited {
                     display: block;
                     padding: 10px 0;
                     border: 1px solid $primary-border-color;
-                    margin: 20px auto;
+                    margin: 11px auto 34px;
                     @include border-radius(3px);
                     text-align: center;
                     color: $primary-text-color;
@@ -1089,6 +1110,11 @@ a:visited {
                 @include flex-direction(row);
                 @include justify-content(center);
 
+                @include bp(smartphone) {
+                    width: calc( 100% + 30px );
+                    margin-left: -15px;
+                }
+
                 .socials__list {
 
                     > li {
@@ -1123,7 +1149,7 @@ a:visited {
             }
 
             float: right;
-            padding-top: 30px;
+            padding-top: 20px;
 
             .fb-fanpage-box {
                 border: 1px solid $primary-border-color;

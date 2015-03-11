@@ -130,7 +130,8 @@ DnDMoM = (function($) {
             mode:'horizontal',
             loop: false,
             slidesPerView: 'auto',
-            slideElement: 'li'
+            slideElement: 'li',
+            offsetPxBefore: Modernizr.mq('only screen and (min-width: 667px)' ) ? 0 : 15
         }
     }
     var $window = $(window);
@@ -362,20 +363,23 @@ DnDMoM = (function($) {
                         overlay : {
                             locked : false // try changing to true and scrolling around the page
                         }
-                    }
+                    },
+                    padding: 0
                 }
                 fancylinks.fancybox(_fancyOpts);
             }
             else {
                 //init gallery viewer for mobile
-                DnDMoM.initMobileGalleryViewer();
+                DnDMoM.initMobileGalleryViewer('#key-features .swiper-wrapper');
             }
 
             //init swiper
             var keyFeaturesSwiper = new Swiper(selector, $.extend(true, {}, _options.swiper, {
-                autoResize: true,
+                autoResize: false,
+                resizeReInit: true,
                 slidesPerViewFit: true,
-                slidesPerView: Modernizr.mq('only screen and (min-width: 667px)' ) ? 'auto' : 1.1,
+                grabCursor: true,
+                slidesPerView: 'auto',
                 onTouchMove: function(swiper, e, diff) {
                     if ( diff !== 0 ) {
                         if ( fancylinks.hasClass('key-features__fancybox--disabled') ) {
@@ -393,18 +397,16 @@ DnDMoM = (function($) {
             }) );
 
             //init control for swiper
-            if ( Modernizr.mq('only screen and (min-width: 667px)' ) ) {
-                $('.key-features__control').on('click', function(e) {
-                    return false;
-                });
-                $('.key-features__control--prev').on('click', function(e) {
-                    keyFeaturesSwiper.swipePrev();
+            $('.key-features__control').on('click', function(e) {
+                return false;
+            });
+            $('.key-features__control--prev').on('click', function(e) {
+                keyFeaturesSwiper.swipePrev();
 
-                });
-                $('.key-features__control--next').on('click', function(e) {
-                    keyFeaturesSwiper.swipeNext();
-                });
-            }
+            });
+            $('.key-features__control--next').on('click', function(e) {
+                keyFeaturesSwiper.swipeNext();
+            });
         },
 
         initHotEventSlider: function(selector) { /* for smartphone */
@@ -413,7 +415,7 @@ DnDMoM = (function($) {
                     if ( DnDMoM.hotEvent === undefined ) {
                         DnDMoM.hotEvent = (function() {
                             return new Swiper( '#hot-events__list', $.extend(true, {}, _options.swiper, {
-                                slidesPerView: 1.1,
+                                slidesPerView: 'auto',
                                 slideActiveClass: 'swiper-slide--active'
                             }) );
                         })();
@@ -549,10 +551,10 @@ DnDMoM = (function($) {
             crossroads.addRoute('/media.html:?query:', function(query) {
                 if ( query !== undefined ) {
                     var queryLocation = window.location.href.indexOf('?');
-                    window.location = window.location.href.substr(0, queryLocation) + '#!all?' + $.param(query);
+                    window.location = window.location.href.substr(0, queryLocation) + '#!gallery?' + $.param(query);
                 }
                 else {
-                    hasher.setHash('all');
+                    hasher.setHash('gallery');
                 }
             });
             crossroads.addRoute('/media.html#!{cate}:?query:', function(cate, query) {
@@ -571,7 +573,12 @@ DnDMoM = (function($) {
                             }
                         }
                         setTimeout(function () {
-                            $('.gallery__list a.fancybox').fancybox(_fancyOpts);
+                            if ( Modernizr.mq('only screen and (min-width: 667px)' ) ) {
+                                $('.gallery__list a.fancybox').fancybox(_fancyOpts);
+                            }
+                            else {
+                                DnDMoM.initMobileGalleryViewer('#posts__list.gallery__list');
+                            }
                         }, 1000);
                     });
 
@@ -599,14 +606,33 @@ DnDMoM = (function($) {
             }
         },
 
-        initMobileGalleryViewer: function() {
+        initMobileGalleryViewer: function(selector) {
+            var _options = {
+                history: false,
+
+                // Adds class pswp__ui--idle to pswp__ui element when mouse isn't moving for 4000ms
+                timeToIdle: 0,
+
+                // Same as above, but this timer applies when mouse leaves the window
+                timeToIdleOutside: 500,
+
+                // Delay until loading indicator is displayed
+                loadingIndicatorDelay: 500,
+
+                hideAnimationDuration:0,
+
+                showAnimationDuration:0,
+
+                preloaderEl: false,
+            }
+
             // build items array
             var initPhotoSwipeFromDOM = function(gallerySelector) {
 
-                // parse slide data (url, title, size ...) from DOM elements 
+                // parse slide data (url, title, size ...) from DOM elements
                 // (children of gallerySelector)
                 var parseThumbnailElements = function(el) {
-                    var thumbElements = $(el).find('.key-features__photoswipe').toArray(),
+                    var thumbElements = $(el).find('.dndmom__photoswipe').toArray(),
                         numNodes = thumbElements.length,
                         items = [],
                         figureEl,
@@ -617,7 +643,7 @@ DnDMoM = (function($) {
                     for (var i = 0; i < numNodes; i++) {
                         figureEl = thumbElements[i]; // <figure> element
 
-                        // include only element nodes 
+                        // include only element nodes
                         if(figureEl.nodeType !== 1) {
                             continue;
                         }
@@ -637,13 +663,13 @@ DnDMoM = (function($) {
 
                         if (figureEl.children.length > 1) {
                             // <figcaption> content
-                            item.title = figureEl.children[1].innerHTML; 
+                            item.title = figureEl.children[1].innerHTML;
                         }
 
                         if (linkEl.children.length > 0) {
                             // <img> thumbnail element, retrieving thumbnail url
                             item.msrc = linkEl.children[0].getAttribute('src');
-                        } 
+                        }
 
                         item.el = figureEl; // save link to element for getThumbBoundsFn
                         items.push(item);
@@ -671,10 +697,10 @@ DnDMoM = (function($) {
                         if(!vars[i]) {
                             continue;
                         }
-                        var pair = vars[i].split('=');  
+                        var pair = vars[i].split('=');
                         if(pair.length < 2) {
                             continue;
-                        }           
+                        }
                         params[pair[0]] = pair[1];
                     }
 
@@ -698,25 +724,8 @@ DnDMoM = (function($) {
                     items = parseThumbnailElements(galleryElement);
 
                     // define options (if needed)
-                    options = {
+                    options = $.extend(true, _options, {
                         index: index,
-
-                        history: false,
-
-                        // Adds class pswp__ui--idle to pswp__ui element when mouse isn't moving for 4000ms
-                        timeToIdle: 0,
-
-                        // Same as above, but this timer applies when mouse leaves the window
-                        timeToIdleOutside: 500,
-
-                        // Delay until loading indicator is displayed
-                        loadingIndicatorDelay: 500,
-
-                        hideAnimationDuration:0,
-
-                        showAnimationDuration:0,
-
-                        preloaderEl: false,
 
                         // define gallery index (for URL)
                         galleryUID: galleryElement.getAttribute('data-pswp-uid'),
@@ -725,11 +734,11 @@ DnDMoM = (function($) {
                             // See Options -> getThumbBoundsFn section of documentation for more info
                             var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
                                 pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
-                                rect = thumbnail.getBoundingClientRect(); 
+                                rect = thumbnail.getBoundingClientRect();
 
                             return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
                         }
-                    };
+                    });
 
                     if ( disableAnimation ) {
                         options.showAnimationDuration = 0;
@@ -745,7 +754,7 @@ DnDMoM = (function($) {
                             $this.h = img.height;
                             loaded++;
                         }
-                        img.src = $this.src;                        
+                        img.src = $this.src;
                     });
                     var intv = setInterval(function() {
                         if ( loaded == items.length ) {
@@ -761,9 +770,9 @@ DnDMoM = (function($) {
 
                 for (var i = 0, l = galleryElements.length; i < l; i++) {
                     galleryElements[i].setAttribute('data-pswp-uid', i+1);
-                    $(galleryElements[i]).on( 'click', '.key-features__photoswipe', function(e) {
+                    $(galleryElements[i]).on( 'click', '.dndmom__photoswipe', function(e) {
                         var $this = $(this);
-                        openPhotoSwipe( $this.prev().length, $this.parent().get(0) );
+                        openPhotoSwipe( $this.prevAll('.dndmom__photoswipe').length, $this.parent().get(0) );
                         return false;
                     });
                 }
@@ -776,7 +785,7 @@ DnDMoM = (function($) {
             };
 
             // execute above function
-            initPhotoSwipeFromDOM('#key-features .swiper-wrapper');
+            initPhotoSwipeFromDOM(selector);
         },
 
         destroySlider:  function(object) {
