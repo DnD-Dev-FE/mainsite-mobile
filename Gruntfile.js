@@ -12,6 +12,8 @@ module.exports = function(grunt) {
 
                     {expand: true, src: ['images/**'], dest: 'dist'},
 
+                    {expand: true, src: ['dummy/**'], dest: 'dist'},
+
                     {expand: true, src: ['php/**'], dest: 'dist'}
                 ]
             }
