@@ -93,8 +93,10 @@ article {
 		@include shift(0.25);
 	}
 	@include bp(smartphone) {
-		@include span-columns(11);
-		@include shift(0.5);
+		width: 100%;
+		padding: 0 15px;
+		@include box-sizing(border-box);
+		@include shift(0);
 	}
 
 	padding-bottom: 40px;
@@ -132,9 +134,10 @@ article {
 						@include span-columns(7.75);
 					}
 					@include bp(smartphone) {
-						@include span-columns(11);
-						@include shift(0.5);
-						padding: 0;
+						width: 100%;
+						padding: 0 15px;
+						@include box-sizing(border-box);
+						@include shift(0);
 					}
 
 					h2 {

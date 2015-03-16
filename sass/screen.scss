@@ -128,7 +128,7 @@ a:visited {
                     border: none;
                     position: absolute;
                     top: 0;
-                    right: 0;
+                    right: 5px;
 
                     > .fa {
                         font-size: 20px;
@@ -296,8 +296,10 @@ a:visited {
             z-index: 4;
             width: $top-bar-height;
             height: $top-bar-height;
-            padding-left: 5px;
+            padding: 0 0 0 5px;
             background: none;
+            -webkit-tap-highlight-color: transparent;
+            @include box-sizing(border-box);
 
             @include off-canvas-translate3d();
             @include off-canvas-sliding(0);
@@ -323,6 +325,9 @@ a:visited {
         }
         #drawer-toggle:checked ~ main {
             @include off-canvas-sliding($offset-canvas);
+            -webkit-box-shadow: -6px 0px 8px 0px rgba(50, 50, 50, 0.3);
+            -moz-box-shadow: -6px 0px 8px 0px rgba(50, 50, 50, 0.3);
+            box-shadow: -6px 0px 8px 0px rgba(50, 50, 50, 0.3);
         }
     }
 
@@ -415,7 +420,7 @@ a:visited {
                 cursor: pointer;
 
                 > .fa {
-                    color: #fff;
+                    color: $icon-overlays-color-light;
                     font-size: 100px;
                     line-height: 389px;
                     cursor: pointer;
@@ -430,7 +435,7 @@ a:visited {
                 display: block;
             }
             &.video--preloading > div.primary-banner__overlays {
-            background: url(../images/video-preload.jpg) no-repeat center center;
+                background: url(../images/video-preload.jpg) no-repeat center center;
             }
             &.video--preloading > div.primary-banner__overlays ~ video {
                 display: none;
@@ -644,7 +649,7 @@ a:visited {
                             }
 
                             > .key-features__video-icon {
-                                color: #fff;
+                                color: $icon-overlays-color-light;
                                 font-size: 80px;
                                 position: absolute;
                                 top: 50%;
@@ -667,7 +672,7 @@ a:visited {
                         z-index: 10000;
                         top: 50%;
                         margin-top: -30px;
-                        background: rgba(0, 0, 0, 0.5);
+                        background: rgba(0, 0, 0, 0.8);
                         text-align: center;
                         @include opacity(0.6);
 
@@ -829,7 +834,7 @@ a:visited {
                             @include bp(desktop) {
                                 div:hover,
                                 &.swiper-slide--active div {
-                                    background: $active-color;
+                                    background: $hover-color;
 
                                     &:after { /* arrow */
                                         left: -30px;
@@ -839,7 +844,7 @@ a:visited {
                                         height: 0;
                                         width: 0;
                                         position: absolute;
-                                        border-right-color: $active-color;
+                                        border-right-color: $hover-color;
                                         border-width: 15px;
                                         margin-top: -15px;
                                         background: none;
@@ -905,7 +910,7 @@ a:visited {
 
                         &.active,
                         &:hover.active {
-                            background: $active-dark-color;
+                            background: $active-color;
                             > a,
                             > a:hover {
                                 color: #fff;
@@ -968,7 +973,6 @@ a:visited {
 
                             &:hover {
                                 h3 {
-                                    color: $hover-secondary-color;
                                 }
                             }
 
@@ -1068,7 +1072,7 @@ a:visited {
                         > .pagination__index {
 
                             &.pagination__index--active {
-                                background: $theme-secondary-color;
+                                background: $theme-color;
                                 color: #fff;
                             }
                         }
@@ -1102,7 +1106,7 @@ a:visited {
             .socials {
                 width: 100%;
                 overflow: hidden;
-                background: $sub-section-background;
+                background: $section-background;
                 border-top: 1px solid $primary-border-color;
                 padding: 20px 0;
                 @include align-items(center);
@@ -1167,7 +1171,7 @@ a:visited {
         /* footer */
         footer {
             padding: 10px 0;
-            background: invert($sub-section-background);
+            background: invert($section-background);
 
             .copyright {
                 text-align: center;
@@ -1221,5 +1225,78 @@ a:visited {
         .flyout-content__top-button--shown {
             @include opacity(1);
         }
+    }
+
+    .dndmom__photoswipe {
+        position: relative;
+    }
+    .dndmom__photoswipe--loading:before {
+        display: block;
+        content: "đang tải hình...";
+        position: absolute;
+        top: 127px;
+        @include bp(smartphone) {
+            top: 65px;
+        }
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        z-index: 99;
+        color: #fff;
+        font-size: 18px;
+        @include opacity(0.8);
+        width: 80%;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 5px 0;
+    }
+}
+.dndmom__modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+    background: #000;
+
+    > a {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 100000;
+        text-indent: -1000em;
+
+        &:before {
+            content: " ";
+            background: url(../images/default-skin.png) no-repeat 0 -44px;
+            background-size: 264px 88px;
+            width: 44px;
+            height: 44px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            @include opacity(0.7);
+        }
+
+        &:hover:before {
+            @include opacity(1);
+        }
+    }
+
+    > iframe {
+        width: 90%;
+        height: 90%;
+        margin: 15px auto 0;
+        @include bp(smartphone) {
+            width: 100%;
+            margin: 30px auto 0;
+            height: calc( 100% - 30px );
+        }
+        display: block;
+        position: relative;
+        z-index: 100001;
     }
 }

@@ -47,7 +47,7 @@ jQuery(document).ready(function(e) {
 
         //load config for subpages
         var url = 'http://img.zing.vn/products/devmobile/config/config.json?callback=?';
-        //var url = 'config/config.json?callback=?';
+        // var url = 'config/config.json?callback=?';
         $.ajax({
            type: 'GET',
             url: url,
@@ -264,7 +264,7 @@ DnDMoM = (function($) {
                     $(this).toggleClass('focus');
                     return false;
                 });
-            $(document).on('click', function(e) {
+            $(document).on('click touchend', function(e) {
                 $('#main-nav__list > li > a.main-nav__has-sub.focus').removeClass('focus');
             });
 
@@ -305,21 +305,21 @@ DnDMoM = (function($) {
         initImageSlider: function(selector) {
             var _disableFancyClick_ = function() { return false; }
             var fancylinks = $( selector + ' a.key-features__fancybox');
-            if ( Modernizr.mq('only screen and (min-width: 667px)' ) ) {
-                var _fancyOpts = {
-                    helpers : {
-                        overlay : {
-                            locked : false // try changing to true and scrolling around the page
-                        }
-                    },
-                    padding: 0
-                }
-                fancylinks.fancybox(_fancyOpts);
-            }
-            else {
+            // if ( Modernizr.mq('only screen and (min-width: 667px)' ) ) {
+            //     var _fancyOpts = {
+            //         helpers : {
+            //             overlay : {
+            //                 locked : false // try changing to true and scrolling around the page
+            //             }
+            //         },
+            //         padding: 0
+            //     }
+            //     fancylinks.fancybox(_fancyOpts);
+            // }
+            // else {
                 //init gallery viewer for mobile
                 DnDMoM.initMobileGalleryViewer('#key-features .swiper-wrapper');
-            }
+            // }
 
             //init swiper
             var keyFeaturesSwiper = new Swiper(selector, $.extend(true, {}, _options.swiper, {
@@ -513,20 +513,21 @@ DnDMoM = (function($) {
                     if ( blogrollAjax !== undefined ) { blogrollAjax.abort(); }
                     blogrollAjax = _hasherListener.blogroll( cate, parseInt(query.p) );
                     blogrollAjax.success( function() {
-                        var _fancyOpts = {
-                            helpers : {
-                                overlay : {
-                                    locked : false // try changing to true and scrolling around the page
-                                }
-                            }
-                        }
+                        // var _fancyOpts = {
+                        //     helpers : {
+                        //         overlay : {
+                        //             locked : false // try changing to true and scrolling around the page
+                        //         }
+                        //     },
+                        //     padding: 0
+                        // }
                         setTimeout(function () {
-                            if ( Modernizr.mq('only screen and (min-width: 667px)' ) ) {
-                                $('.gallery__list a.fancybox').fancybox(_fancyOpts);
-                            }
-                            else {
+                            // if ( Modernizr.mq('only screen and (min-width: 667px)' ) ) {
+                            //     $('.gallery__list a.fancybox').fancybox(_fancyOpts);
+                            // }
+                            // else {
                                 DnDMoM.initMobileGalleryViewer('#posts__list.gallery__list');
-                            }
+                            // }
                         }, 1000);
                     });
 
@@ -602,11 +603,9 @@ DnDMoM = (function($) {
 
                         // create slide object
                         item = {
-                            src: linkEl.getAttribute('href')
-                            // w: parseInt(size[0], 10),
+                            src: linkEl.getAttribute('href'),
+                            // w: parseInt(size[0], 10)
                             // h: parseInt(size[1], 10)
-                            //w: img.width,
-                            //h: img.height
                         };
 
                         if (figureEl.children.length > 1) {
@@ -708,6 +707,11 @@ DnDMoM = (function($) {
                         if ( loaded == items.length ) {
                             clearInterval(intv);
                             gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+
+                            gallery.listen('imageLoadComplete', function(index, item) {
+                                $('.dndmom__photoswipe--loading').removeClass('dndmom__photoswipe--loading');
+                            });
+
                             gallery.init();
                         }
                     }, 500);
@@ -719,7 +723,7 @@ DnDMoM = (function($) {
                 for (var i = 0, l = galleryElements.length; i < l; i++) {
                     galleryElements[i].setAttribute('data-pswp-uid', i+1);
                     $(galleryElements[i]).on( 'click', '.dndmom__photoswipe', function(e) {
-                        var $this = $(this);
+                        var $this = $(this).addClass('dndmom__photoswipe--loading');
                         openPhotoSwipe( $this.prevAll('.dndmom__photoswipe').length, $this.parent().get(0) );
                         return false;
                     });
@@ -734,6 +738,25 @@ DnDMoM = (function($) {
 
             // execute above function
             initPhotoSwipeFromDOM(selector);
+
+            //init video viewer
+            $('.fancybox').on('click', function(e) {
+                var $this = $(this);
+                var modal;
+                if ( $this.hasClass('fancybox.iframe') ) {
+                    modal = $('<div class="dndmom__modal"><a href="#" title="Close">Close</a></div>');
+                    var iframe = $('<iframe src="' + $this.attr('href') + '"></iframe>');
+                    $('body').append( modal.append( iframe ) );
+
+                    $('.dndmom__modal > a').on('click', function(e) {
+                        e.preventDefault();
+                        if ( modal !== undefined ) {
+                            modal.fadeOut().remove();
+                        }
+                    });
+                    return false;
+                }
+            });
         },
 
         destroySlider:  function(object) {
