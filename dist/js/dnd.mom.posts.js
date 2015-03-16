@@ -1544,6 +1544,7 @@ var Swiper = function (selector, params) {
                 }
             }
             //Move Slides
+            var _diff = Math.abs(_this.touches.current - _this.touches.start);
             if (!params.followFinger) return;
 
             if (!params.moveStartThreshold) {
@@ -1583,7 +1584,7 @@ var Swiper = function (selector, params) {
             velocityPrevTime = (new Date()).getTime();
             //Callbacks
             _this.callPlugins('onTouchMoveEnd');
-            if (params.onTouchMove) _this.fireCallback(params.onTouchMove, _this, event);
+            if (params.onTouchMove) _this.fireCallback(params.onTouchMove, _this, event, _diff);
 
             return false;
         }
