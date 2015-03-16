@@ -68,6 +68,10 @@ a:visited {
             background: #fff;
             border-right: 1px solid $primary-border-color;
             display: none;
+
+            -webkit-box-shadow: inset -5px 0px 8px 0px rgba(50, 50, 50, 0.2);
+            -moz-box-shadow: inset -5px 0px 8px 0px rgba(50, 50, 50, 0.2);
+            box-shadow: inset -5px 0px 8px 0px rgba(50, 50, 50, 0.2);
         }
 
         @include bp(widescreen) {
@@ -325,9 +329,6 @@ a:visited {
         }
         #drawer-toggle:checked ~ main {
             @include off-canvas-sliding($offset-canvas);
-            -webkit-box-shadow: -6px 0px 8px 0px rgba(50, 50, 50, 0.3);
-            -moz-box-shadow: -6px 0px 8px 0px rgba(50, 50, 50, 0.3);
-            box-shadow: -6px 0px 8px 0px rgba(50, 50, 50, 0.3);
         }
     }
 
