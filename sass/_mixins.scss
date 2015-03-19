@@ -6,10 +6,10 @@
         @media (min-width: 667px) { @content; }
     }
     @else if $point == widescreen {
-        @media (min-width: 1024px) { @content; }
+        @media (min-width: 1025px) { @content; }
     }
     @else if $point == hybrid { /* between desktop ~ smartphone */
-        @media (max-width: 666px), (min-width: 667px) and (max-width: 1023px) { @content; }
+        @media (max-width: 666px), (min-width: 667px) and (max-width: 1024px) { @content; }
     }
 }
 
@@ -54,7 +54,7 @@
     text-align: center;
     text-decoration: none;
 
-    @include bp(smartphone) {
+    @include bp(hybrid) {
         padding: 0 10px;
         height: 40px;
         line-height: 40px;
@@ -93,9 +93,9 @@
 
 @mixin common-img() {
     display: block;
-    width:100%;
-    background: #ccc;
-    margin: 0 auto;
+    margin: 0;
+    padding: 0;
+    @include border-radius(5px);
 }
 
 @mixin hr() {

@@ -85,16 +85,10 @@ article {
 }
 
 .subpage-details {
-	@include bp(desktop) {
-		@include span-columns(8);
-	}
-	@include bp(hybrid) {
-		@include span-columns(7.75);
-		@include shift(0.25);
-	}
+	@include span-columns(8);
 	@include bp(smartphone) {
 		width: 100%;
-		padding: 0 15px;
+		padding: 0 15px 20px;
 		@include box-sizing(border-box);
 		@include shift(0);
 	}
@@ -129,10 +123,6 @@ article {
 
 				.posts {
 					@include span-columns(8);
-					@include bp(hybrid) {
-						@include shift(0.25);
-						@include span-columns(7.75);
-					}
 					@include bp(smartphone) {
 						width: 100%;
 						padding: 0 15px;
@@ -189,10 +179,6 @@ article {
 
 				#extra-content {
 					@include span-columns(4);
-					@include bp(hybrid) {
-						@include span-columns(3.75);
-						margin-right: 0;
-					}
 					@include bp(smartphone) {
 						display: none;
 					}
@@ -248,14 +234,7 @@ article {
 
 				.gallery {
 					@include span-columns(12);
-					@include bp(hybrid) {
-						@include shift(0.25);
-						@include span-columns(11.5);
-					}
-					@include bp(smartphone) {
-						@include shift(0.5);
-						@include span-columns(11);
-					}
+
 					h2 {
 						@include section-title();
 					}
@@ -269,6 +248,7 @@ article {
 
 						li,
 						li.gallery__item {
+							@include box-sizing(border-box);
 							@include span-columns(6 of 12);
 							@include bp(smartphone) {
 								@include shift(0);
@@ -281,6 +261,10 @@ article {
 							@include bp(desktop) {
 								height: 292px;
 								overflow: hidden;
+							}
+
+							@include bp(smartphone) {
+								height: 100%;
 							}
 
 							&:nth-child(even) {
@@ -298,13 +282,9 @@ article {
 								@include box-sizing(border-box);
 
 								img {
-									display: inline-block;
+									display: block;
 									width: 100%;
-									height: auto;
-
-									border: none;
-									float: left;
-									background: #bababa;
+									height: 100%;
 								}
 
 								> h3 {
