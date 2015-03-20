@@ -494,22 +494,23 @@ DnDMoM = (function($) {
             //main navigation
             var mainNav = $('#main-nav');
             var mainNavList = $('#main-nav__list');
+            var mainNavTriggerEvent = Modernizr.touch ? 'touchend' : 'click';
             mainNavList
-                .on('click touchend', ' > li > a:not(.main-nav__has-sub)', function(e) {
+                .on(mainNavTriggerEvent, ' > li > a:not(.main-nav__has-sub)', function(e) {
                     if ( Modernizr.mq('only screen and (max-width: 666px)') ) {
                         $('#drawer-toggle').removeAttr('checked');
                     }
                     return true;
                 })
-                .on('click touchend', ' > li > ul a', function(e) {
+                .on(mainNavTriggerEvent, ' > li > ul a', function(e) {
                     e.stopPropagation();
                 })
-                .on('click touchend', ' > li > a.main-nav__has-sub', function(e) {
+                .on(mainNavTriggerEvent, ' > li > a.main-nav__has-sub', function(e) {
                     $('#main-nav__list > li > a.main-nav__has-sub.focus').not(this).removeClass('focus');
                     $(this).toggleClass('focus');
                     return false;
                 });
-            $(document).on('click touchend', function(e) {
+            $(document).on(mainNavTriggerEvent, function(e) {
                 $('#main-nav__list > li > a.main-nav__has-sub.focus').removeClass('focus');
             });
 
