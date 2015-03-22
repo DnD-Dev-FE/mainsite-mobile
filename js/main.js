@@ -438,7 +438,7 @@ DnDMoM = (function($) {
 
         initTopButton: function() {
             var topButton = $('#top-button');
-            var _height = $(document).height() * 0.2;
+            var _height = $(document).height() * 0.5;
             var _fn_ = function() {
                 if ( $window.scrollTop() >= _height ) {
                     if ( !topButton.hasClass('flyout-content__top-button--shown') ) {
