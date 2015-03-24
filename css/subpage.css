@@ -6403,7 +6403,7 @@ article .post__cate-and-time .posts__time {
   .subpage #outer main #main-content .gallery ul.gallery__list li,
   .subpage #outer main #main-content .gallery ul.gallery__list li.gallery__item {
     width: 100%;
-    padding: 0;
+    padding: 0 !important;
   }
 }
 @media (min-width: 667px) {
