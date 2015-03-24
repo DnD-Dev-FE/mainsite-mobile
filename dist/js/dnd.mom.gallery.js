@@ -509,7 +509,10 @@ DnDMoM = (function($) {
                     minX: 25,
                     minY: 0,
                     swipeRight: function(e) {
-                        if ( e.coords.start.x <= $window.width()*.25 ) {
+                        console.log(e.coords);
+                        if ( e.coords.start.x <= $window.width()*.25
+                            && Math.abs( e.coords.start.y - e.coords.stop.y ) <= 10
+                        ) {
                             drawToggle.prop('checked', 'checked');
                             $('#main-nav').addClass('shown');
                         }
@@ -643,7 +646,8 @@ DnDMoM = (function($) {
             $window.on('scroll', function(e) { _fn_(); });
             _fn_();
 
-            topButton.on('click', function(e) {
+            var topBtnTriggerEvent = Modernizr.touch ? 'touchstart' : 'click';
+            topButton.on(topBtnTriggerEvent, function(e) {
                 $('body, html').stop(true, true).animate({
                     scrollTop: 0
                 });

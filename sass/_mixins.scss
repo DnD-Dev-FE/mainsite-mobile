@@ -95,7 +95,7 @@
     display: block;
     margin: 0;
     padding: 0;
-    @include border-radius(5px);
+    @include border-radius(10px);
 }
 
 @mixin hr() {

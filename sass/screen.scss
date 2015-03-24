@@ -80,7 +80,7 @@ a:visited {
             left: 0;
             width: $offset-canvas;
             height: 100%;
-            background: #fff;
+            background: $off-canvas-menu-bg;
             border-right: 1px solid $primary-border-color;
             display: none;
 
@@ -109,7 +109,8 @@ a:visited {
 
             @include bp(hybrid) {
                 width: 100%;
-                border-bottom: 1px solid $primary-border-color;
+                border-bottom: 1px solid $off-canvas-menu-divider;
+                background: $off-canvas-menu-tap-highlight;
             }
 
             @include bp(widescreen) {
@@ -133,6 +134,9 @@ a:visited {
                     background: none;
                     @include box-sizing(border-box);
                     padding: 0 32px 0 8px;
+                    @include bp(hybrid) {
+                        color: $off-canvas-menu-text;
+                    }
 
                     &:focus {
                         outline: none;
@@ -215,8 +219,10 @@ a:visited {
                 > li {
 
                     > a {
+                        color: $off-canvas-menu-text;
                         padding: 10px 0 10px 10px;
-                        border-bottom: 1px solid $primary-border-color;
+                        border-bottom: 1px solid $off-canvas-menu-divider;
+                        -webkit-tap-highlight-color: $off-canvas-menu-tap-highlight;
 
                         > .fa {
                             margin: 4px 10px 0 0;
@@ -224,7 +230,7 @@ a:visited {
                     }
 
                     a:hover {
-                        background: none;
+                        background: #454545;
                     }
 
                     a.active {
@@ -345,6 +351,7 @@ a:visited {
         }
         #drawer-toggle:checked ~ main {
             @include off-canvas-sliding($offset-canvas);
+            overflow: hidden;
         }
     }
 
@@ -937,12 +944,12 @@ a:visited {
                         }
 
                         &:first-child {
-                            @include border-left-radius(3px);
+                            @include border-left-radius(5px);
                         }
 
                         &:last-child {
                             border-right: 1px solid $primary-border-color;
-                            @include border-right-radius(3px);
+                            @include border-right-radius(5px);
                         }
 
                         a {
@@ -1028,7 +1035,7 @@ a:visited {
                         border: 1px solid $primary-border-color;
                         padding: 15px 0;
                         color: $primary-text-color;
-                        @include border-radius(3px);
+                        @include border-radius(5px);
                         @include opacity(1);
                         @include transition(opacity 0.25s ease-out);
                         @include transition-delay(0.25s);
@@ -1042,7 +1049,7 @@ a:visited {
                     padding: 10px 0;
                     border: 1px solid $primary-border-color;
                     margin: 11px auto 34px;
-                    @include border-radius(3px);
+                    @include border-radius(5px);
                     text-align: center;
                     color: $primary-text-color;
                     text-decoration: none;
@@ -1078,7 +1085,7 @@ a:visited {
                                 min-width: 35px;
                             }
                             text-align: center;
-                            @include border-radius(3px);
+                            @include border-radius(5px);
 
                             &:hover {
                                 background: $hover-color;
@@ -1183,10 +1190,7 @@ a:visited {
 
         /* footer */
         footer {
-            padding: 10px 0 35px;
-            @include bp(hybrid) {
-                padding: 10px 0 65px;
-            }
+            padding: 10px 0 55px;
             background: invert($section-background);
 
             .copyright {
@@ -1200,46 +1204,12 @@ a:visited {
     /* end of main */
 
     .flyout-content {
-        /*width: 0;
-        height: 100%;
-        position: fixed;
-        z-index: 3;
-        top: 0;
-        right: 0;*/
-
-        /*@include bp(widescreen) {
-            right: calc( 50% - #{$desktop-max-width}/2  - 40px );
-        }*/
 
         .flyout-content__top-button {
-            /*position: absolute;
-            bottom: 2px;
-            right: 2px;
-            @include bp(widescreen) {
-                right: 0;
-            }
-            width: 32px;
-            height: 32px;
-            line-height: 12px;
-            text-align: center;
-            font-size: 13px;
-            color: $primary-text-color;
-            background: #fff;
-            border: 1px solid $primary-border-color;
-            text-decoration: none;
-
-            @include border-radius(3px);
-
-            @include opacity(0.2);
-            @include transition(opacity 0.5s ease-in-out);
-
-            > .fa {
-                font-size: 10px;
-            }*/
-
             @include opacity(0);
             @include transition(opacity 0.5s ease-out);
 
+            color: #fff;
             position: fixed;
             z-index: 3;
             bottom: 0;
@@ -1247,31 +1217,22 @@ a:visited {
             right: 0;
             margin: 0 auto;
             width: 60px;
-            height: 24px;
-            @include bp(hybrid) {
-                height: 54px;
-            }
+            height: 44px;
             text-align: center;
             background: $theme-color;
 
-            border-top-left-radius: 3px;
-            -moz-border-top-left-radius: 3px;
-            -webkit-border-top-left-radius: 3px;
-
-            border-top-right-radius: 3px;
-            -moz-border-top-right-radius: 3px;
-            -webkit-border-top-right-radius: 3px;
+            @include border-top-radius(3px);
 
             box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
             -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
             -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
 
+            line-height: 10px;
+
             .fa {
                 font-size: 26px;
                 color: #fff;
-                @include bp(hybrid) {
-                    margin: 15px 0 50px;
-                }
+                margin-top: -1px;
             }
         }
 

@@ -12,7 +12,14 @@ $primary-border-color: #ccc;
 $secondary-border-color: #7aaa32;
 /* =========== */
 
-/* color style */
+/* off-canvas menu */
+$off-canvas-menu-bg: #373737;
+$off-canvas-menu-divider: #494949;
+$off-canvas-menu-tap-highlight: #454545;
+$off-canvas-menu-text: #bdbdbd;
+/* =========== */
+
+/* color styles */
 $theme-color: #7aaa32;
 $primary-text-color: #666;
 $secondary-text-color: #999;
@@ -29,7 +36,7 @@ $icon-overlays-color-light: rgba(255, 255, 255, 0.7);
 $icon-overlays-color-dark: rgba(0, 0, 0, 0.5);
 /* =========== */
 
-/*== Forms ==*/
+/* form elements */
 $input-bg: #fff;
 $input-bg-disabled: #d1d1d1;
 $input-color: #555;
@@ -48,10 +55,12 @@ $button-color-hover: #fff;
 $info-success: #3c763d ;
 $info-warn: #f0ad4e;
 $info-error: #a94442 ;
+/* =========== */
 
-/*== Contents ==*/
+/* css content */
 $content-text-color: #434343;
 $table-header-background-color: #999;
 $table-even-row-background-color: #f8f8dd;
 $table-odd-row-background-color: #fff;
 $table-border-color: $primary-border-color;
+/* =========== */

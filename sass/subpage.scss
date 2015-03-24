@@ -249,10 +249,19 @@ article {
 						li,
 						li.gallery__item {
 							@include box-sizing(border-box);
-							@include span-columns(6 of 12);
+							width: 50%;
+							padding-right: 5px;
+							float: left;
+
+							&:nth-child(even) {
+								float: right;
+								padding-right: 0;
+								padding-left: 5px;
+							}
+
 							@include bp(smartphone) {
-								@include shift(0);
-								@include span-columns(12);
+								width: 100%;
+								padding: 0;
 							}
 							display: block;
 							list-style: none;
@@ -277,25 +286,19 @@ article {
 								position: relative;
 								height: 100%;
 								width: 100%;
-								border: 1px solid $primary-border-color;
 								padding: 1px;
 								@include box-sizing(border-box);
 
-								img {
+								img,
+								video {
 									display: block;
 									width: 100%;
 									height: 100%;
+									@include border-radius(10px);
 								}
 
 								> h3 {
-									font-size: 15px;
-									line-height: 40px;
-									text-indent: 20px;
-									position: absolute;
-									width: 100%;
-									bottom: 0;
-									color: #fff;
-									background: rgba(0,0,0,0.5);
+									display: none;
 								}
 
 								&:hover {
