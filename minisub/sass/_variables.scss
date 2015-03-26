@@ -1,0 +1,68 @@
+/* misc styles */
+$font-face: "Open Sans", Arial, Tahoma, sans-serif;
+$font-size-base: 14px;
+$section-background: #efefef;
+$top-bar-height: 47px;
+$top-content-height: 287px;
+$offset-canvas: 250px;
+$desktop-max-width: 1024px;
+/* =========== */
+
+/* border styles */
+$primary-border-color: #ccc;
+$secondary-border-color: #7aaa32;
+/* =========== */
+
+/* off-canvas menu */
+$off-canvas-menu-bg: #373737;
+$off-canvas-menu-divider: #494949;
+$off-canvas-menu-tap-highlight: #454545;
+$off-canvas-menu-text: #bdbdbd;
+/* =========== */
+
+/* color styles */
+$theme-color: #7aaa32;
+$primary-text-color: #666;
+$secondary-text-color: #999;
+$hover-color: #efefef;
+$hover-secondary-color: #999;
+$active-color: #2a2a2a;
+$disabled-color: #999;
+$placeholder-color: #dfdfdf;
+$title-section-color: #434343;
+$post-title-color: #434343;
+$time-color: #868686;
+$category-color: #0293d0;
+$icon-overlays-color-light: rgba(255, 255, 255, 0.7);
+$icon-overlays-color-dark: rgba(0, 0, 0, 0.5);
+$minisub-top-bg: #fff;
+/* =========== */
+
+/* form elements */
+$input-bg: #fff;
+$input-bg-disabled: #d1d1d1;
+$input-color: #555;
+$input-border: #ccc;
+$input-border-radius:  4px;
+$input-border-focus: #66afe9;
+$input-height-base: 34px;
+$input-padding-vertical: 6px;
+$input-padding-horizontal: 12px;
+
+$button-bg: #fff;
+$button-bg-hover: #e6e6e6;
+$button-color: #000;
+$button-color-hover: #fff;
+
+$info-success: #3c763d ;
+$info-warn: #f0ad4e;
+$info-error: #a94442 ;
+/* =========== */
+
+/* css content */
+$content-text-color: #434343;
+$table-header-background-color: #999;
+$table-even-row-background-color: #f8f8dd;
+$table-odd-row-background-color: #fff;
+$table-border-color: $primary-border-color;
+/* =========== */
