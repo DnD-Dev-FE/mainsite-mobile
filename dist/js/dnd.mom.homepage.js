@@ -3372,7 +3372,6 @@ DnDMoM = (function($) {
                     minX: 25,
                     minY: 0,
                     swipeRight: function(e) {
-                        console.log(e.coords);
                         if ( e.coords.start.x <= $window.width()*.25
                             && Math.abs( e.coords.start.y - e.coords.stop.y ) <= 10
                         ) {

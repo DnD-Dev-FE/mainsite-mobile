@@ -28,8 +28,16 @@ article {
 		line-height: $base-line-height;
 	}
 	ul, ol {
-		margin-left: 15px;
-	}
+        padding-left: 0;
+    }
+    ul {
+        margin-left: 18px;
+        list-style: disc;
+    }
+    ol {
+        margin-left: 28px;
+        list-style: decimal-leading-zero;
+    }
 
 	.post__cate-and-time {
 		@include post-cate-and-time();
