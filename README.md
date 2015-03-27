@@ -19,3 +19,7 @@ Mainsite template for mobile game
 - Adding bitters-compass by gem install, including by '@import 'base/base' => note bittets is used within wrapper = '.base'
 - Modifying "post-details.html" structure
 - Fix some minor bugs
+
+## Big Updtae [27-Mar-2015]
+- Add minisub package
+- Fix many bugs and issues + optimizing for mainsite on smartphone, tablet, desktop
