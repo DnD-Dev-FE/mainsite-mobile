@@ -19,7 +19,7 @@ body {
 
     -webkit-text-size-adjust: 100%; /* prevent safari in ios auto scale font-size */
 
-    @include bp(desktop) {
+    @include bp(widescreen) {
         background: #efefef;
     }
 }
@@ -54,6 +54,8 @@ a:visited {
 
 #outer {
     width: 100%;
+    position: relative;
+    overflow: hidden;
 
     @include outer-container();
 
@@ -79,7 +81,7 @@ a:visited {
             z-index: 1;
             left: 0;
             width: $offset-canvas;
-            height: 100%;
+            height: calc( 100% + 60px );
             background: $off-canvas-menu-bg;
             border-right: 1px solid $primary-border-color;
             display: none;
@@ -222,7 +224,6 @@ a:visited {
                         color: $off-canvas-menu-text;
                         padding: 10px 0 10px 10px;
                         border-bottom: 1px solid $off-canvas-menu-divider;
-                        -webkit-tap-highlight-color: $off-canvas-menu-tap-highlight;
 
                         > .fa {
                             margin: 4px 10px 0 0;
@@ -429,16 +430,39 @@ a:visited {
             background: $placeholder-color;
             overflow: hidden;
             position: relative;
-
             @include bp(desktop) {
                 height: 389px;
             }
+
+            .primary-banner__wrapper {
+                height: 100%;
+                display: inline-block; 
+                position:relative; 
+                right: -50%;
+                z-index: 4;
+             
+                > img,
+                > video {
+                    display: block;
+                    border: none;
+                    outline: none;
+                    position: relative; 
+                    left:-50%;
+                    width: 100%;
+                    @include bp(hybrid) {
+                        width: auto;
+                        height: 100%;
+                    }
+                }
+            }
+
             > div.primary-banner__overlays {
                 width: 100%;
                 height: 100%;
                 position: absolute;
                 top: 0;
                 left: 0;
+                z-index: 5;
                 display: none;
                 text-align: center;
                 cursor: pointer;
@@ -450,8 +474,8 @@ a:visited {
                     cursor: pointer;
                 }
 
-                & ~ video {
-                    display: block;
+                & ~ .primary-banner__wrapper {
+                    display: inline-block;
                 }
             }
 
@@ -462,7 +486,7 @@ a:visited {
                 background: url(../images/video-preload.jpg) no-repeat center center;
                 background-size: cover;
             }
-            &.video--preloading > div.primary-banner__overlays ~ video {
+            &.video--preloading > div.primary-banner__overlays ~ .primary-banner__wrapper {
                 display: none;
             }
             @include bp(hybrid) {
@@ -475,16 +499,6 @@ a:visited {
                         margin: -51px 0 0 -41px;
                     }
                 }
-            }
-
-            > img,
-            > video,
-            > iframe {
-                display: block;
-                width: 100%;
-                height: 100%;
-                border: none;
-                outline: none;
             }
         }
 
@@ -560,6 +574,7 @@ a:visited {
                     @include bp(widescreen) {
                         > a {
                             @include image-link(180px, 50px);
+                            @include border-radius(5px);
                         }
                     }
 
@@ -620,6 +635,7 @@ a:visited {
         }
 
         #main-content {
+
             @include bp(hybrid) {
                 @media only screen and (min-width: 667px) and (max-width: 1024px) {
                     padding: 0 15px;
@@ -799,8 +815,11 @@ a:visited {
 
                                     position: absolute;
                                     z-index: 100;
-                                    height: 373px;
-                                    @include opacity(1);
+                                    @include bp(desktop) {
+                                        height: 373px;
+                                        @include transition(opacity 0.25s ease-out);
+                                        @include opacity(0);
+                                    }
 
                                     @include bp(smartphone) {
                                         @include span-columns(12);
@@ -1207,6 +1226,7 @@ a:visited {
     .flyout-content {
 
         .flyout-content__top-button {
+            display: none;
             @include opacity(0);
             @include transition(opacity 0.5s ease-out);
 
@@ -1238,6 +1258,7 @@ a:visited {
         }
 
         .flyout-content__top-button--shown {
+            display: block;
             @include opacity(1);
         }
     }
@@ -1249,13 +1270,10 @@ a:visited {
         display: block;
         content: "đang tải hình lớn...";
         position: absolute;
-        top: 127px;
-        @include bp(smartphone) {
-            top: 65px;
-        }
+        top: 50%;
+        margin: -15px auto 0;
         left: 0;
         right: 0;
-        margin: 0 auto;
         z-index: 99;
         color: #fff;
         font-size: 18px;

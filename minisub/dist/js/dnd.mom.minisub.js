@@ -264,16 +264,12 @@ DnDMoM = (function($) {
     return {
         initMainNav: function() {
             //main navigation
+            var drawToggle = $('#drawer-toggle');
             var mainNav = $('#main-nav');
+            var mainNavWrapper = $('.main-nav__wrapper').eq(0);
             var mainNavList = $('#main-nav__list');
             var mainNavTriggerEvent = Modernizr.touch ? 'touchend' : 'click';
             mainNavList
-                .on(mainNavTriggerEvent, ' > li > a:not(.main-nav__has-sub)', function(e) {
-                    if ( Modernizr.mq('only screen and (max-width: 666px)') ) {
-                        $('#drawer-toggle').removeAttr('checked');
-                    }
-                    return true;
-                })
                 .on(mainNavTriggerEvent, ' > li > ul a', function(e) {
                     e.stopPropagation();
                 })
@@ -285,8 +281,10 @@ DnDMoM = (function($) {
             $(document).on(mainNavTriggerEvent, function(e) {
                 $('#main-nav__list > li > a.main-nav__has-sub.focus').removeClass('focus');
             });
+            mainNav.on(mainNavTriggerEvent, function(e) {
+                e.stopPropagation();
+            });
 
-            var drawToggle = $('#drawer-toggle');
             var _fn_ = function() {
                 if ( Modernizr.mq('only screen and (max-width: 666px), (min-width: 667px) and (max-width: 1024px)' ) ) {
                     drawToggle.on('change', function() {
@@ -311,17 +309,19 @@ DnDMoM = (function($) {
                     minY: 0,
                     swipeRight: function(e) {
                         if ( e.coords.start.x <= $window.width()*.25
-                            && Math.abs( e.coords.start.y - e.coords.stop.y ) <= 10
+                            && Math.abs( e.coords.start.y - e.coords.stop.y ) <= 20
                         ) {
                             drawToggle.prop('checked', 'checked');
-                            $('#main-nav').addClass('shown');
+                            mainNav.addClass('shown');
                         }
                     },
                     swipeLeft: function(e) {
-                        drawToggle.prop('checked', false);
-                        setTimeout(function() {
-                            mainNav.removeClass('shown');
-                        }, 250);
+                        if ( Math.abs( e.coords.start.y - e.coords.stop.y ) <= 20 ) {
+                            drawToggle.prop('checked', false);
+                            setTimeout(function() {
+                                mainNav.removeClass('shown');
+                            }, 250);
+                        }
                     },
                     swipeUp: function(e) { return true; },
                     swipeDown: function(e) { return true; }

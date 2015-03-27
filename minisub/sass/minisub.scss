@@ -2,6 +2,9 @@
 
 article {
     @import "base/base";
+
+    line-height: 180%;
+    
     pre {
         overflow: auto;
     }
@@ -12,7 +15,7 @@ article {
     h1 {
         @include section-title();
         text-align: left;
-        padding-top: 36px;
+        padding-top: 22px;
         text-transform: inherit;
     }
 
@@ -46,13 +49,6 @@ article {
 }
 
 .post {
-    @include bp(widescreen) {
-        @include span-columns(8);
-    }
-
-    @include bp(hybrid) {
-        padding: 50px 15px 30px;
-    }
 
     .post__sharing {
         min-height: 40px;
@@ -61,7 +57,6 @@ article {
 
     .post_tags {
         font-size: 12px;
-        margin-bottom: 80px;
 
         @include bp(smartphone) {
             margin-bottom: 0;
@@ -99,6 +94,16 @@ article {
 
 .rte {
     * { font-family: $font-face; }
+}
+
+.subpage-details {
+    @include span-columns(8);
+    @include bp(hybrid) {
+        width: 100%;
+        padding: 50px 15px 30px;
+    }
+
+    padding-bottom: 40px;
 }
 
 .subpage {
@@ -147,10 +152,10 @@ article {
     color: $primary-text-color;
     font-size: 14px;
     border-bottom: 1px solid $primary-border-color;
-
     @include bp(hybrid) {
         padding-left: 65px;
     }
+    white-space: nowrap;
 
     h1 {
         font-size: 16px;
