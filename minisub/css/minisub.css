@@ -3918,18 +3918,13 @@ a:visited {
 }
 /* line 706, ../sass/screen.scss */
 #outer .flyout-content .flyout-content__top-button {
-  display: none;
-  opacity: 0;
-  -moz-opacity: 0;
-  -webkit-opacity: 0;
-  filter: alpha(opacity=0);
-  -webkit-transition: opacity 0.5s ease-out;
-  -moz-transition: opacity 0.5s ease-out;
-  transition: opacity 0.5s ease-out;
+  -webkit-transition: bottom 0.25s ease-out;
+  -moz-transition: bottom 0.25s ease-out;
+  transition: bottom 0.25s ease-out;
   color: #fff;
   position: fixed;
   z-index: 3;
-  bottom: 0;
+  bottom: -44px;
   left: 0;
   right: 0;
   margin: 0 auto;
@@ -3944,15 +3939,15 @@ a:visited {
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
   line-height: 10px;
 }
-/* line 731, ../sass/screen.scss */
+/* line 729, ../sass/screen.scss */
 #outer .flyout-content .flyout-content__top-button .fa {
   font-size: 26px;
   color: #fff;
   margin-top: -1px;
 }
-/* line 738, ../sass/screen.scss */
+/* line 736, ../sass/screen.scss */
 #outer .flyout-content .flyout-content__top-button--shown {
-  display: block;
+  bottom: 0;
   opacity: 1;
   -moz-opacity: 1;
   -webkit-opacity: 1;
