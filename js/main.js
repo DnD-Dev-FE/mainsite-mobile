@@ -149,8 +149,9 @@ DnDMoM = (function($) {
     var _hasherListener = {
         //get posts with pagination by cate: all | news | events
         blogroll: function(cate, page) {
+            $('.pagination__list a.pagination__nav').hide();
             $('#drawer-toggle').removeAttr('checked');
-            
+
             var liIndexItem = '<li><a href="" class="pagination__index" data-index={ page } data-href="#!{ cate }?p={ page }" title="{ page }">{ page }</a></li>';
 
             //active tab
@@ -184,6 +185,12 @@ DnDMoM = (function($) {
                 url,
                 function(data, status, jqXHR) {
                     var itemTotal = $('#itemTotal').val();
+                    if ( itemTotal === undefined || itemTotal === 0 ) {
+                        return false;
+                    }
+                    else {
+                        $('.pagination__list a.pagination__nav').show();
+                    }
                     var itemPerPage = $('#itemPerPage').val();
                     var _defaultPagingDisplay = 5;
                     var pagingTotal = Math.ceil(itemTotal/itemPerPage);
